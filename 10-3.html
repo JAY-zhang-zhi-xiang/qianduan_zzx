@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>张志翔 - 全屏盒子</title>
+  <style>
+    /* ===== 根字号：rem 基准，断点差距拉大 ===== */
+    html {
+      font-size: 20px; /* 大屏：1rem = 20px */
+    }
+
+    @media (max-width: 1200px) {
+      html { font-size: 17px; }
+    }
+
+    @media (max-width: 992px) {
+      html { font-size: 14px; }
+    }
+
+    @media (max-width: 768px) {
+      html { font-size: 11px; }
+    }
+
+    @media (max-width: 576px) {
+      html { font-size: 8px; }
+    }
+
+    /* 高度很小（横屏手机）时再压一档 */
+    @media (max-height: 500px) {
+      html { font-size: 10px; }
+    }
+
+    @media (orientation: landscape) and (max-height: 500px) {
+      html { font-size: 11px; }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    .fullscreen-box {
+      width: 100vw;
+      min-height: 100vh;
+      min-height: 100dvh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: #3498db;
+      color: #ffffff;
+
+      font-size: 6rem;   /* 20 × 6 = 120px */
+      font-weight: 700;
+      letter-spacing: 0.1em;
+
+      transition: background-color 0.3s ease,
+                  color 0.3s ease,
+                  font-size 0.3s ease;
+    }
+
+    /* ===== 断点：颜色 + 字号双管齐下 ===== */
+
+    @media (max-width: 1200px) {
+      .fullscreen-box {
+        background-color: #9b59b6;
+        font-size: 5rem;   /* 17 × 5 = 85px */
+      }
+    }
+
+    @media (max-width: 992px) {
+      .fullscreen-box {
+        background-color: #e67e22;
+        font-size: 4rem;   /* 14 × 4 = 56px */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .fullscreen-box {
+        background-color: #2ecc71;
+        font-size: 3.5rem; /* 11 × 3.5 = 38.5px */
+        letter-spacing: 0.08em;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .fullscreen-box {
+        background-color: #e74c3c;
+        font-size: 3rem;   /* 8 × 3 = 24px */
+        letter-spacing: 0.05em;
+      }
+    }
+
+    @media (max-height: 500px) {
+      .fullscreen-box {
+        background-color: #34495e;
+        font-size: 2.5rem; /* 10 × 2.5 = 25px */
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 500px) {
+      .fullscreen-box {
+        background-color: #1abc9c;
+        color: #00332c;
+        font-size: 2.8rem; /* 11 × 2.8 = 30.8px */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="fullscreen-box">
+    张志翔
+  </div>
+</body>
+</html>

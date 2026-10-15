@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>炫酷变色盒子 · 张志翔</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #06060c;
+    overflow: hidden;
+  }
+
+  .scene {
+    position: relative;
+    /* 盒子大小自适应屏幕，最小 280px，最大 500px */
+    width: clamp(280px, 50vmin, 500px);
+    height: clamp(280px, 50vmin, 500px);
+  }
+
+  /* ===== 外发光：旋转的圆锥渐变光晕 ===== */
+  .scene::before {
+    content: "";
+    position: absolute;
+    inset: -18%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg,
+      #ff6b6b, #feca57, #48dbfb, #1dd1a1, #ff6b6b);
+    filter: blur(clamp(40px, 12vmin, 90px));
+    opacity: .75;
+    animation: spinPulse 8s linear infinite;
+  }
+
+  /* ===== 扩散光环 ===== */
+  .scene::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18%;
+    border: 3px solid rgba(255, 255, 255, .6);
+    pointer-events: none;
+    animation: ripple 3s ease-out infinite;
+  }
+
+  /* ===== 主体盒子 ===== */
+  .box {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 18%;
+    overflow: hidden;
+    background: linear-gradient(135deg,
+      #ff6b6b, #feca57, #48dbfb, #1dd1a1, #ff6b6b);
+    background-size: 400% 400%;
+    animation:
+      gradientShift 8s ease-in-out infinite,
+      float         5s ease-in-out infinite,
+      glow          8s ease-in-out infinite;
+    will-change: background-position, transform, box-shadow;
+  }
+
+  /* ===== 盒子里的名字 ===== */
+  .name {
+    position: relative;
+    z-index: 2;              /* 盖在扫光之上 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(2rem, 8vmin, 3.5rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: .08em;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto,
+                 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    text-shadow:
+      0 2px 16px rgba(0, 0, 0, .35),
+      0 0 30px rgba(255, 255, 255, .55);
+    user-select: none;
+  }
+
+  /* ===== 扫光高光 ===== */
+  .box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg,
+      transparent 35%,
+      rgba(255, 255, 255, .65) 50%,
+      transparent 65%);
+    background-size: 300% 100%;
+    animation: shine 3.5s ease-in-out infinite;
+  }
+
+  /* ---------- 关键帧 ---------- */
+
+  @keyframes gradientShift {
+    0%   { background-position:   0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position:   0% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0)     rotate(-2deg) scale(1); }
+    50%      { transform: translateY(-20px) rotate( 2deg) scale(1.05); }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow:
+        0 0 40px rgba(255, 107, 107, .75),
+        0 0 100px rgba(255, 107, 107, .40),
+        inset 0 0 35px rgba(255, 255, 255, .22);
+    }
+    25% {
+      box-shadow:
+        0 0 40px rgba(254, 202, 87, .75),
+        0 0 100px rgba(254, 202, 87, .40),
+        inset 0 0 35px rgba(255, 255, 255, .22);
+    }
+    50% {
+      box-shadow:
+        0 0 40px rgba(72, 219, 251, .75),
+        0 0 100px rgba(72, 219, 251, .40),
+        inset 0 0 35px rgba(255, 255, 255, .22);
+    }
+    75% {
+      box-shadow:
+        0 0 40px rgba(29, 209, 161, .75),
+        0 0 100px rgba(29, 209, 161, .40),
+        inset 0 0 35px rgba(255, 255, 255, .22);
+    }
+  }
+
+  @keyframes spinPulse {
+    0%   { transform: rotate(0deg)   scale(1); }
+    50%  { transform: rotate(180deg) scale(1.15); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(1);
+      opacity: .85;
+      border-color: rgba(255, 255, 255, .7);
+    }
+    100% {
+      transform: scale(2.1);
+      opacity: 0;
+      border-color: rgba(255, 255, 255, 0);
+    }
+  }
+
+  @keyframes shine {
+    0%   { background-position: 250% 0; }
+    55%  { background-position: -150% 0; }
+    100% { background-position: -150% 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scene::before,
+    .scene::after,
+    .box,
+    .box::after {
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="scene">
+    <div class="box">
+      <span class="name">张志翔</span>
+    </div>
+  </div>
+</body>
+</html>

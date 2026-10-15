@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张志翔 · 幻灯片</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: radial-gradient(circle at 50% 0%, #2b2b45, #14141f 70%);
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  }
+
+  /* ========== 幻灯片舞台（尺寸放大） ========== */
+  .slideshow {
+    position: relative;
+    width: min(92vw, 1100px);   /* 随屏幕变宽，最大 1100px */
+    aspect-ratio: 16 / 10;      /* 保持 16:10 的宽屏比例 */
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0e0e16;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .65);
+  }
+
+  /* ========== 每张幻灯片：水平位移动画 ========== */
+  .slide {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    transform: translateX(100%);
+    animation: slideMove 12s infinite;
+    will-change: transform;
+  }
+
+  .slide:nth-child(1) { z-index: 1; animation-delay: -1s; }
+  .slide:nth-child(2) { z-index: 2; animation-delay: 3s; }
+  .slide:nth-child(3) { z-index: 3; animation-delay: 7s; }
+
+  @keyframes slideMove {
+    0%     { transform: translateX(100%); }
+    8.33%  { transform: translateX(0); }
+    33.33% { transform: translateX(0); }
+    41.66% { transform: translateX(-100%); }
+    100%   { transform: translateX(-100%); }
+  }
+
+  /* ========== 图片 ========== */
+  .slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: kenburns 12s ease-in-out infinite;
+  }
+
+  @keyframes kenburns {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.06); }
+  }
+
+  /* 底部渐隐遮罩 */
+  .slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(0, 0, 0, .72), rgba(0, 0, 0, 0) 45%);
+  }
+
+  /* ========== 文字层：透明背景，叠在图上 ========== */
+  .caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 36px 44px 48px;      /* 增大内边距 */
+    background: transparent;
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .7), 0 1px 4px rgba(0, 0, 0, .9);
+    animation: captionRise 12s infinite;
+    will-change: transform;
+  }
+
+  .slide:nth-child(1) .caption { animation-delay: -1s; }
+  .slide:nth-child(2) .caption { animation-delay: 3s; }
+  .slide:nth-child(3) .caption { animation-delay: 7s; }
+
+  @keyframes captionRise {
+    0%, 8.33%    { transform: translateY(28px); }
+    16.66%, 100% { transform: translateY(0); }
+  }
+
+  /* 标题字号放大 */
+  .caption h2 {
+    font-size: clamp(26px, 3.2vw, 40px);
+    font-weight: 700;
+    letter-spacing: 5px;
+  }
+
+  .caption h2::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 4px;
+    margin-top: 12px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #ff6b35, #ffb347);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .45);
+  }
+
+  /* 描述字号放大 */
+  .caption p {
+    margin-top: 14px;
+    font-size: clamp(15px, 1.6vw, 20px);
+    line-height: 1.7;
+    letter-spacing: .5px;
+    color: rgba(255, 255, 255, .94);
+  }
+
+  /* ========== 指示圆点 ========== */
+  .dots {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    z-index: 20;
+    display: flex;
+    gap: 12px;
+  }
+
+  .dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .45);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    animation: dotActive 12s infinite;
+  }
+
+  .dots span:nth-child(1) { animation-delay: -1s; }
+  .dots span:nth-child(2) { animation-delay: 3s; }
+  .dots span:nth-child(3) { animation-delay: 7s; }
+
+  @keyframes dotActive {
+    0%, 8.33%    { background: rgba(255, 255, 255, .45); transform: scale(1); }
+    10%, 41.66%  { background: #ffb347; transform: scale(1.35); }
+    43.33%, 100% { background: rgba(255, 255, 255, .45); transform: scale(1); }
+  }
+
+  /* ========== 小屏适配 ========== */
+  @media (max-width: 700px) {
+    .slideshow {
+      width: 96vw;
+      aspect-ratio: 4 / 5;      /* 手机竖屏更适合 4:5 比例 */
+      border-radius: 16px;
+    }
+    .caption { padding: 24px 22px 32px; }
+    .caption h2 { letter-spacing: 3px; }
+    .caption h2::after { width: 44px; height: 3px; margin-top: 8px; }
+    .caption p { margin-top: 10px; }
+    .dots { top: 18px; right: 20px; gap: 8px; }
+    .dots span { width: 8px; height: 8px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="slideshow">
+
+    <!-- 第 1 张 -->
+    <div class="slide">
+      <img src="1.jpg" alt="图片">
+      <div class="caption">
+        <h2>张志翔</h2>
+        <p>第一张 · 用镜头记录生活中的每一个瞬间</p>
+      </div>
+    </div>
+
+    <!-- 第 2 张 -->
+    <div class="slide">
+      <img src="2.jpg" alt="图片">
+      <div class="caption">
+        <h2>张志翔</h2>
+        <p>第二张 · 在光影之间寻找属于自己的故事</p>
+      </div>
+    </div>
+
+    <!-- 第 3 张 -->
+    <div class="slide">
+      <img src="3.jpg" alt="图片">
+      <div class="caption">
+        <h2>张志翔</h2>
+        <p>第三张 · 让每一个想法都变成看得见的画面</p>
+      </div>
+    </div>
+
+    <!-- 指示圆点 -->
+    <div class="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+
+</body>
+</html>

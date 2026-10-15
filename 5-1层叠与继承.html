@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="css.css"></link>
+    <style>
+        P {
+            color: red;
+            font-size: 100px;
+        }
+        .text {
+            color: green;
+        }
+        #text {
+            color: purple;
+        }
+        .box p{
+            color: orange;
+        }
+        #box #text{
+            color: pink;
+        }
+        .text {
+            color: yellow!important;
+        }
+        #box{
+            /* 宽400 高400 灰色背景 距离 字间距5 */
+            width: 1400px;
+            height: 400px;
+            background-color: gray;
+            margin: 10px;
+            padding: 10px;
+            letter-spacing: 5px;
+            /* 圆角矩形 */
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>层叠与继承</h2>
+    <div id="box" class="box">
+        <p id="text" class="text">419 张志翔</p>
+        <p>层叠与继承的优先级</p>
+    </div>
+
+</body>
+</html>

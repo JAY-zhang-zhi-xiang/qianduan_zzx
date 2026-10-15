@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .flex li {
+            border: 1px solid #039;
+            width: 300px;
+            height: 300px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f1f2f3;
+            border: 1px solid #333;
+        }
+
+        .flex li:nth-child(1) .box {
+            background-color: #333;
+        }
+
+        /* 第 2 个：两个盒子竖排 */
+        .flex li:nth-child(2) {
+            flex-direction: column;
+        }
+
+        /* 第 3、4 个：允许换行 */
+        .flex li:nth-child(3),
+        .flex li:nth-child(4) {
+            flex-wrap: wrap;
+            align-content: center;
+        }
+
+        /* 第 2、3、4 个里的小盒子 */
+        .flex li:nth-child(2) .box,
+        .flex li:nth-child(3) .box,
+        .flex li:nth-child(4) .box {
+            width: 130px;
+            height: 90px;
+        }
+
+        /* 第 4 个：第一个盒子拉宽占满一行 */
+        .flex li:nth-child(4) .box:first-child {
+            width: 270px;
+            height: 70px;
+        }
+    </style>
+</head>
+<body>
+    <h2>张志翔 flex</h2>
+    <ul class="flex">
+        <!-- 1：一个盒子居中 -->
+        <li>
+            <div class="box"></div>
+        </li>
+
+        <!-- 2：两个盒子竖排 -->
+        <li>
+            <div class="box"></div>
+            <div class="box"></div>
+        </li>
+
+        <!-- 3：2×2 排列 -->
+        <li>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </li>
+
+        <!-- 4：上大 + 下两小 -->
+        <li>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </li>
+    </ul>
+    浮动之后
+</body>
+</html>

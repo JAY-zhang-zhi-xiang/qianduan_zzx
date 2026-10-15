@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张志翔｜高级网页设计课堂实践</title>
+    <style>
+        :root {
+            --paper: #f4f0e8;
+            --white: #fffdf8;
+            --ink: #202522;
+            --muted: #72776f;
+            --green: #315c4b;
+            --line: #d8d2c6;
+            --orange: #b9673c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: var(--paper);
+        }
+
+        .page {
+            width: min(1080px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 72px 0 54px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .eyebrow {
+            margin: 0 0 22px;
+            color: var(--orange);
+            font-size: 13px;
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            max-width: 720px;
+            margin: 0;
+            font-family: Georgia, "Songti SC", serif;
+            font-size: clamp(36px, 7vw, 72px);
+            font-weight: normal;
+            line-height: 1.12;
+            letter-spacing: -2px;
+        }
+
+        .intro {
+            max-width: 520px;
+            margin: 24px 0 0;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(260px, .8fr);
+            gap: 70px;
+            padding: 54px 0 70px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin: 0 0 24px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        h2 {
+            margin: 0;
+            font-family: Georgia, "Songti SC", serif;
+            font-size: 25px;
+            font-weight: normal;
+        }
+
+        .count {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .links {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .links li {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .links a {
+            display: grid;
+            grid-template-columns: 52px 1fr 28px;
+            align-items: center;
+            padding: 20px 8px;
+            color: var(--ink);
+            text-decoration: none;
+            transition: .2s ease;
+        }
+
+        .links a:hover {
+            padding-left: 18px;
+            color: var(--green);
+            background: rgba(255, 253, 248, .75);
+        }
+
+        .number {
+            color: var(--orange);
+            font-family: Georgia, serif;
+            font-size: 18px;
+        }
+
+        .arrow {
+            color: var(--muted);
+            font-size: 20px;
+            text-align: right;
+        }
+
+        .side {
+            align-self: start;
+        }
+
+        .info {
+            padding: 24px;
+            background: var(--white);
+            border: 1px solid var(--line);
+        }
+
+        .info p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 2;
+        }
+
+        .info strong {
+            color: var(--green);
+            font-weight: normal;
+        }
+
+        .prompt {
+            margin-top: 28px;
+            padding-top: 24px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+            border-top: 1px solid var(--line);
+        }
+
+        .prompt strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--ink);
+            font-weight: normal;
+        }
+
+        footer {
+            padding: 20px 0 30px;
+            color: var(--muted);
+            font-size: 13px;
+            border-top: 1px solid var(--line);
+        }
+
+        @media (max-width: 720px) {
+            .page {
+                width: min(100% - 28px, 600px);
+            }
+
+            header {
+                padding: 48px 0 38px;
+            }
+
+            main {
+                grid-template-columns: 1fr;
+                gap: 44px;
+                padding: 38px 0 50px;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <p class="eyebrow">WEB DESIGN / CLASSROOM PRACTICE</p>
+            <h1>张志翔的<br>《高级网页设计》课堂实践</h1>
+            <p class="intro">
+                这是课程学习过程中的页面练习与作品记录，
+                从 HTML 结构出发，逐步学习 CSS 样式与网页布局。
+            </p>
+        </header>
+
+        <main>
+            <section>
+                <div class="section-title">
+                    <h2>实践作品</h2>
+                    <span class="count">共 14 个页面</span>
+                </div>
+
+                <ul class="links">
+                    <li>
+                        <a href="../1.html">
+                            <span class="number">01</span>
+                            <span>HTML 基础</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../2-1.html">
+                            <span class="number">02</span>
+                            <span>网页结构与文本（一）</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../2-2.html">
+                            <span class="number">03</span>
+                            <span>网页结构与文本（二）</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../3-1.html">
+                            <span class="number">04</span>
+                            <span>CSS 基础</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../3-2-css.html">
+                            <span class="number">05</span>
+                            <span>CSS 页面布局</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="4-1%20css2.html">
+                            <span class="number">06</span>
+                            <span>CSS 进阶</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../5-1%E5%B1%82%E5%8F%A0%E4%B8%8E%E7%BB%A7%E6%89%BF.html">
+                            <span class="number">07</span>
+                            <span>层叠与继承</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../5-2%E7%9B%92%E6%A8%A1%E5%9E%8B.html">
+                            <span class="number">08</span>
+                            <span>盒模型</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../6-1%20flex.html">
+                            <span class="number">09</span>
+                            <span>Flex 布局（一）</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../6-2.html">
+                            <span class="number">10</span>
+                            <span>Flex 布局（二）</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../7-1%20%E4%B8%8A%E5%9B%BE%E4%B8%8B%E6%96%87.html">
+                            <span class="number">11</span>
+                            <span>上图下文</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../7-2%20%E5%B7%A6%E5%9B%BE%E5%8F%B3%E6%96%87.html">
+                            <span class="number">12</span>
+                            <span>左图右文</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="8-1%20css3%E9%80%89%E6%8B%A9%E5%99%A8.html">
+                            <span class="number">13</span>
+                            <span>CSS3 选择器</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="9-1transition.html">
+                            <span class="number">14</span>
+                            <span>Transition 过渡效果</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <aside class="side">
+                <div class="section-title">
+                    <h2>关于本页</h2>
+                </div>
+
+                <div class="info">
+                    <p>
+                        <strong>课程</strong><br>
+                        高级网页设计
+                    </p>
+                    <p>
+                        <strong>姓名</strong><br>
+                        张志翔
+                    </p>
+                    <p>
+                        <strong>技术</strong><br>
+                        HTML / CSS
+                    </p>
+                </div>
+
+                <div class="prompt">
+                    <strong>本页面提示词</strong>
+                    创建一个新页面，包括本目录下的所有网页的超链接，
+                    使用原生代码，不使用 CDN，新页面名称为 index.html，
+                    主题为张志翔的《高级网页设计》课堂实践，美化页面，
+                    页面中包括本提示词。
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            © 2026 张志翔 · 高级网页设计课堂实践
+        </footer>
+    </div>
+</body>
+</html>

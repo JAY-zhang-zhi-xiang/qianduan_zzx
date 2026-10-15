@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            background-color: #f2f3f4;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px;
+        }
+        .box {
+            width: 150px;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin: 10px;
+            background-color: white;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.6s;
+            box-sizing: border-box;
+        }
+        .box:first-child:hover{
+            background-color: #000;
+            color: #fff;
+            font-size: 100px;
+            border-width: 30px;
+        }
+        .box:nth-child(2):hover{
+            box-shadow: 0 0 20px #000;
+        }
+        .box:nth-child(3):hover{
+            text-shadow: 100px 0 20px #000;
+        }
+        .box:nth-child(4):hover{
+            border-radius: 50%;
+        }
+        .box:nth-of-type(5){
+            /* 线性渐变 */
+            background: linear-gradient( #000, #fff);
+        }
+        .box:nth-of-type(6){
+            /* 径向渐变 */
+            background: radial-gradient(#fff, #000);
+        }
+        /* 相邻兄弟选择器 */
+        /* 兄弟选择器 */
+        .box:nth-of-type(6) + .box:hover {
+           transform:scale(0.5)
+        }
+        .box:nth-of-type(8):hover {
+            transform:translateX(-100px);
+        }
+        .box:nth-of-type(9):hover {
+            transform:rotate(-180deg);
+        }
+        .box:nth-of-type(10):hover {
+            transform:skew(-45deg);
+        }
+        .box:nth-last-child(2):hover::before {
+            content: "#";
+            color: red;
+        }
+        .box:last-child:hover::after {
+            content: "张志翔";
+            font-size: 10px;
+            display: block;
+            width: 60px;                
+            height: 40px;
+            margin: 10px;
+            background-color: #000;
+            color: #fff;                
+            text-align: center;       
+            line-height: 40px;         
+        }
+
+        .box:nth-of-type(3n):hover{
+            /* 红色边框 */
+            border: red;
+        }
+        .box:nth-of-type(2n):hover{
+            background-color: #a2d5f2;
+            background-blend-mode: multiply;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+        <div class="box">10</div>
+        <div class="box">11</div>
+        <div class="box">12</div>
+    </div>
+</body>
+</html>

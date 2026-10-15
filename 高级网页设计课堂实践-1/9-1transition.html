@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        img{display: block;}
+        ul{list-style: none;}
+        .list{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px;
+        }
+        .list li{
+            width: 30%;
+            overflow: hidden;
+            position: relative;
+            flex-grow: 1;
+            margin: 6px;
+        }
+        .list img{
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+        }
+        .text{
+            position: absolute; 
+            height: 33px;
+            bottom: 0;
+            left:0;
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            transition: all 0.5s ease-in-out;
+
+        }
+        .text h3{
+            height: 33px;
+            line-height: 33px;
+            text-align: center;
+        }
+        .text p{
+            height: 40px;
+            line-height: 20px;
+            padding: 5px;
+            overflow: hidden;
+            text-indent: 2em;
+            font-size: 12px;
+        }
+        .list li:nth-child(3n+1):hover img{
+            transform: scale(1.7);
+        }
+        .list li:nth-child(3n+2):hover .text{
+            height: 100%;
+        }
+        .list li:nth-child(3n):hover .text{
+            height: 83px;
+
+        }
+        h2 {
+    margin: 20px 10px 0;
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: #222;
+    }
+    </style>
+</head>
+<body>
+    <h2>张志翔的transition过度</h2>
+    <ul class="list">
+        <li>
+            <img src="1.jpg">
+            <div class="text">
+                <h3>张志翔的标题</h3>
+                <p>
+                    下面的文字，默认隐藏，可能在hover的时候显示文字，肯是固定高度，也可能是100%高度
+                </p>
+            </div>
+        </li>
+        <li>
+        <img src="2.jpg">
+            <div class="text">
+                <h3>张志翔的标题</h3>
+                <p>
+                    下面的文字，默认隐藏，可能在hover的时候显示文字，肯是固定高度，也可能是100%高度
+                </p>
+            </div>
+        </li>
+        <li>
+        <img src="3.jpg">
+            <div class="text">
+                <h3>张志翔的标题</h3>
+                <p>
+                    下面的文字，默认隐藏，可能在hover的时候显示文字，肯是固定高度，也可能是100%高度
+                </p>
+            </div>
+        </li>
+        <li>
+        <img src="1.jpg">
+            <div class="text">
+                <h3>张志翔的标题</h3>
+                <p>
+                    下面的文字，默认隐藏，可能在hover的时候显示文字，肯是固定高度，也可能是100%高度
+                </p>
+            </div>
+        </li>
+        <li>
+        <img src="2.jpg">
+            <div class="text">
+                <h3>张志翔的标题</h3>
+                <p>
+                    下面的文字，默认隐藏，可能在hover的时候显示文字，肯是固定高度，也可能是100%高度
+                </p>
+            </div>
+        </li>
+        <li>
+        <img src="3.jpg">
+            <div class="text">
+                <h3>张志翔的标题</h3>
+                <p>
+                    下面的文字，默认隐藏，可能在hover的时候显示文字，肯是固定高度，也可能是100%高度
+                </p>
+            </div>
+        </li>
+        <li>
+        <img src="1.jpg">
+            <div class="text">
+                <h3>张志翔的标题</h3>
+                <p>
+                    下面的文字，默认隐藏，可能在hover的时候显示文字，肯是固定高度，也可能是100%高度
+                </p>
+            </div>
+        </li>
+        <li>
+        <img src="2.jpg">
+            <div class="text">
+                <h3>张志翔的标题</h3>
+                <p>
+                    下面的文字，默认隐藏，可能在hover的时候显示文字，肯是固定高度，也可能是100%高度
+                </p>
+            </div>
+        </li>
+        <li>
+        <img src="3.jpg">
+            <div class="text">
+                <h3>张志翔的标题</h3>
+                <p>
+                    下面的文字，默认隐藏，可能在hover的时候显示文字，肯是固定高度，也可能是100%高度
+                </p>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>
