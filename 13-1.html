@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13-1 · Font Awesome 字体图标</title>
+  <!-- 字体图标方式：引入 Font Awesome 的 CSS，图标字形由 webfonts 里的字体文件渲染 -->
+  <link rel="stylesheet" href="cdn/css/all.min.css">
+  <style>
+    :root{
+      --paper:#ECE8E0;
+      --card:#FEFDFA;
+      --terracotta:#A4432D;
+      --ink:#2A2E32;
+      --muted:#585F65;
+      --line:#DED8CE;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Inter","PingFang SC","Microsoft YaHei",sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      line-height:1.6;
+      padding:40px 20px;
+    }
+    .wrap{max-width:960px;margin:0 auto;}
+    header{margin-bottom:32px;}
+    .tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);font-weight:600;}
+    h1{font-size:30px;letter-spacing:-.02em;margin:6px 0 8px;}
+    .desc{color:var(--muted);font-size:15px;max-width:680px;}
+    .note{
+      background:var(--card);border:1px solid var(--line);border-radius:12px;
+      padding:14px 18px;margin:18px 0 28px;font-size:14px;color:var(--muted);
+    }
+    .note b{color:var(--terracotta);}
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+      gap:16px;
+    }
+    .item{
+      background:var(--card);border:1px solid var(--line);border-radius:16px;
+      padding:22px 16px;text-align:center;transition:transform .15s ease,box-shadow .15s ease;
+    }
+    .item:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(15,18,22,.08);}
+    .item .ic{font-size:28px;color:var(--terracotta);margin-bottom:10px;}
+    .item .name{font-size:13px;color:var(--muted);font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;}
+    section{margin-top:34px;}
+    h2{font-size:18px;letter-spacing:-.01em;margin:0 0 14px;}
+    .sizes{display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+      background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;}
+    .sizes span{display:inline-flex;flex-direction:column;align-items:center;gap:6px;color:var(--muted);font-size:12px;}
+    .sizes i{color:var(--terracotta);}
+    .palette{display:flex;gap:22px;flex-wrap:wrap;background:var(--card);
+      border:1px solid var(--line);border-radius:16px;padding:22px;}
+    .palette span{display:inline-flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:var(--muted);}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="tag">13-1 / 字体图标</div>
+      <h1>Font Awesome 图标演示</h1>
+      <p class="desc">本页使用<strong>字体图标</strong>方案：图标本质是字体里的特殊字形，通过 CSS 的 <code>@font-face</code> 加载 webfonts 中的字体文件来渲染。改变大小用 <code>font-size</code>，改变颜色用 <code>color</code>。</p>
+    </header>
+
+    <div class="note">
+      <b>原理：</b> 引入 <code>cdn/css/all.min.css</code> 后，CSS 内部用 <code>@font-face</code> 指向
+      <code>../webfonts/*.woff2</code> 字体文件；每个图标是一个 Unicode 私有区字形，用 <code>&lt;i class="fas fa-xxx"&gt;&lt;/i&gt;</code> 调用。
+    </div>
+
+    <section>
+      <h2>Solid（实心）图标</h2>
+      <div class="grid">
+        <div class="item"><div class="ic"><i class="fas fa-house"></i></div><div class="name">fa-house</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-user"></i></div><div class="name">fa-user</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-heart"></i></div><div class="name">fa-heart</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-star"></i></div><div class="name">fa-star</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-bell"></i></div><div class="name">fa-bell</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-gear"></i></div><div class="name">fa-gear</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-magnifying-glass"></i></div><div class="name">fa-magnifying-glass</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-envelope"></i></div><div class="name">fa-envelope</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-camera"></i></div><div class="name">fa-camera</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-music"></i></div><div class="name">fa-music</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-cloud"></i></div><div class="name">fa-cloud</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-bolt"></i></div><div class="name">fa-bolt</div></div>
+        <div class="item"><div class="ic"><i class="fas fa-fire"></i></div><div class="name">fa-fire</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Regular（线框）与 Brands（品牌）图标</h2>
+      <div class="grid">
+        <div class="item"><div class="ic"><i class="far fa-heart"></i></div><div class="name">far fa-heart</div></div>
+        <div class="item"><div class="ic"><i class="far fa-star"></i></div><div class="name">far fa-star</div></div>
+        <div class="item"><div class="ic"><i class="far fa-bookmark"></i></div><div class="name">far fa-bookmark</div></div>
+        <div class="item"><div class="ic"><i class="far fa-thumbs-up"></i></div><div class="name">far fa-thumbs-up</div></div>
+        <div class="item"><div class="ic"><i class="fab fa-github"></i></div><div class="name">fab fa-github</div></div>
+        <div class="item"><div class="ic"><i class="fab fa-html5"></i></div><div class="name">fab fa-html5</div></div>
+        <div class="item"><div class="ic"><i class="fab fa-css3"></i></div><div class="name">fab fa-css3</div></div>
+        <div class="item"><div class="ic"><i class="fab fa-react"></i></div><div class="name">fab fa-react</div></div>
+        <div class="item"><div class="ic"><i class="fab fa-apple"></i></div><div class="name">fab fa-apple</div></div>
+        <div class="item"><div class="ic"><i class="fab fa-android"></i></div><div class="name">fab fa-android</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>尺寸控制（font-size）</h2>
+      <div class="sizes">
+        <span><i class="fas fa-heart fa-xs"></i>fa-xs</span>
+        <span><i class="fas fa-heart fa-sm"></i>fa-sm</span>
+        <span><i class="fas fa-heart fa-lg"></i>fa-lg</span>
+        <span><i class="fas fa-heart fa-2x"></i>fa-2x</span>
+        <span><i class="fas fa-heart fa-3x"></i>fa-3x</span>
+        <span><i class="fas fa-heart fa-5x"></i>fa-5x</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>颜色控制（color）</h2>
+      <div class="palette">
+        <span><i class="fas fa-star" style="color:#A4432D"></i>#A4432D</span>
+        <span><i class="fas fa-star" style="color:#2A6F4B"></i>#2A6F4B</span>
+        <span><i class="fas fa-star" style="color:#1F6FB2"></i>#1F6FB2</span>
+        <span><i class="fas fa-star" style="color:#B8860B"></i>#B8860B</span>
+        <span><i class="fas fa-star" style="color:#7E3221"></i>#7E3221</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

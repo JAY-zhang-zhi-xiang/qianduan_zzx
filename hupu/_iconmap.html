@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>图标选用对照 · 张志翔</title>
+<link rel="stylesheet" href="font_5244713_4ur7woutg76/iconfont.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 22px 20px 28px;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    background: #fff; color: #1a1a1a;
+  }
+  h1 { font-size: 19px; margin: 0 0 3px; letter-spacing: .5px; }
+  .sub { font-size: 12px; color: #888; margin-bottom: 18px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { border: 1px solid #e3e3e3; padding: 9px 10px; text-align: left; vertical-align: middle; }
+  th { background: #fafafa; font-weight: 600; font-size: 12.5px; color: #444; }
+  td.mid { text-align: center; }
+  .big { font-size: 30px; line-height: 1; display: block; }
+  .red { color: #c60100; }
+  .gray { color: #a3a6ab; }
+  .cls { font-family: Consolas, Menlo, monospace; font-size: 12px; }
+  .small { font-size: 11.5px; color: #777; }
+  .note { margin-top: 14px; font-size: 12px; color: #666; line-height: 1.7; }
+  code { font-family: Consolas, Menlo, monospace; background: #f4f4f4; padding: 1px 5px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<h1>下导航图标选用对照表</h1>
+<div class="sub">图标来源：iconfont.cn 自建项目 zhangzhixiang2026（项目 id 5244713）下载字体包 &nbsp;|&nbsp; 学号 24002060419 · 张志翔</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:70px">导航项</th>
+      <th style="width:80px" class="mid">未选中</th>
+      <th style="width:80px" class="mid">选中</th>
+      <th style="width:190px">iconfont 类名</th>
+      <th style="width:80px">Unicode</th>
+      <th style="width:110px">图标原名</th>
+      <th>icon_id（可在 iconfont 搜到并收藏）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>首页</b></td>
+      <td class="mid"><i class="iconfont icon-index-copy big gray"></i></td>
+      <td class="mid"><i class="iconfont icon-index-copy big red"></i></td>
+      <td class="cls">icon-index-copy</td>
+      <td class="cls">U+E622</td>
+      <td>首页-选中</td>
+      <td class="cls">19985212</td>
+    </tr>
+    <tr>
+      <td><b>专区</b></td>
+      <td class="mid"><i class="iconfont icon-xiaoxi big gray"></i></td>
+      <td class="mid"><i class="iconfont icon-xiaoxi big red"></i></td>
+      <td class="cls">icon-xiaoxi</td>
+      <td class="cls">U+E64B</td>
+      <td>消息</td>
+      <td class="cls">1183007</td>
+    </tr>
+    <tr>
+      <td><b>深聊</b></td>
+      <td class="mid"><i class="iconfont icon-taifenglujing big gray"></i></td>
+      <td class="mid"><i class="iconfont icon-taifenglujing big red"></i></td>
+      <td class="cls">icon-taifenglujing</td>
+      <td class="cls">U+E649</td>
+      <td>台风路径</td>
+      <td class="cls">2984471</td>
+    </tr>
+    <tr>
+      <td><b>我的</b></td>
+      <td class="mid"><i class="iconfont icon-wode big gray"></i></td>
+      <td class="mid"><i class="iconfont icon-wode big red"></i></td>
+      <td class="cls">icon-wode</td>
+      <td class="cls">U+E641</td>
+      <td>我的</td>
+      <td class="cls">5004078</td>
+    </tr>
+    <tr>
+      <td><b>发布</b></td>
+      <td class="mid"><i class="iconfont icon-jiahao big gray"></i></td>
+      <td class="mid"><span style="font-size:12px;color:#999">用 CSS 绘制</span></td>
+      <td class="cls">（icon-jiahao 未采用）</td>
+      <td class="cls">U+E60A</td>
+      <td>加号</td>
+      <td class="cls">3298402</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <b>为什么「发布」不用字体图标：</b>包内 <code>icon-jiahao</code>/<code>icon-jiahao-</code>/<code>icon-zengjia</code> 三个加号字形本身都自带一圈圆形外框，
+  叠在下导航中间的红色圆钮上会出现「圆中套圆」的双环，视觉上脏。<br>
+  因此中间发布钮用 CSS 伪元素画两条线（横 18×2px + 竖 2×18px）组成加号，见 <code>hupu-mobile.css</code> 的 <code>.zzx-tabbar__plusmark::before / ::after</code>。<br>
+  <b>其余四个位置全部由 <code>&lt;i class="iconfont icon-xxx"&gt;</code> 渲染</b>，颜色由 CSS <code>color</code> 控制（未选中 #a3a6ab / 选中 #c60100），大小由 <code>font-size</code> 控制——这正是字体图标相对位图方案的优势。
+</div>
+
+</body>
+</html>

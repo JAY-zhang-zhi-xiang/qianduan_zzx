@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13-2 · Lucide 图标（SVG）</title>
+  <!-- SVG 方式：引入 Lucide 的 UMD 脚本，脚本会把 <i data-lucide> 占位元素替换成内联 <svg> -->
+  <script src="cdn/js/lucide.min.js"></script>
+  <style>
+    :root{
+      --paper:#ECE8E0;
+      --card:#FEFDFA;
+      --terracotta:#A4432D;
+      --ink:#2A2E32;
+      --muted:#585F65;
+      --line:#DED8CE;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Inter","PingFang SC","Microsoft YaHei",sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      line-height:1.6;
+      padding:40px 20px;
+    }
+    .wrap{max-width:960px;margin:0 auto;}
+    header{margin-bottom:32px;}
+    .tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);font-weight:600;}
+    h1{font-size:30px;letter-spacing:-.02em;margin:6px 0 8px;}
+    .desc{color:var(--muted);font-size:15px;max-width:680px;}
+    .note{
+      background:var(--card);border:1px solid var(--line);border-radius:12px;
+      padding:14px 18px;margin:18px 0 28px;font-size:14px;color:var(--muted);
+    }
+    .note b{color:var(--terracotta);}
+    .grid{
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+      gap:16px;
+    }
+    .item{
+      background:var(--card);border:1px solid var(--line);border-radius:16px;
+      padding:22px 16px;text-align:center;transition:transform .15s ease,box-shadow .15s ease;
+    }
+    .item:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(15,18,22,.08);}
+    .item .ic{color:var(--terracotta);margin-bottom:10px;display:flex;justify-content:center;}
+    .item .name{font-size:13px;color:var(--muted);font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;}
+    section{margin-top:34px;}
+    h2{font-size:18px;letter-spacing:-.01em;margin:0 0 14px;}
+    .sizes{display:flex;align-items:center;gap:26px;flex-wrap:wrap;
+      background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;}
+    .sizes span{display:inline-flex;flex-direction:column;align-items:center;gap:6px;color:var(--muted);font-size:12px;}
+    .sizes .ic{color:var(--terracotta);display:flex;}
+    .palette{display:flex;gap:26px;flex-wrap:wrap;background:var(--card);
+      border:1px solid var(--line);border-radius:16px;padding:22px;}
+    .palette span{display:inline-flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:var(--muted);}
+    .palette .ic{display:flex;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="tag">13-2 / SVG 图标</div>
+      <h1>Lucide 图标演示</h1>
+      <p class="desc">本页使用<strong>SVG 图标</strong>方案：图标是真正的矢量 <code>&lt;svg&gt;</code> 图形，由脚本在页面上动态生成内联 SVG。尺寸用 <code>width/height</code> 属性控制，颜色用 <code>stroke</code>（即 CSS 的 <code>color</code>）控制。</p>
+    </header>
+
+    <div class="note">
+      <b>原理：</b> 引入 <code>cdn/js/lucide.min.js</code> 后，每个 <code>&lt;i data-lucide="名称"&gt;&lt;/i&gt;</code>
+      会被脚本替换为一段内联 <code>&lt;svg&gt;</code>，其路径数据来自脚本内置的图标库。脚本末尾需调用
+      <code>lucide.createIcons()</code> 触发替换。
+    </div>
+
+    <section>
+      <h2>常用图标</h2>
+      <div class="grid">
+        <div class="item"><div class="ic"><i data-lucide="home"></i></div><div class="name">home</div></div>
+        <div class="item"><div class="ic"><i data-lucide="user"></i></div><div class="name">user</div></div>
+        <div class="item"><div class="ic"><i data-lucide="heart"></i></div><div class="name">heart</div></div>
+        <div class="item"><div class="ic"><i data-lucide="star"></i></div><div class="name">star</div></div>
+        <div class="item"><div class="ic"><i data-lucide="bell"></i></div><div class="name">bell</div></div>
+        <div class="item"><div class="ic"><i data-lucide="settings"></i></div><div class="name">settings</div></div>
+        <div class="item"><div class="ic"><i data-lucide="search"></i></div><div class="name">search</div></div>
+        <div class="item"><div class="ic"><i data-lucide="mail"></i></div><div class="name">mail</div></div>
+        <div class="item"><div class="ic"><i data-lucide="camera"></i></div><div class="name">camera</div></div>
+        <div class="item"><div class="ic"><i data-lucide="music"></i></div><div class="name">music</div></div>
+        <div class="item"><div class="ic"><i data-lucide="cloud"></i></div><div class="name">cloud</div></div>
+        <div class="item"><div class="ic"><i data-lucide="zap"></i></div><div class="name">zap</div></div>
+        <div class="item"><div class="ic"><i data-lucide="flame"></i></div><div class="name">flame</div></div>
+        <div class="item"><div class="ic"><i data-lucide="github"></i></div><div class="name">github</div></div>
+        <div class="item"><div class="ic"><i data-lucide="code"></i></div><div class="name">code</div></div>
+        <div class="item"><div class="ic"><i data-lucide="coffee"></i></div><div class="name">coffee</div></div>
+        <div class="item"><div class="ic"><i data-lucide="globe"></i></div><div class="name">globe</div></div>
+        <div class="item"><div class="ic"><i data-lucide="shopping-cart"></i></div><div class="name">shopping-cart</div></div>
+        <div class="item"><div class="ic"><i data-lucide="check-circle"></i></div><div class="name">check-circle</div></div>
+        <div class="item"><div class="ic"><i data-lucide="bookmark"></i></div><div class="name">bookmark</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>尺寸控制（width / height 属性）</h2>
+      <div class="sizes">
+        <span><span class="ic"><i data-lucide="heart" width="16" height="16"></i></span>16</span>
+        <span><span class="ic"><i data-lucide="heart" width="24" height="24"></i></span>24</span>
+        <span><span class="ic"><i data-lucide="heart" width="32" height="32"></i></span>32</span>
+        <span><span class="ic"><i data-lucide="heart" width="48" height="48"></i></span>48</span>
+        <span><span class="ic"><i data-lucide="heart" width="64" height="64"></i></span>64</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>颜色控制（stroke = currentColor）</h2>
+      <div class="palette">
+        <span><span class="ic" style="color:#A4432D"><i data-lucide="star"></i></span>#A4432D</span>
+        <span><span class="ic" style="color:#2A6F4B"><i data-lucide="star"></i></span>#2A6F4B</span>
+        <span><span class="ic" style="color:#1F6FB2"><i data-lucide="star"></i></span>#1F6FB2</span>
+        <span><span class="ic" style="color:#B8860B"><i data-lucide="star"></i></span>#B8860B</span>
+        <span><span class="ic" style="color:#7E3221"><i data-lucide="star"></i></span>#7E3221</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- 触发图标替换：把页面上的 <i data-lucide> 渲染为内联 SVG -->
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ECE8E0">
+<title>13-3 · 移动端底部导航（字体图标）</title>
+<!-- 字体图标：iconfont 项目 5244713（源目录 font_5244713_yt3vridbf1h，已归档到 cdn/iconfont） -->
+<link rel="stylesheet" href="cdn/iconfont/iconfont.css">
+<style>
+  :root{
+    --paper:#ECE8E0;          /* 纸感底 */
+    --card:#FEFDFA;           /* 卡片 */
+    --clay:#A4432D;           /* 主色：赤陶 */
+    --clay-deep:#7E3221;
+    --clay-wash:#F6DDD3;
+    --ink:#2A2E32;
+    --muted:#585F65;
+    --faint:#7E858C;
+    --line:#DED8CE;
+    --alert:#C93B2B;          /* 徽章 / 红点 */
+    --nav-h:58px;             /* 导航条高度（不含安全区） */
+  }
+
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:#E4DFD5;
+    color:var(--ink);
+    font:15px/1.6 "Inter","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+
+  /* 手机内容列：宽屏时居中，最大 480px；窄屏时铺满 */
+  .app{
+    position:relative;
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    min-height:100dvh;
+    margin:0 auto;
+    background:var(--paper);
+    box-shadow:0 0 0 1px rgba(42,46,50,.05),0 24px 70px rgba(42,46,50,.10);
+  }
+
+  /* ---------- 顶部 ---------- */
+  .app-head{padding:calc(22px + env(safe-area-inset-top)) 20px 0;}
+  .topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+  .brand{font-size:13px;font-weight:700;letter-spacing:.16em;}
+  .brand-en{
+    font-size:9px;font-weight:500;letter-spacing:.22em;
+    color:var(--faint);margin-left:5px;vertical-align:1px;
+  }
+  .avatar{
+    width:32px;height:32px;border-radius:50%;
+    display:grid;place-items:center;
+    background:var(--clay-wash);color:var(--clay-deep);
+    border:1px solid #EBC9BB;
+    font-size:12px;font-weight:600;
+  }
+  h1{font-size:26px;line-height:1.32;letter-spacing:-.02em;margin:0 0 6px;font-weight:600;}
+  .sub{margin:0;font-size:12.5px;color:var(--muted);letter-spacing:.01em;}
+
+  .search{
+    display:flex;align-items:center;gap:9px;
+    height:42px;margin-top:18px;padding:0 14px;
+    background:rgba(254,253,250,.7);
+    border:1px solid var(--line);
+    border-radius:12px;
+    color:var(--faint);font-size:13px;
+  }
+  .search .iconfont{font-size:16px;color:var(--faint);}
+
+  /* ---------- 内容 ---------- */
+  main{padding:0 20px calc(var(--nav-h) + 34px + env(safe-area-inset-bottom));}
+
+  /* 今日摘录：整块赤陶色，作为页面视觉锚点 */
+  .hero{
+    position:relative;overflow:hidden;
+    margin-top:20px;padding:20px;
+    border-radius:20px;
+    background:var(--clay);
+    color:#FBEFE9;
+    box-shadow:0 10px 26px rgba(126,50,33,.18);
+  }
+  .eyebrow{
+    font-size:9.5px;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;color:rgba(251,239,233,.7);
+  }
+  .quote{
+    margin:12px 0 18px;
+    font-size:18.5px;line-height:1.72;font-weight:500;
+    letter-spacing:.01em;
+  }
+  .hero-foot{
+    display:flex;align-items:baseline;justify-content:space-between;
+    padding-top:12px;
+    border-top:1px solid rgba(251,239,233,.22);
+    font-size:12px;color:rgba(251,239,233,.82);
+  }
+  .num{font-variant-numeric:tabular-nums;letter-spacing:.06em;}
+
+  .block{margin-top:26px;}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px;}
+  h2{font-size:15px;font-weight:600;letter-spacing:-.01em;margin:0;}
+  .more{font-size:11.5px;color:var(--faint);text-decoration:none;letter-spacing:.03em;}
+  .more:hover{color:var(--clay);}
+
+  .rows{
+    list-style:none;margin:0;padding:0;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .row{display:flex;align-items:center;gap:12px;padding:13px 14px;}
+  .row + .row{border-top:1px solid #EAE5DC;}
+  .thumb{
+    flex:none;width:40px;height:40px;border-radius:11px;
+    display:grid;place-items:center;
+    background:var(--tint,var(--clay-wash));
+    color:var(--tone,var(--clay-deep));
+    font-size:15px;font-weight:600;
+  }
+  .row-main{flex:1;min-width:0;}
+  .row-title{
+    font-size:14px;font-weight:600;letter-spacing:-.01em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .row-sub{font-size:11.5px;color:var(--faint);margin-top:1px;}
+  .bar{height:3px;margin-top:8px;border-radius:99px;background:#EDE8DF;overflow:hidden;}
+  .bar span{display:block;height:100%;border-radius:99px;background:var(--clay);}
+  .row-num{
+    flex:none;font-size:13px;font-weight:600;color:var(--clay-deep);
+    font-variant-numeric:tabular-nums;
+  }
+  .row-num small{font-size:9px;font-weight:500;margin-left:1px;}
+  .row-date{flex:none;font-size:11px;color:var(--faint);font-variant-numeric:tabular-nums;}
+
+  /* ---------- 实现说明 ---------- */
+  .spec{
+    padding:17px 16px 16px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+  }
+  .pill{
+    font-size:10px;font-weight:600;letter-spacing:.06em;
+    padding:3px 8px;border-radius:999px;
+    color:var(--clay-deep);background:#FAF1EC;border:1px solid #EBD6CB;
+  }
+  .spec-list{list-style:none;margin:13px 0 15px;padding:0;display:grid;gap:10px;}
+  .spec-list li{font-size:12px;line-height:1.62;color:var(--muted);}
+  .spec-list b{
+    display:block;margin-bottom:1px;
+    font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:.02em;
+  }
+  .spec-list code{
+    font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    font-size:11px;color:var(--clay-deep);
+    background:#F5EFE7;padding:1px 4px;border-radius:4px;
+  }
+  .legend{
+    display:flex;flex-wrap:wrap;gap:8px 16px;
+    padding-top:14px;border-top:1px dashed var(--line);
+  }
+  .legend-item{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--faint);}
+  .mini-ic{
+    position:relative;width:30px;height:30px;border-radius:9px;
+    display:grid;place-items:center;
+    background:#F3EFE7;color:var(--muted);
+  }
+  .mini-ic .iconfont{font-size:17px;}
+  .mini-ic .badge{top:-4px;right:-4px;box-shadow:0 0 0 2px #F3EFE7;}
+  .mini-ic .dot{top:1px;right:1px;box-shadow:0 0 0 2px #F3EFE7;}
+  .spec-note{margin:13px 0 0;font-size:11px;line-height:1.7;color:var(--faint);}
+  .spec-note code{
+    font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    font-size:10.5px;color:var(--clay-deep);
+  }
+
+  /* ---------- 底部导航 ---------- */
+  /* 固定定位贴底；left:50% + translateX(-50%) 让它在宽屏时仍与内容列对齐 */
+  .tabbar{
+    position:fixed;
+    left:50%;bottom:0;transform:translateX(-50%);
+    z-index:50;
+    width:100%;max-width:480px;
+    padding-bottom:env(safe-area-inset-bottom);
+    background:rgba(252,250,245,.9);
+    -webkit-backdrop-filter:blur(16px) saturate(1.4);
+    backdrop-filter:blur(16px) saturate(1.4);
+    border-top:1px solid rgba(222,216,206,.9);
+    box-shadow:0 -8px 24px rgba(42,46,50,.05);
+  }
+  /* flex 四等分：每项 flex:1，宽度随屏幕自适应 */
+  .tabbar-inner{display:flex;height:var(--nav-h);}
+  .tab{
+    position:relative;flex:1;min-width:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    color:var(--faint);text-decoration:none;
+    user-select:none;touch-action:manipulation;
+    transition:color .18s ease;
+  }
+  /* 图标容器同时是徽章的定位参照 */
+  .tab-icon{position:relative;display:grid;place-items:center;width:34px;height:26px;}
+  .tab-icon::before{
+    content:"";position:absolute;inset:0;border-radius:10px;
+    background:transparent;
+    transition:background .2s ease;
+  }
+  .tab .iconfont{
+    position:relative;z-index:1;
+    font-size:21px;line-height:1;
+    transition:transform .18s ease;
+  }
+  .tab-label{font-size:10.5px;line-height:1;letter-spacing:.04em;font-weight:500;}
+  .tab.is-active{color:var(--clay);}
+  .tab.is-active .tab-icon::before{background:rgba(164,67,45,.1);}
+  .tab.is-active .iconfont{transform:translateY(-1px);}
+  .tab.is-active .tab-label{font-weight:600;}
+  .tab:active .iconfont{transform:scale(.9);}
+  .tab:focus-visible{outline:2px solid var(--clay);outline-offset:-6px;border-radius:12px;}
+
+  /* 数字徽章：绝对定位到图标右上角，min-width 随位数撑开 */
+  .badge{
+    position:absolute;z-index:2;top:-5px;right:-6px;
+    min-width:18px;height:18px;padding:0 5px;
+    border-radius:9px;
+    background:var(--alert);color:#fff;
+    font-size:10.5px;font-weight:600;line-height:18px;
+    font-variant-numeric:tabular-nums;letter-spacing:0;text-align:center;
+    box-shadow:0 0 0 2px rgba(252,250,245,.96);
+  }
+  .badge-wide{padding:0 6px;}
+  /* 红点：只提示“有新内容”，不占数字位 */
+  .dot{
+    position:absolute;z-index:2;top:2px;right:2px;
+    width:8px;height:8px;border-radius:50%;
+    background:var(--alert);
+    box-shadow:0 0 0 2px rgba(252,250,245,.96);
+  }
+
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="app-head">
+    <div class="topline">
+      <span class="brand">拾光<span class="brand-en">SHIGUANG</span></span>
+      <span class="avatar" aria-hidden="true">翔</span>
+    </div>
+    <h1>下午好，志翔</h1>
+    <p class="sub">10 月 19 日 · 周一 · 连续阅读 12 天</p>
+
+    <div class="search">
+      <i class="iconfont icon-sousuo" aria-hidden="true"></i>
+      <span>搜索书名、作者或摘录</span>
+    </div>
+  </header>
+
+  <main>
+    <article class="hero">
+      <div class="eyebrow">Today / 今日摘录</div>
+      <p class="quote">把喜欢的东西慢慢收起来，<br>日子就有了形状。</p>
+      <div class="hero-foot">
+        <span>《山茶文具店》</span>
+        <span class="num">P.42</span>
+      </div>
+    </article>
+
+    <section class="block">
+      <div class="sec-head">
+        <h2>正在进行</h2>
+        <span class="more">全部</span>
+      </div>
+      <ul class="rows">
+        <li class="row">
+          <span class="thumb">山</span>
+          <div class="row-main">
+            <div class="row-title">山茶文具店</div>
+            <div class="row-sub">小川糸 · 书信代笔</div>
+            <div class="bar"><span style="width:62%"></span></div>
+          </div>
+          <span class="row-num">62<small>%</small></span>
+        </li>
+        <li class="row">
+          <span class="thumb" style="--tint:#E7E3D3;--tone:#5C5A3A">人</span>
+          <div class="row-main">
+            <div class="row-title">人类简史</div>
+            <div class="row-sub">尤瓦尔·赫拉利 · 认知革命</div>
+            <div class="bar"><span style="width:28%"></span></div>
+          </div>
+          <span class="row-num">28<small>%</small></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <div class="sec-head">
+        <h2>最近收藏</h2>
+        <span class="more">全部</span>
+      </div>
+      <ul class="rows">
+        <li class="row">
+          <span class="thumb" style="--tint:#E5E8E4;--tone:#3F5548">京</span>
+          <div class="row-main">
+            <div class="row-title">京都的店招与暖帘</div>
+            <div class="row-sub">图像笔记 · 12 张</div>
+          </div>
+          <span class="row-date">10 / 17</span>
+        </li>
+        <li class="row">
+          <span class="thumb" style="--tint:#F1E6DA;--tone:#7A4B2A">咖</span>
+          <div class="row-main">
+            <div class="row-title">一个人的咖啡地图</div>
+            <div class="row-sub">城市观察 · 8 家</div>
+          </div>
+          <span class="row-date">10 / 15</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block spec">
+      <div class="sec-head">
+        <h2>导航实现</h2>
+        <span class="pill">字体图标</span>
+      </div>
+      <ul class="spec-list">
+        <li>
+          <b>固定 + 自适应</b>
+          <code>position:fixed</code> 贴底，内部四项 <code>flex:1</code> 平分宽度；容器最大 480px 居中，宽屏不会被拉散。
+        </li>
+        <li>
+          <b>数字徽章</b>
+          相对图标绝对定位到右上角，<code>min-width:18px</code> 随位数自动撑开，超过 99 显示 <code>99+</code>。
+        </li>
+        <li>
+          <b>红点</b>
+          8px 圆点外加 2px 同色描边环，只表示“有新内容”，不占用数字位置。
+        </li>
+        <li>
+          <b>安全区</b>
+          <code>padding-bottom</code> 使用 <code>env(safe-area-inset-bottom)</code>，全面屏底部的横条不会盖住导航。
+        </li>
+      </ul>
+
+      <div class="legend" role="group" aria-label="徽章样式示意">
+        <span class="legend-item">
+          <span class="mini-ic" aria-hidden="true"><i class="iconfont icon-shouye" aria-hidden="true"></i><span class="badge">3</span></span>
+          数字徽章
+        </span>
+        <span class="legend-item">
+          <span class="mini-ic" aria-hidden="true"><i class="iconfont icon-shouye" aria-hidden="true"></i><span class="dot"></span></span>
+          红点
+        </span>
+        <span class="legend-item">
+          <span class="mini-ic" aria-hidden="true"><i class="iconfont icon-shouye" aria-hidden="true"></i><span class="badge badge-wide">99+</span></span>
+          超过 99
+        </span>
+      </div>
+
+      <p class="spec-note">
+        图标取自 <code>font_5244713_yt3vridbf1h</code>（已归档到 <code>cdn/iconfont</code>）：<code>@font-face</code> 载入字体文件后，
+        每个图标就是一个 Unicode 字形，<code>font-size</code> 控制大小、<code>color</code> 控制颜色。
+      </p>
+    </section>
+  </main>
+
+  <!-- 底部导航：4 项等分，随屏幕宽度自适应。图标依次为 shouye / 0201chazhao / shoucang / my -->
+  <nav class="tabbar" aria-label="主导航">
+    <div class="tabbar-inner">
+      <a class="tab is-active" href="#" aria-current="page">
+        <span class="tab-icon">
+          <i class="iconfont icon-shouye" aria-hidden="true"></i>
+        </span>
+        <span class="tab-label">首页</span>
+      </a>
+
+      <a class="tab" href="#">
+        <span class="tab-icon">
+          <i class="iconfont icon-0201chazhao" aria-hidden="true"></i>
+          <span class="dot"><span class="sr-only">有新内容</span></span>
+        </span>
+        <span class="tab-label">发现</span>
+      </a>
+
+      <a class="tab" href="#">
+        <span class="tab-icon">
+          <i class="iconfont icon-shoucang" aria-hidden="true"></i>
+          <span class="badge">12<span class="sr-only"> 条新内容</span></span>
+        </span>
+        <span class="tab-label">收藏</span>
+      </a>
+
+      <a class="tab" href="#">
+        <span class="tab-icon">
+          <i class="iconfont icon-my" aria-hidden="true"></i>
+        </span>
+        <span class="tab-label">我的</span>
+      </a>
+    </div>
+  </nav>
+
+</div>
+
+<script>
+  // 切换选中状态：同一时刻只允许一个 tab 处于 active
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // 点已选中的项 → 回到顶部（移动端常见习惯）
+      if (tab.classList.contains('is-active')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      tabs.forEach(function (t) {
+        t.classList.remove('is-active');
+        t.removeAttribute('aria-current');
+      });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-current', 'page');
+    });
+  });
+</script>
+</body>
+</html>

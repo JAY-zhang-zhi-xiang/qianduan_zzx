@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<!-- 高级网页设计I · 网页元素设计 项目报告 | 学号：24002060419 | 姓名：张志翔 | 选题：虎扑页面复刻 -->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>步行街主干道 - 虎扑社区</title>
+    <meta name="keywords" content="虎扑,步行街,社区,JRs">
+    <link rel="stylesheet" href="css/hupu.css">
+</head>
+
+<body>
+    <div id="container">
+
+        <!-- ============ 1. 顶部快速导航条 ============ -->
+        <div class="hp-pc-rc-TopMenu-top-container">
+            <div class="hp-pc-rc-TopMenu-top">
+                <ul class="hp-quickNav">
+                    <li class="mobileWeb"><a href="bbs.html">手机虎扑</a></li>
+                    <li class="line">|</li>
+                    <li class="mobileclientDown"><a href="bbs.html">下载虎扑App</a></li>
+                    <li class="line">|</li>
+                    <li class="mobileclientDown"><a href="bbs.html">加入虎扑</a></li>
+                </ul>
+                <div class="hp-topLogin-info"></div>
+            </div>
+        </div>
+
+        <!-- ============ 2. 红色主导航条 ============ -->
+        <div class="hp-pc-rc-TopMenu">
+            <div class="hp-pc-rc-TopMenu-banner">
+                <div class="bannerlogonew"><a href="index.html"><img src="assets/logo.png" alt="虎扑"></a></div>
+                <div class="banneritem"><a href="index.html">虎扑首页</a></div>
+                <div class="banneritem"><a href="channel.html?c=nba">NBA</a></div>
+                <div class="banneritem"><a href="channel.html?c=cba">CBA</a></div>
+                <div class="banneritem"><a href="channel.html?c=soccer">足球</a></div>
+                <div class="banneritem active"><a href="bbs.html">步行街</a></div>
+                <div class="banneritem"><a href="bbs.html">社区</a></div>
+                <div class="banneritem"><a href="channel.html?c=lol">电竞</a></div>
+                <div class="gamecenter">
+                    <div class="gamecenter-header">游戏中心</div>
+                    <div class="gamecenter-content">
+                        <div class="gamecenter-content-item">美职篮篮球世界</div>
+                        <div class="gamecenter-content-item">球场风云</div>
+                        <div class="gamecenter-content-item">仙剑奇侠传：新的开始</div>
+                        <div class="gamecenter-content-item">世界大战</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 3. 论坛主体 ============ -->
+        <div class="bbs-sl-web">
+            <div class="bbs-sl-web-holder">
+                <div class="bbs-sl-web-body">
+
+                    <!-- ---------- 左：导航栏 ---------- -->
+                    <div class="hu-pc-navigation-wrap bbs-sl-web-nav">
+
+                        <div class="hu-pc-navigation-type">
+                            <div class="extra"><span class="isUnfold">收起 &#9662;</span></div>我的关注
+                        </div>
+                        <ul>
+                            <li class="hu-pc-navigation-my-focus-item login">
+                                <div>登录后的世界更精彩</div>
+                                <a>登录</a>
+                            </li>
+                        </ul>
+
+                        <div class="hu-pc-navigation-type">
+                            <div class="extra"><span class="isUnfold">收起 &#9662;</span></div>话题广场
+                        </div>
+                        <ul>
+                            <li class="hu-pc-navigation-topic-type-item">
+                                <a class="hu-pc-navigation-topic-type-title">
+                                    <span class="topic-icon" style="background-image:url(assets/topic_all_sports.png)"></span>综合体育
+                                </a>
+                                <div class="hu-pc-navigation-topic-type-link">
+                                    <a href="bbs.html">乒乓球区</a>
+                                    <a href="bbs.html">网球场</a>
+                                    <a href="bbs.html">跑步区</a>
+                                    <a href="bbs.html">综合体育区</a>
+                                    <a href="bbs.html">NFL专区</a>
+                                </div>
+                            </li>
+                            <li class="hu-pc-navigation-topic-type-item">
+                                <a class="hu-pc-navigation-topic-type-title">
+                                    <span class="topic-icon" style="background-image:url(assets/topic_gg_7.png)"></span>游戏
+                                </a>
+                                <div class="hu-pc-navigation-topic-type-link">
+                                    <a href="bbs.html">王者荣耀</a>
+                                    <a href="bbs.html">绝地求生</a>
+                                    <a href="bbs.html">NBA2KOL2</a>
+                                    <a href="bbs.html">无畏契约</a>
+                                    <a href="bbs.html">云顶之弈</a>
+                                </div>
+                            </li>
+                            <li class="hu-pc-navigation-topic-type-item">
+                                <a class="hu-pc-navigation-topic-type-title">
+                                    <span class="topic-icon" style="background-image:url(assets/topic_movie.png)"></span>影视娱乐
+                                </a>
+                                <div class="hu-pc-navigation-topic-type-link">
+                                    <a href="bbs.html">娱乐圈</a>
+                                    <a href="bbs.html">影视区</a>
+                                    <a href="bbs.html">音乐圈</a>
+                                </div>
+                            </li>
+                            <li class="hu-pc-navigation-topic-type-item">
+                                <a class="hu-pc-navigation-topic-type-title">
+                                    <span class="topic-icon" style="background-image:url(assets/topic_gear_11.png)"></span>装备
+                                </a>
+                                <div class="hu-pc-navigation-topic-type-link">
+                                    <a href="bbs.html">运动装备</a>
+                                    <a href="bbs.html">潮流区</a>
+                                    <a href="bbs.html">球衣区</a>
+                                </div>
+                            </li>
+                            <li class="hu-pc-navigation-topic-type-item">
+                                <a class="hu-pc-navigation-topic-type-title">
+                                    <span class="topic-icon" style="background-image:url(assets/topic_gambia_1.png)"></span>步行街
+                                </a>
+                                <div class="hu-pc-navigation-topic-type-link">
+                                    <a href="bbs.html">步行街主干道</a>
+                                    <a href="bbs.html">历史区</a>
+                                    <a href="bbs.html">恋爱区</a>
+                                    <a href="bbs.html">股票区</a>
+                                </div>
+                            </li>
+                            <li class="hu-pc-navigation-topic-type-item">
+                                <a class="hu-pc-navigation-topic-type-title">
+                                    <span class="topic-icon" style="background-image:url(assets/news5.png)"></span>数码
+                                </a>
+                                <div class="hu-pc-navigation-topic-type-link">
+                                    <a href="bbs.html">数码综合讨论</a>
+                                    <a href="bbs.html">PC区</a>
+                                    <a href="bbs.html">手机区</a>
+                                </div>
+                            </li>
+                            <li class="hu-pc-navigation-topic-type-item">
+                                <a class="hu-pc-navigation-topic-type-title">
+                                    <span class="topic-icon" style="background-image:url(assets/news3.png)"></span>汽车
+                                </a>
+                                <div class="hu-pc-navigation-topic-type-link">
+                                    <a href="bbs.html">汽车区</a>
+                                    <a href="bbs.html">F1赛车区</a>
+                                    <a href="bbs.html">机车区</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <!-- ---------- 右：版块内容 ---------- -->
+                    <div class="bbs-sl-web-topic-wrap">
+
+                        <!-- 面包屑 -->
+                        <div class="bbs-sl-web-bread-crumbs">
+                            <a href="index.html">社区</a> &raquo;
+                            <a href="bbs.html">步行街</a> &raquo;
+                            <a href="bbs.html">步行街主干道</a>
+                        </div>
+
+                        <!-- 版块资料卡 -->
+                        <div class="bbs-sl-web-intro">
+                            <div class="bbs-sl-web-intro-avatar">
+                                <img src="assets/bbs_avatar.png" alt="步行街主干道">
+                            </div>
+                            <div class="bbs-sl-web-intro-detail">
+                                <div class="bbs-sl-web-intro-detail-title-wrap">
+                                    <span class="bbs-sl-web-intro-detail-title">#步行街主干道</span>
+                                    <button class="bbs-sl-web-intro-detail-button">关注</button>
+                                    <button class="bbs-sl-web-intro-detail-button">发帖</button>
+                                </div>
+                                <div class="bbs-sl-web-intro-detail-desc">
+                                    <span class="bbs-sl-web-intro-detail-desc-title">话题介绍</span>
+                                    <span class="bbs-sl-web-intro-detail-desc-text">逛步行街极易上瘾，请各位JRs注意控制时间</span>
+                                </div>
+                                <div class="bbs-sl-web-intro-detail-desc">
+                                    <span class="bbs-sl-web-intro-detail-desc-title">话题热度</span>
+                                    <span class="bbs-sl-web-intro-detail-desc-text">&#128293; 209.3w</span>
+                                </div>
+                                <div class="bbs-sl-web-intro-detail-desc">
+                                    <span class="bbs-sl-web-intro-detail-desc-title">版主</span>
+                                    <div class="bbs-sl-web-admin-detail-desc-text">
+                                        <span class="admin-auth"><a href="bbs.html">阿凢</a>、</span>
+                                        <span class="admin-auth"><a href="bbs.html">枫晴忆晓</a>、</span>
+                                        <span class="admin-auth"><a href="bbs.html">一只韩卷卷</a>、</span>
+                                        <span class="admin-auth"><a href="bbs.html">不会p图</a>、</span>
+                                        <span class="admin-auth"><a href="bbs.html">就爱喝可乐水</a>、</span>
+                                        <span class="admin-auth"><a href="bbs.html">韩综基地</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 排序标签 -->
+                        <div class="bbs-sl-web-type-wrap">
+                            <div class="bbs-sl-web-type active">最新回复</div>
+                            <div class="bbs-sl-web-type">最新发布</div>
+                            <div class="bbs-sl-web-type">24小时榜</div>
+                        </div>
+
+                        <!-- 帖子列表 -->
+                        <div class="bbs-sl-web-post">
+                            <div class="bbs-sl-web-post-layout bbs-sl-web-post-header">
+                                <div>标题</div>
+                                <div>回复/浏览</div>
+                                <div>作者</div>
+                                <div>时间</div>
+                            </div>
+                            <ul>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">车圈双雄，没有你我不活了</a><span class="shipin-tag">▶ 视频</span><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">54 / 64347</div>
+                            <div class="post-auth"><a href="bbs.html">國產零零柒</a></div>
+                            <div class="post-time">10-16 16:00</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">2009年总决赛，科比用实力打脸魔术主教练范甘迪！太解气了！</a><span class="shipin-tag">▶ 视频</span><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">77 / 10665</div>
+                            <div class="post-auth"><a href="bbs.html">体育解说</a></div>
+                            <div class="post-time">10-16 16:00</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">这是正当防卫么？？？？</a><span class="shipin-tag">▶ 视频</span></div>
+                            <div class="post-datum">15 / 5074</div>
+                            <div class="post-auth"><a href="bbs.html">清炖大弯钩</a></div>
+                            <div class="post-time">10-16 16:00</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">我只想说roadster2都用上火箭技术了，国内一群人还在cos慈禧呢</a></div>
+                            <div class="post-datum">16 / 3259</div>
+                            <div class="post-auth"><a href="bbs.html">虎扑JR0617197901</a></div>
+                            <div class="post-time">10-16 16:00</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">两口子的事挺难受的</a></div>
+                            <div class="post-datum">21 / 13501</div>
+                            <div class="post-auth"><a href="bbs.html">112哈哈等等</a></div>
+                            <div class="post-time">10-16 16:00</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">胡麟鹏这种货色怎么好意思嘲笑张国伟的？</a><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">114 / 251692</div>
+                            <div class="post-auth"><a href="bbs.html">我擅长双手持球</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">我留住了出轨的妻子，但我没打算就这么翻篇</a><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">151 / 389875</div>
+                            <div class="post-auth"><a href="bbs.html">走向恩比埃</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">问问大家，在县城没工作但是空有800万存款，能养起家成为一个好男人吗</a></div>
+                            <div class="post-datum">38 / 21539</div>
+                            <div class="post-auth"><a href="bbs.html">多次婉拒白富美</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">乐透秀被裁场均8.9分3.4板2.7助 杨瀚森还有多久</a><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">63 / 21294</div>
+                            <div class="post-auth"><a href="bbs.html">周志豪NYOD</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">【特斯拉第二代Roadster正式亮相】马斯克用“空中翻转”重新定义跑车</a><span class="shipin-tag">▶ 视频</span></div>
+                            <div class="post-datum">31 / 13258</div>
+                            <div class="post-auth"><a href="bbs.html">千奇百怪的世界</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">原来懂车帝有这么多外资啊，大家可得小心了</a><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">434 / 100398</div>
+                            <div class="post-auth"><a href="bbs.html">用户0655266815</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">这回是真的遥遥领先了，特斯拉飞起来了</a><span class="shipin-tag">▶ 视频</span><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">419 / 158926</div>
+                            <div class="post-auth"><a href="bbs.html">國產零零柒</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">霸王茶姬的班根本无法上，累得快要在店里撑不住了！</a><span class="shipin-tag">▶ 视频</span><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">72 / 135442</div>
+                            <div class="post-auth"><a href="bbs.html">那那那么</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">jrs们平常吃的多好看看</a><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">311 / 1068026</div>
+                            <div class="post-auth"><a href="bbs.html">虎扑JR0382001522</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">跟女朋友感情很好，但她谈的上一个谈了四五年，同居了很久</a></div>
+                            <div class="post-datum">15 / 6157</div>
+                            <div class="post-auth"><a href="bbs.html">体系郭敬明</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">我想当个狗</a><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">61 / 81941</div>
+                            <div class="post-auth"><a href="bbs.html">什么时候醒呢</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">家人们谁懂啊？地铁上遇到这种“人间绝色”，我差点坐过站……</a></div>
+                            <div class="post-datum">2 / 227</div>
+                            <div class="post-auth"><a href="bbs.html">虎扑JR0754191662</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">当年，​章泽天嫁给38岁的刘强东，​我觉得38岁特别老……​现在才惊觉，​38岁能站在金字塔尖掌舵一家巨头公司​，真可谓是年少有为啊！</a><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">113 / 59105</div>
+                            <div class="post-auth"><a href="bbs.html">小刺粉挚爱kg</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">婚礼结束，我把伴郎拉黑了</a><span class="page-icon">[<i style="font-style:normal">▤</i>2]</span></div>
+                            <div class="post-datum">398 / 1049411</div>
+                            <div class="post-auth"><a href="bbs.html">IanMahinmi</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                    <li class="bbs-sl-web-post-body">
+                        <div class="bbs-sl-web-post-layout">
+                            <div class="post-title"><a href="post.html" class="p-title">我好像发现永动机了！</a><span class="shipin-tag">▶ 视频</span></div>
+                            <div class="post-datum">1 / 1041</div>
+                            <div class="post-auth"><a href="bbs.html">逝去的贝影</a></div>
+                            <div class="post-time">10-16 15:59</div>
+                        </div>
+                    </li>
+                            </ul>
+                        </div>
+
+                        <!-- 分页 -->
+                        <div class="bbs-sl-web-page">
+                            <span>&lt;</span>
+                            <span class="active">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>...</span>
+                            <span>78</span>
+                            <span>&gt;</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 4. 页脚 ============ -->
+        <div class="PSiteAllFootNavi_W">
+            <div>
+                <a href="index.html">虎扑首页</a>
+                <a href="bbs.html">手机虎扑</a>
+                <a href="bbs.html">NBA</a>
+                <a href="bbs.html">足球</a>
+                <a href="bbs.html">虎扑APP</a>
+                <a href="bbs.html">服务协议</a>
+                <a href="bbs.html">隐私协议</a>
+                <a href="bbs.html">社会招聘</a>
+                <a href="bbs.html">校园招聘</a>
+                <a href="bbs.html">意见反馈</a>
+                <a href="bbs.html">商务合作</a>
+            </div>
+            <div class="copyright">Copyright © 2021 KUANGHUI All Rights Reserved. 上海宽娱数码科技有限公司</div>
+        </div>
+
+    </div>
+</body>
+
+</html>

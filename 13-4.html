@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ECE8E0">
+<title>13-4 · 移动端底部导航（SVG 图标）</title>
+<!-- SVG 图标：把图标的矢量路径内联成 <symbol> 精灵图，页面里用 <use> 复用 -->
+<style>
+  :root{
+    --paper:#ECE8E0;          /* 纸感底 */
+    --card:#FEFDFA;           /* 卡片 */
+    --clay:#A4432D;           /* 主色：赤陶 */
+    --clay-deep:#7E3221;
+    --clay-wash:#F6DDD3;
+    --ink:#2A2E32;
+    --muted:#585F65;
+    --faint:#7E858C;
+    --line:#DED8CE;
+    --alert:#C93B2B;          /* 徽章 / 红点 */
+    --nav-h:58px;             /* 导航条高度（不含安全区） */
+  }
+
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:#E4DFD5;
+    color:var(--ink);
+    font:15px/1.6 "Inter","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+
+  /* 手机内容列：宽屏时居中，最大 480px；窄屏时铺满 */
+  .app{
+    position:relative;
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    min-height:100dvh;
+    margin:0 auto;
+    background:var(--paper);
+    box-shadow:0 0 0 1px rgba(42,46,50,.05),0 24px 70px rgba(42,46,50,.10);
+  }
+
+  /* ---------- 顶部 ---------- */
+  .app-head{padding:calc(22px + env(safe-area-inset-top)) 20px 0;}
+  .topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+  .brand{font-size:13px;font-weight:700;letter-spacing:.16em;}
+  .brand-en{
+    font-size:9px;font-weight:500;letter-spacing:.22em;
+    color:var(--faint);margin-left:5px;vertical-align:1px;
+  }
+  .avatar{
+    width:32px;height:32px;border-radius:50%;
+    display:grid;place-items:center;
+    background:var(--clay-wash);color:var(--clay-deep);
+    border:1px solid #EBC9BB;
+    font-size:12px;font-weight:600;
+  }
+  h1{font-size:26px;line-height:1.32;letter-spacing:-.02em;margin:0 0 6px;font-weight:600;}
+  .sub{margin:0;font-size:12.5px;color:var(--muted);letter-spacing:.01em;}
+
+  .search{
+    display:flex;align-items:center;gap:9px;
+    height:42px;margin-top:18px;padding:0 14px;
+    background:rgba(254,253,250,.7);
+    border:1px solid var(--line);
+    border-radius:12px;
+    color:var(--faint);font-size:13px;
+  }
+  .search .ic{flex:none;width:16px;height:16px;color:var(--faint);}
+
+  /* ---------- 内容 ---------- */
+  main{padding:0 20px calc(var(--nav-h) + 34px + env(safe-area-inset-bottom));}
+
+  /* 今日摘录：整块赤陶色，作为页面视觉锚点 */
+  .hero{
+    position:relative;overflow:hidden;
+    margin-top:20px;padding:20px;
+    border-radius:20px;
+    background:var(--clay);
+    color:#FBEFE9;
+    box-shadow:0 10px 26px rgba(126,50,33,.18);
+  }
+  .eyebrow{
+    font-size:9.5px;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;color:rgba(251,239,233,.7);
+  }
+  .quote{
+    margin:12px 0 18px;
+    font-size:18.5px;line-height:1.72;font-weight:500;
+    letter-spacing:.01em;
+  }
+  .hero-foot{
+    display:flex;align-items:baseline;justify-content:space-between;
+    padding-top:12px;
+    border-top:1px solid rgba(251,239,233,.22);
+    font-size:12px;color:rgba(251,239,233,.82);
+  }
+  .num{font-variant-numeric:tabular-nums;letter-spacing:.06em;}
+
+  .block{margin-top:26px;}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px;}
+  h2{font-size:15px;font-weight:600;letter-spacing:-.01em;margin:0;}
+  .more{font-size:11.5px;color:var(--faint);text-decoration:none;letter-spacing:.03em;}
+  .more:hover{color:var(--clay);}
+
+  .rows{
+    list-style:none;margin:0;padding:0;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .row{display:flex;align-items:center;gap:12px;padding:13px 14px;}
+  .row + .row{border-top:1px solid #EAE5DC;}
+  .thumb{
+    flex:none;width:40px;height:40px;border-radius:11px;
+    display:grid;place-items:center;
+    background:var(--tint,var(--clay-wash));
+    color:var(--tone,var(--clay-deep));
+    font-size:15px;font-weight:600;
+  }
+  .row-main{flex:1;min-width:0;}
+  .row-title{
+    font-size:14px;font-weight:600;letter-spacing:-.01em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .row-sub{font-size:11.5px;color:var(--faint);margin-top:1px;}
+  .bar{height:3px;margin-top:8px;border-radius:99px;background:#EDE8DF;overflow:hidden;}
+  .bar span{display:block;height:100%;border-radius:99px;background:var(--clay);}
+  .row-num{
+    flex:none;font-size:13px;font-weight:600;color:var(--clay-deep);
+    font-variant-numeric:tabular-nums;
+  }
+  .row-num small{font-size:9px;font-weight:500;margin-left:1px;}
+  .row-date{flex:none;font-size:11px;color:var(--faint);font-variant-numeric:tabular-nums;}
+
+  /* ---------- 实现说明 ---------- */
+  .spec{
+    padding:17px 16px 16px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+  }
+  .pill{
+    font-size:10px;font-weight:600;letter-spacing:.06em;
+    padding:3px 8px;border-radius:999px;
+    color:var(--clay-deep);background:#FAF1EC;border:1px solid #EBD6CB;
+  }
+  .spec-list{list-style:none;margin:13px 0 15px;padding:0;display:grid;gap:10px;}
+  .spec-list li{font-size:12px;line-height:1.62;color:var(--muted);}
+  .spec-list b{
+    display:block;margin-bottom:1px;
+    font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:.02em;
+  }
+  .spec-list code{
+    font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    font-size:11px;color:var(--clay-deep);
+    background:#F5EFE7;padding:1px 4px;border-radius:4px;
+  }
+  .legend{
+    display:flex;flex-wrap:wrap;gap:8px 16px;
+    padding-top:14px;border-top:1px dashed var(--line);
+  }
+  .legend-item{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--faint);}
+  .mini-ic{
+    position:relative;width:30px;height:30px;border-radius:9px;
+    display:grid;place-items:center;
+    background:#F3EFE7;color:var(--muted);
+  }
+  .mini-ic .ic{width:17px;height:17px;}
+  .mini-ic .ic-wide{width:19px;height:17px;}
+  .mini-ic .badge{top:-4px;right:-4px;box-shadow:0 0 0 2px #F3EFE7;}
+  .mini-ic .dot{top:1px;right:1px;box-shadow:0 0 0 2px #F3EFE7;}
+  .spec-note{margin:13px 0 0;font-size:11px;line-height:1.7;color:var(--faint);}
+  .spec-note code{
+    font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    font-size:10.5px;color:var(--clay-deep);
+  }
+
+  /* ---------- 底部导航 ---------- */
+  /* 固定定位贴底；left:50% + translateX(-50%) 让它在宽屏时仍与内容列对齐 */
+  .tabbar{
+    position:fixed;
+    left:50%;bottom:0;transform:translateX(-50%);
+    z-index:50;
+    width:100%;max-width:480px;
+    padding-bottom:env(safe-area-inset-bottom);
+    background:rgba(252,250,245,.9);
+    -webkit-backdrop-filter:blur(16px) saturate(1.4);
+    backdrop-filter:blur(16px) saturate(1.4);
+    border-top:1px solid rgba(222,216,206,.9);
+    box-shadow:0 -8px 24px rgba(42,46,50,.05);
+  }
+  /* flex 四等分：每项 flex:1，宽度随屏幕自适应 */
+  .tabbar-inner{display:flex;height:var(--nav-h);}
+  .tab{
+    position:relative;flex:1;min-width:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    color:var(--faint);text-decoration:none;
+    user-select:none;touch-action:manipulation;
+    transition:color .18s ease;
+  }
+  /* 图标容器同时是徽章的定位参照 */
+  .tab-icon{position:relative;display:grid;place-items:center;width:34px;height:26px;}
+  .tab-icon::before{
+    content:"";position:absolute;inset:0;border-radius:10px;
+    background:transparent;
+    transition:background .2s ease;
+  }
+  .tab .ic{
+    position:relative;z-index:1;
+    width:21px;height:21px;
+    fill:currentColor;
+    transition:transform .18s ease;
+  }
+  /* 首页图标的 viewBox 是 1199×1024，比例更宽，单独给宽高避免视觉上偏小 */
+  .tab .ic-wide{width:24px;height:21px;}
+  .tab-label{font-size:10.5px;line-height:1;letter-spacing:.04em;font-weight:500;}
+  .tab.is-active{color:var(--clay);}
+  .tab.is-active .tab-icon::before{background:rgba(164,67,45,.1);}
+  .tab.is-active .ic{transform:translateY(-1px);}
+  .tab.is-active .tab-label{font-weight:600;}
+  .tab:active .ic{transform:scale(.9);}
+  .tab:focus-visible{outline:2px solid var(--clay);outline-offset:-6px;border-radius:12px;}
+
+  /* 数字徽章：绝对定位到图标右上角，min-width 随位数撑开 */
+  .badge{
+    position:absolute;z-index:2;top:-5px;right:-6px;
+    min-width:18px;height:18px;padding:0 5px;
+    border-radius:9px;
+    background:var(--alert);color:#fff;
+    font-size:10.5px;font-weight:600;line-height:18px;
+    font-variant-numeric:tabular-nums;letter-spacing:0;text-align:center;
+    box-shadow:0 0 0 2px rgba(252,250,245,.96);
+  }
+  .badge-wide{padding:0 6px;}
+  /* 红点：只提示“有新内容”，不占数字位 */
+  .dot{
+    position:absolute;z-index:2;top:2px;right:2px;
+    width:8px;height:8px;border-radius:50%;
+    background:var(--alert);
+    box-shadow:0 0 0 2px rgba(252,250,245,.96);
+  }
+
+  /* 精灵图本身不参与布局 */
+  .sprite{position:absolute;width:0;height:0;overflow:hidden;}
+
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-shouye" viewBox="0 0 1199 1024"><path d="M599.883366 36.485018 14.397338 622.032998l237.705 0 0 383.981 222.536 0c38.057984-82.68503 101.058048-151.528038 179.386982-196.925952-0.27095-17.363968-0.420966-36.896051-0.134963-62.398976-90.196992 44.91305-164.726989 116.515021-213.204992 204.47703L306.957344 951.166101 306.957344 567.178 143.639344 567.178l455.873024-455.873024L1055.391334 567.178035 892.074344 567.178035l0 383.989L745.790344 951.167035l0 54.848 201.139 0L946.929344 622.033l237.705 0L599.883366 36.485018z"/></symbol>
+  <symbol id="i-0201chazhao" viewBox="0 0 1024 1024"><path d="M947.942255 886.008182 720.970894 659.243529c48.977481-62.368466 78.178547-140.907217 78.178547-226.249931 0-202.907293-165.033707-367.395578-368.613312-367.395578-203.580628 0-368.616382 164.489308-368.616382 367.395578 0 202.90627 165.035754 367.395578 368.616382 367.395578 85.758176 0 164.673503-29.192879 227.295749-78.146824l226.938616 226.728838c12.769838 12.727882 33.475416 12.727882 46.246277 0l16.925485-16.870226C960.713117 919.374104 960.713117 898.736065 947.942255 886.008182zM430.536129 711.482287c-154.315598 0-279.414781-124.682697-279.414781-278.487665 0-153.805992 125.099183-278.488689 279.414781-278.488689 154.315598 0 279.410688 124.68372 279.410688 278.488689C709.946816 586.79959 584.851727 711.482287 430.536129 711.482287z"/></symbol>
+  <symbol id="i-shoucang" viewBox="0 0 1024 1024"><path d="M832.8 63.9H191.2c-17.8 0-32.3 14.5-32.3 32.3V878c0 23.3 23.9 38.9 45.3 29.6L489.8 782l331.4 128.4c21.2 8.2 44-7.4 44-30.1V96.2c-0.1-17.9-14.5-32.3-32.4-32.3z"/></symbol>
+  <symbol id="i-my" viewBox="0 0 1024 1024"><path d="M1023.990786 511.994883c0 129.806391-48.647977 253.595742-136.979768 348.589256-0.23536 0.245593-0.480954 0.491187-0.726547 0.726547l-24.119327 23.464411c-7.68503 7.480368-19.841907 7.746428-27.864628 0.624217-30.975479-27.526937-73.278957-44.237527-114.190739-60.385299-55.882751-22.062482-108.664885-42.907229-126.275985-90.26584-0.63445-1.698688-1.033539-3.479241-1.197268-5.290493-2.40477-26.677593-2.220574-47.225581-2.036379-68.970838 0.061398-6.129604 0.112564-12.463869 0.112564-19.084661 0-7.490601 4.093225-14.367219 10.652618-17.948791 7.562233-5.474688 31.568996-45.465494 35.723619-84.330664 1.043772-9.772574 8.892531-17.416671 18.685571-18.225083 2.619664-0.214894 13.20065-7.592932 17.068747-39.765679 1.985214-16.526395-6.057973-22.338774-6.139837-22.38994-8.145517-4.963035-11.757788-14.868639-8.749268-23.914666 3.530406-10.601452 15.288195-48.576345 18.787902-92.13849 3.397377-42.334177-2.251274-76.686567-16.321734-99.342566-12.555967-20.22053-31.968086-31.896454-59.341526-35.69292-6.293333-0.880043-11.819187-4.625344-14.960737-10.151197-9.148357-16.055674-37.493939-25.644053-75.847455-25.674753-62.104453 1.166569-106.485243 18.74697-131.914402 52.260248-16.833387 22.195511-26.196639 52.229548-27.803229 89.293699-1.524726 35.017538 3.816932 76.318176 15.871479 122.755812 2.27174 8.728802-1.442862 17.907858-9.138124 22.604834-0.051165 0.040932-8.114818 5.863545-6.129604 22.38994 3.868097 32.172747 14.449084 39.550785 17.068747 39.765679 9.803273 0.808412 17.641799 8.452509 18.685571 18.235316 4.123924 38.660508 28.928866 78.774111 36.767392 84.289732 6.579859 3.581572 10.69355 10.478655 10.69355 17.97949 0 6.54916 0.051165 12.811794 0.102331 18.869766 0.184195 21.816888 0.36839 42.426275-2.056845 69.185732-0.153496 1.811252-0.562818 3.591805-1.197268 5.290493-17.621333 47.38931-70.597895 68.223824-126.69554 90.286306-15.144932 5.955642-30.81175 12.115945-45.936215 18.869766-10.32516 4.604878-22.420639-0.020466-27.03575-10.345626-4.604878-10.314926 0.020466-22.420639 10.345626-27.025517 15.963577-7.132444 32.070416-13.46671 47.65537-19.596314 48.105624-18.920932 89.825818-35.32453 102.361319-64.120366 1.964748-23.290449 1.811252-41.382503 1.627057-62.186318-0.030699-3.110851-0.051165-6.2831-0.071631-9.526981-18.839067-18.798135-38.189787-58.748009-45.199435-94.205569-6.702656-3.438309-12.852726-8.585539-18.051121-15.20633-10.19213-13.016455-16.823154-31.742958-19.698644-55.67809-2.732228-22.748097 4.082992-40.164768 13.323447-51.451836-25.050536-103.947444-17.692964-183.03878 21.908986-235.217163 33.42118-44.032866 88.577385-67.067488 163.954119-68.448952l0.378623 0c49.415456 0 86.448908 13.313214 105.789395 37.749766 35.05847 6.938016 61.715597 24.76401 79.316463 53.099359 41.97602 67.568908 17.416671 172.928514 5.505387 213.471906 8.964162 11.2973 15.462157 28.478612 12.781094 50.79692-2.87549 23.935132-9.496282 42.661635-19.698644 55.67809-5.188162 6.610558-11.317767 11.737322-17.999956 15.175631-4.553713 23.904433-13.609972 44.943608-19.156292 56.333006-6.098905 12.545734-14.807241 27.792996-25.009603 37.985126-0.020466 3.284813-0.051165 6.497994-0.081864 9.660011-0.184195 20.742417-0.337691 38.762839 1.616824 61.971423 12.525268 28.795836 54.0715 45.209668 101.982696 64.120366 36.654828 14.46955 77.546144 30.617321 111.51991 55.831586l10.724249-10.437723c81.056084-87.339184 125.682467-201.079668 125.682467-320.335772 0-63.59848-12.453636-125.293611-37.012985-183.356005-23.720238-56.087413-57.68377-106.464777-100.949156-149.730163s-93.64275-77.239152-149.740396-100.95939c-58.062394-24.559349-119.747291-37.002752-183.356005-37.002752s-125.293611 12.443403-183.356005 37.002752c-56.097646 23.720238-106.47501 57.694003-149.740396 100.95939s-77.228919 93.64275-100.949156 149.730163c-24.559349 58.062394-37.012985 119.757524-37.012985 183.356005 0 63.608713 12.453636 125.293611 37.012985 183.356005 23.720238 56.087413 57.68377 106.464777 100.949156 149.740396 43.265386 43.265386 93.64275 77.228919 149.740396 100.949156 58.062394 24.559349 119.747291 37.012985 183.356005 37.012985 80.083943 0 159.165046-20.445658 228.688469-59.126632 9.885138-5.495154 22.338774-1.944282 27.833929 7.930623s1.944282 22.338774-7.930623 27.833929c-75.601862 42.057885-161.559583 64.294328-248.591775 64.294328-69.114101 0-136.171356-13.538341-199.299115-40.246633-60.978816-25.787316-115.725698-62.697971-162.736385-109.708658-47.010687-47.010687-83.921341-101.767801-109.708658-162.736385-26.708292-63.127759-40.246633-130.185015-40.246633-199.299115s13.538341-136.161123 40.246633-199.299115c25.787316-60.968583 62.697971-115.715465 109.708658-162.736385 47.010687-47.010687 101.757568-83.921341 162.736385-109.708658 63.127759-26.698059 130.185015-40.2364 199.299115-40.2364s136.171356 13.538341 199.299115 40.2364c60.978816 25.787316 115.725698 62.697971 162.736385 109.708658 47.010687 47.02092 83.921341 101.767801 109.708658 162.736385C1010.442212 375.833761 1023.990786 442.880783 1023.990786 511.994883z"/></symbol>
+  <symbol id="i-sousuo" viewBox="0 0 1024 1024"><path d="M448 768c176.725333 0 320-143.274667 320-320 0-176.725333-143.274667-320-320-320-176.725333 0-320 143.274667-320 320 0 176.725333 143.274667 320 320 320z m0 42.666667c-200.298667 0-362.666667-162.368-362.666667-362.666667S247.701333 85.333333 448 85.333333s362.666667 162.368 362.666667 362.666667-162.368 362.666667-362.666667 362.666667z m304.917333-27.584a21.333333 21.333333 0 0 1 30.165334-30.165334l150.848 150.848a21.333333 21.333333 0 0 1-30.165334 30.165334l-150.848-150.826667z"/></symbol>
+</svg>
+<div class="app">
+
+  <header class="app-head">
+    <div class="topline">
+      <span class="brand">拾光<span class="brand-en">SHIGUANG</span></span>
+      <span class="avatar" aria-hidden="true">翔</span>
+    </div>
+    <h1>下午好，志翔</h1>
+    <p class="sub">10 月 19 日 · 周一 · 连续阅读 12 天</p>
+
+    <div class="search">
+      <svg class="ic" viewBox="0 0 1024 1024" aria-hidden="true" focusable="false"><use href="#i-sousuo"></use></svg>
+      <span>搜索书名、作者或摘录</span>
+    </div>
+  </header>
+
+  <main>
+    <article class="hero">
+      <div class="eyebrow">Today / 今日摘录</div>
+      <p class="quote">把喜欢的东西慢慢收起来，<br>日子就有了形状。</p>
+      <div class="hero-foot">
+        <span>《山茶文具店》</span>
+        <span class="num">P.42</span>
+      </div>
+    </article>
+
+    <section class="block">
+      <div class="sec-head">
+        <h2>正在进行</h2>
+        <span class="more">全部</span>
+      </div>
+      <ul class="rows">
+        <li class="row">
+          <span class="thumb">山</span>
+          <div class="row-main">
+            <div class="row-title">山茶文具店</div>
+            <div class="row-sub">小川糸 · 书信代笔</div>
+            <div class="bar"><span style="width:62%"></span></div>
+          </div>
+          <span class="row-num">62<small>%</small></span>
+        </li>
+        <li class="row">
+          <span class="thumb" style="--tint:#E7E3D3;--tone:#5C5A3A">人</span>
+          <div class="row-main">
+            <div class="row-title">人类简史</div>
+            <div class="row-sub">尤瓦尔·赫拉利 · 认知革命</div>
+            <div class="bar"><span style="width:28%"></span></div>
+          </div>
+          <span class="row-num">28<small>%</small></span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <div class="sec-head">
+        <h2>最近收藏</h2>
+        <span class="more">全部</span>
+      </div>
+      <ul class="rows">
+        <li class="row">
+          <span class="thumb" style="--tint:#E5E8E4;--tone:#3F5548">京</span>
+          <div class="row-main">
+            <div class="row-title">京都的店招与暖帘</div>
+            <div class="row-sub">图像笔记 · 12 张</div>
+          </div>
+          <span class="row-date">10 / 17</span>
+        </li>
+        <li class="row">
+          <span class="thumb" style="--tint:#F1E6DA;--tone:#7A4B2A">咖</span>
+          <div class="row-main">
+            <div class="row-title">一个人的咖啡地图</div>
+            <div class="row-sub">城市观察 · 8 家</div>
+          </div>
+          <span class="row-date">10 / 15</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="block spec">
+      <div class="sec-head">
+        <h2>导航实现</h2>
+        <span class="pill">SVG</span>
+      </div>
+      <ul class="spec-list">
+        <li>
+          <b>固定 + 自适应</b>
+          <code>position:fixed</code> 贴底，内部四项 <code>flex:1</code> 平分宽度；容器最大 480px 居中，宽屏不会被拉散。
+        </li>
+        <li>
+          <b>数字徽章</b>
+          相对图标绝对定位到右上角，<code>min-width:18px</code> 随位数自动撑开，超过 99 显示 <code>99+</code>。
+        </li>
+        <li>
+          <b>红点</b>
+          8px 圆点外加 2px 同色描边环，只表示“有新内容”，不占用数字位置。
+        </li>
+        <li>
+          <b>矢量复用</b>
+          <code>&lt;symbol&gt;</code> 定义一次、<code>&lt;use&gt;</code> 多处复用；
+          <code>fill:currentColor</code> 让图标跟随文字颜色，放大缩小都不失真。
+        </li>
+      </ul>
+
+      <div class="legend" role="group" aria-label="徽章样式示意">
+        <span class="legend-item">
+          <span class="mini-ic" aria-hidden="true"><svg class="ic ic-wide" viewBox="0 0 1199 1024" aria-hidden="true" focusable="false"><use href="#i-shouye"></use></svg><span class="badge">3</span></span>
+          数字徽章
+        </span>
+        <span class="legend-item">
+          <span class="mini-ic" aria-hidden="true"><svg class="ic ic-wide" viewBox="0 0 1199 1024" aria-hidden="true" focusable="false"><use href="#i-shouye"></use></svg><span class="dot"></span></span>
+          红点
+        </span>
+        <span class="legend-item">
+          <span class="mini-ic" aria-hidden="true"><svg class="ic ic-wide" viewBox="0 0 1199 1024" aria-hidden="true" focusable="false"><use href="#i-shouye"></use></svg><span class="badge badge-wide">99+</span></span>
+          超过 99
+        </span>
+      </div>
+
+      <p class="spec-note">
+        图标取自同一套图标的矢量路径（<code>font_5244713_yt3vridbf1h</code>），
+        直接内联成 <code>&lt;symbol&gt;</code>：不依赖字体文件，颜色由 <code>currentColor</code> 决定。
+      </p>
+    </section>
+  </main>
+
+  <!-- 底部导航：4 项等分，随屏幕宽度自适应 -->
+  <nav class="tabbar" aria-label="主导航">
+    <div class="tabbar-inner">
+      <a class="tab is-active" href="#" aria-current="page">
+        <span class="tab-icon">
+          <svg class="ic ic-wide" viewBox="0 0 1199 1024" aria-hidden="true" focusable="false"><use href="#i-shouye"></use></svg>
+        </span>
+        <span class="tab-label">首页</span>
+      </a>
+
+      <a class="tab" href="#">
+        <span class="tab-icon">
+          <svg class="ic" viewBox="0 0 1024 1024" aria-hidden="true" focusable="false"><use href="#i-0201chazhao"></use></svg>
+          <span class="dot"><span class="sr-only">有新内容</span></span>
+        </span>
+        <span class="tab-label">发现</span>
+      </a>
+
+      <a class="tab" href="#">
+        <span class="tab-icon">
+          <svg class="ic" viewBox="0 0 1024 1024" aria-hidden="true" focusable="false"><use href="#i-shoucang"></use></svg>
+          <span class="badge">12<span class="sr-only"> 条新内容</span></span>
+        </span>
+        <span class="tab-label">收藏</span>
+      </a>
+
+      <a class="tab" href="#">
+        <span class="tab-icon">
+          <svg class="ic" viewBox="0 0 1024 1024" aria-hidden="true" focusable="false"><use href="#i-my"></use></svg>
+        </span>
+        <span class="tab-label">我的</span>
+      </a>
+    </div>
+  </nav>
+
+</div>
+
+<script>
+  // 切换选中状态：同一时刻只允许一个 tab 处于 active
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // 点已选中的项 → 回到顶部（移动端常见习惯）
+      if (tab.classList.contains('is-active')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      tabs.forEach(function (t) {
+        t.classList.remove('is-active');
+        t.removeAttribute('aria-current');
+      });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-current', 'page');
+    });
+  });
+</script>
+</body>
+</html>

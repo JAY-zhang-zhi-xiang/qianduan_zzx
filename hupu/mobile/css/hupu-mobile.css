@@ -1,0 +1,1198 @@
+@charset "utf-8";
+
+/* ============================================================
+   高级网页设计I · 图像解决方案
+   学号：24002060419    姓名：张志翔
+   选题：虎扑移动端 下导航
+   说明：全局样式表，类名统一使用 zzx- 前缀（姓名缩写）
+        不使用 id 选择器；图标全部来自 iconfont.cn，以 SVG 引入
+   ============================================================ */
+
+/* ---------- 1. 全局变量 ---------- */
+:root {
+    --zzx-red: #e00009;
+    --zzx-red-light: #f8140f;
+    --zzx-red-deep: #b30007;
+    --zzx-text: #191c22;
+    --zzx-desc: #4e5158;
+    --zzx-sub: #a3a6ab;
+    --zzx-line: #ececee;
+    --zzx-bg: #f4f5f6;
+    --zzx-white: #fff;
+
+    /* 下导航可调参数：改这几个值就能整体缩放 / 换色 */
+    --zzx-nav-h: 52px;
+    --zzx-nav-icon: 23px;
+    --zzx-publish: 48px;
+    --zzx-publish-lift: 8px;
+
+    /* 内容区最大宽度：页面本体始终铺满窗口，只有内容收在这个宽度内居中 */
+    --zzx-page: 750px;
+    --zzx-radius: 10px;
+}
+
+/* ---------- 2. 基础重置 ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14px;
+    color: var(--zzx-text);
+    background: var(--zzx-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    border: 0;
+}
+
+/* 图标雪碧图容器：只提供 symbol 定义，本身不占位 */
+.zzx-sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* ---------- 3. 页面骨架 ---------- */
+.zzx-page {
+    /* 页面本体铺满整个窗口（全屏自适应），仅内容区收在 --zzx-page 内居中 */
+    width: 100%;
+    min-height: 100vh;
+    background: var(--zzx-white);
+    /* 给固定下导航 + 凸起按钮 + iPhone 安全区留出空间 */
+    padding-bottom: calc(var(--zzx-nav-h) + var(--zzx-publish-lift) + env(safe-area-inset-bottom, 0px));
+}
+
+/* 内容区：窄屏自然铺满，宽屏收到 --zzx-page 居中，避免文字被拉得过长 */
+.zzx-header,
+.zzx-channels,
+.zzx-score,
+.zzx-feed,
+.zzx-hot,
+.zzx-talk {
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- 4. 顶部栏 ---------- */
+.zzx-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 52px;
+    padding: 0 12px;
+    background: var(--zzx-white);
+}
+
+.zzx-header__logo {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    font-size: 11px;
+    line-height: 1.06;
+    letter-spacing: 0;
+    color: var(--zzx-white);
+    background: var(--zzx-red);
+    border-radius: 5px;
+}
+
+.zzx-header__search {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 11px;
+    border: 1px solid #e4e5e8;
+    border-radius: 4px;
+    background: #fafafa;
+    overflow: hidden;
+}
+
+.zzx-header__placeholder {
+    min-width: 0;
+    font-size: 12px;
+    color: #b0b3b8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.zzx-header__submit {
+    flex: none;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    padding: 0 13px;
+    background: var(--zzx-red);
+    color: var(--zzx-white);
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* ---------- 5. 顶部频道 tab ---------- */
+.zzx-channels {
+    display: flex;
+    gap: 18px;
+    padding: 0 12px;
+    height: 40px;
+    align-items: center;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--zzx-line);
+    scrollbar-width: none;
+}
+
+.zzx-channels::-webkit-scrollbar {
+    display: none;
+}
+
+.zzx-channels__item {
+    position: relative;
+    flex: none;
+    font-size: 15px;
+    line-height: 40px;
+    color: var(--zzx-desc);
+    white-space: nowrap;
+}
+
+.zzx-channels__item.is-active {
+    color: var(--zzx-text);
+    font-weight: 600;
+}
+
+.zzx-channels__item.is-active::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    width: 18px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--zzx-red);
+    transform: translateX(-50%);
+}
+
+/* 热榜入口：比普通频道略小，弱化处理 */
+.zzx-channels__item--hot {
+    font-size: 14px;
+    color: var(--zzx-desc);
+}
+
+/* ---------- 6. 比分条 ---------- */
+.zzx-score {
+    margin: 10px auto;
+    padding: 10px 12px;
+    border-radius: var(--zzx-radius);
+    background: linear-gradient(135deg, #fdf3f2, #f7f8fa);
+    border: 1px solid #f3e4e2;
+}
+
+.zzx-score__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.zzx-score__team {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 13px;
+    color: var(--zzx-desc);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.zzx-score__team--right {
+    text-align: right;
+}
+
+.zzx-score__num {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--zzx-text);
+    font-variant-numeric: tabular-nums;
+}
+
+.zzx-score__mid {
+    flex: none;
+    padding: 0 4px;
+    font-size: 11px;
+    color: var(--zzx-sub);
+    white-space: nowrap;
+}
+
+/* 小屏（如 320px）收紧比分条，避免换行 */
+@media (max-width: 360px) {
+    .zzx-score__num {
+        font-size: 15px;
+    }
+
+    .zzx-score__mid {
+        font-size: 10px;
+        padding: 0 2px;
+    }
+
+    .zzx-score__team {
+        font-size: 12px;
+    }
+}
+
+.zzx-score__state {
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--zzx-red);
+}
+
+/* ---------- 7. 信息流 ---------- */
+.zzx-feed {
+    padding: 0 12px 12px;
+}
+
+.zzx-feed__item {
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--zzx-line);
+}
+
+.zzx-feed__item:last-child {
+    border-bottom: 0;
+}
+
+.zzx-feed__thumb {
+    flex: none;
+    width: 100px;
+    height: 68px;
+    border-radius: 6px;
+    object-fit: cover;
+    background: var(--zzx-bg);
+}
+
+.zzx-feed__body {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.zzx-feed__title {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--zzx-text);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.zzx-feed__meta {
+    display: flex;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--zzx-sub);
+}
+
+.zzx-feed__tag {
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: #f6f6f7;
+    color: var(--zzx-sub);
+}
+
+/* ---------- 7.1 步行街热帖 ---------- */
+.zzx-hot {
+    padding: 0 12px 16px;
+}
+
+.zzx-hot__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 0 2px;
+    padding-top: 4px;
+    border-top: 1px solid var(--zzx-line);
+}
+
+.zzx-hot__title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--zzx-text);
+}
+
+.zzx-hot__more {
+    font-size: 12px;
+    color: var(--zzx-sub);
+}
+
+.zzx-hot__list {
+    margin-top: 2px;
+}
+
+.zzx-hot__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 0;
+    border-bottom: 1px dashed #f2f2f4;
+}
+
+.zzx-hot__item:last-child {
+    border-bottom: 0;
+}
+
+.zzx-hot__rank {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background: var(--zzx-bg);
+    color: var(--zzx-sub);
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.zzx-hot__item:nth-child(1) .zzx-hot__rank {
+    background: var(--zzx-red);
+    color: var(--zzx-white);
+}
+
+.zzx-hot__item:nth-child(2) .zzx-hot__rank {
+    background: #f76f6e;
+    color: var(--zzx-white);
+}
+
+.zzx-hot__item:nth-child(3) .zzx-hot__rank {
+    background: #fbb0a6;
+    color: var(--zzx-white);
+}
+
+.zzx-hot__link {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--zzx-desc);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.zzx-hot__num {
+    flex: none;
+    font-size: 11px;
+    color: var(--zzx-sub);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 7.2 深聊 ---------- */
+.zzx-talk {
+    padding: 0 12px 16px;
+}
+
+.zzx-talk__item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--zzx-line);
+}
+
+.zzx-talk__item:last-child {
+    border-bottom: 0;
+}
+
+.zzx-talk__top {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.zzx-talk__avatar {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.zzx-talk__user {
+    font-size: 12px;
+    color: var(--zzx-desc);
+}
+
+.zzx-talk__time {
+    font-size: 11px;
+    color: var(--zzx-sub);
+}
+
+.zzx-talk__text {
+    margin: 7px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--zzx-text);
+}
+
+.zzx-talk__foot {
+    display: flex;
+    gap: 14px;
+    margin-top: 7px;
+    font-size: 11px;
+    color: var(--zzx-sub);
+}
+
+/* ============================================================
+   8. 底部下导航（本次实验核心）
+   ------------------------------------------------------------
+   · 结构：首页 / 专区 / [发布按钮] / 深聊 / 我的，五等分
+   · 固定定位：position: fixed，底部贴合，含 iPhone 安全区
+   · 自适应宽度：普通项 flex: 1 1 0，中间按钮固定宽度
+   · 凸起按钮：负 top 值溢出导航条，overflow 保持 visible
+   · 图标：SVG <use> 引入 iconfont 图标，fill: currentColor 跟随文字色
+   ============================================================ */
+.zzx-tabbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background: var(--zzx-white);
+    border-top: 1px solid var(--zzx-line);
+    /* 适配 iPhone 全面屏底部安全区 */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.zzx-tabbar__inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    height: var(--zzx-nav-h);
+}
+
+.zzx-tabbar__item {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding-bottom: 2px;
+    color: var(--zzx-sub);
+    transition: color 0.18s ease;
+}
+
+/* 图标：大小由 --zzx-nav-icon 控制，颜色由 currentColor 控制 */
+.zzx-tabbar__icon {
+    display: block;
+    width: var(--zzx-nav-icon);
+    height: var(--zzx-nav-icon);
+    fill: currentColor;
+    transition: transform 0.18s ease;
+}
+
+.zzx-tabbar__text {
+    font-size: 10px;
+    line-height: 1.15;
+    letter-spacing: 0.2px;
+}
+
+/* 选中态：虎扑 App 用黑色高亮，而非品牌红 */
+.zzx-tabbar__item.is-active {
+    color: var(--zzx-text);
+}
+
+.zzx-tabbar__item.is-active .zzx-tabbar__text {
+    font-weight: 600;
+}
+
+.zzx-tabbar__item.is-active .zzx-tabbar__icon {
+    transform: translateY(-1px) scale(1.04);
+}
+
+.zzx-tabbar__item:active {
+    color: #000;
+}
+
+/* 中间发布按钮：红色圆形，向上凸出导航条 */
+.zzx-tabbar__publish {
+    flex: 0 0 auto;
+    width: var(--zzx-publish);
+    height: var(--zzx-publish);
+    margin: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--zzx-red-light);
+    /* 凸起：相对自身位置上移，溢出导航条顶部 */
+    transform: translateY(calc(-1 * var(--zzx-publish-lift)));
+    transition: transform 0.16s ease;
+}
+
+.zzx-tabbar__publish:active {
+    transform: translateY(calc(-1 * var(--zzx-publish-lift) + 1px)) scale(0.96);
+}
+
+.zzx-tabbar__plus {
+    display: block;
+    width: 21px;
+    height: 21px;
+    fill: var(--zzx-white);
+}
+
+/* ---------- 8.0 技术说明条 ---------- */
+.zzx-note {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 8px 12px;
+    background: #fff8e6;
+    border-bottom: 1px solid #f2e5c6;
+}
+
+.zzx-note__text {
+    min-width: 0;
+    font-size: 11.5px;
+    color: #8a6a2a;
+}
+
+.zzx-note__text b {
+    color: #6b4f13;
+}
+
+.zzx-note__link {
+    flex: none;
+    font-size: 11.5px;
+    color: var(--zzx-red);
+    white-space: nowrap;
+}
+
+/* ---------- 8.0b 字体图标版下导航（font-class 方案） ---------- */
+/* .iconfont 基类把 font-size 写成了 16px !important，
+   这里用「两个类」提高优先级，让尺寸能由变量统一控制 */
+.zzx-tabbar__font.iconfont {
+    /* 字体图标字形基本占满 em，比同尺寸 SVG 略大，这里减 2px 平衡视觉 */
+    font-size: calc(var(--zzx-nav-icon) - 2px) !important;
+    line-height: 1;
+    color: inherit;
+    transition: transform 0.18s ease;
+}
+
+.zzx-tabbar__item.is-active .zzx-tabbar__font.iconfont {
+    transform: translateY(-1px) scale(1.04);
+}
+
+.zzx-tabbar__plusfont.iconfont {
+    font-size: 21px !important;
+    line-height: 1;
+    color: var(--zzx-white);
+}
+
+/* 字体包里没有纯加号（只有圈内加号），这里用两条线拼一个，
+   避免红圆上出现「圈套圈」的怪异效果 */
+.zzx-tabbar__plusmark {
+    position: relative;
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+
+.zzx-tabbar__plusmark::before,
+.zzx-tabbar__plusmark::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 2px;
+    background: var(--zzx-white);
+    transform: translate(-50%, -50%);
+}
+
+.zzx-tabbar__plusmark::before {
+    width: 18px;
+    height: 2px;
+}
+
+.zzx-tabbar__plusmark::after {
+    width: 2px;
+    height: 18px;
+}
+
+/* ---------- 8.1 通用小标题行 ---------- */
+.zzx-subhead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 14px 12px 6px;
+}
+
+.zzx-subhead__title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--zzx-text);
+}
+
+.zzx-subhead__more {
+    font-size: 12px;
+    color: var(--zzx-sub);
+}
+
+/* ---------- 8.2 专区页 ---------- */
+.zzx-zone-mine {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 4px 12px 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.zzx-zone-mine::-webkit-scrollbar {
+    display: none;
+}
+
+.zzx-zone-mine__item {
+    flex: none;
+    width: 64px;
+    text-align: center;
+}
+
+.zzx-zone-mine__icon {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--zzx-white);
+    background: var(--zzx-red);
+}
+
+.zzx-zone-mine__item:nth-child(2) .zzx-zone-mine__icon {
+    background: #f0873a;
+}
+
+.zzx-zone-mine__item:nth-child(3) .zzx-zone-mine__icon {
+    background: #3f8f5b;
+}
+
+.zzx-zone-mine__item:nth-child(4) .zzx-zone-mine__icon {
+    background: #4a6fa5;
+}
+
+.zzx-zone-mine__name {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--zzx-desc);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.zzx-zone-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 4px 12px 14px;
+}
+
+.zzx-zone-cell {
+    padding: 12px 8px;
+    border: 1px solid var(--zzx-line);
+    border-radius: var(--zzx-radius);
+    background: #fbfbfc;
+    text-align: center;
+}
+
+.zzx-zone-cell__name {
+    font-size: 14px;
+    color: var(--zzx-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.zzx-zone-cell__num {
+    margin-top: 3px;
+    font-size: 11px;
+    color: var(--zzx-sub);
+    font-variant-numeric: tabular-nums;
+}
+
+/* 推荐专区：图标 + 说明 + 关注按钮 */
+.zzx-zone-list {
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 0 12px 14px;
+}
+
+.zzx-zone-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--zzx-line);
+}
+
+.zzx-zone-row:last-child {
+    border-bottom: 0;
+}
+
+.zzx-zone-row__icon {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--zzx-white);
+    background: #6b7280;
+}
+
+.zzx-zone-row__body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.zzx-zone-row__name {
+    font-size: 14px;
+    color: var(--zzx-text);
+}
+
+.zzx-zone-row__desc {
+    margin-top: 2px;
+    font-size: 11px;
+    color: var(--zzx-sub);
+}
+
+.zzx-zone-row__btn {
+    flex: none;
+    padding: 5px 14px;
+    border: 1px solid var(--zzx-red);
+    border-radius: 999px;
+    color: var(--zzx-red);
+    font-size: 12px;
+}
+
+/* 热门话题标签 */
+.zzx-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 0 12px 14px;
+}
+
+.zzx-tags__item {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--zzx-bg);
+    color: var(--zzx-desc);
+    font-size: 12px;
+}
+
+/* ---------- 8.3 筛选标签行（深聊页） ---------- */
+.zzx-filter {
+    display: flex;
+    gap: 18px;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--zzx-line);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.zzx-filter::-webkit-scrollbar {
+    display: none;
+}
+
+.zzx-filter__item {
+    flex: none;
+    font-size: 14px;
+    color: var(--zzx-desc);
+    white-space: nowrap;
+}
+
+.zzx-filter__item.is-active {
+    color: var(--zzx-text);
+    font-weight: 600;
+}
+
+/* ---------- 8.4 我的页 ---------- */
+.zzx-profile {
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 18px 12px 16px;
+    background: linear-gradient(160deg, #fff4f3, #ffffff 62%);
+}
+
+.zzx-profile__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.zzx-profile__avatar {
+    flex: none;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--zzx-bg);
+}
+
+.zzx-profile__info {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.zzx-profile__name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--zzx-text);
+}
+
+.zzx-profile__badge {
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: var(--zzx-red);
+    color: var(--zzx-white);
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.zzx-profile__desc {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--zzx-sub);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.zzx-profile__stats {
+    display: flex;
+    margin-top: 16px;
+}
+
+.zzx-profile__stat {
+    flex: 1 1 0;
+    text-align: center;
+}
+
+.zzx-profile__num {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--zzx-text);
+    font-variant-numeric: tabular-nums;
+}
+
+.zzx-profile__label {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    color: var(--zzx-sub);
+}
+
+/* 我的主队 */
+.zzx-teams {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 0 12px 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.zzx-teams::-webkit-scrollbar {
+    display: none;
+}
+
+.zzx-teams__item {
+    flex: none;
+    width: 64px;
+    text-align: center;
+}
+
+.zzx-teams__logo {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #f6f7f8;
+}
+
+.zzx-teams__name {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--zzx-desc);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 菜单列表 */
+.zzx-menu {
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 0 12px 12px;
+}
+
+.zzx-menu__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 2px;
+    border-bottom: 1px solid var(--zzx-line);
+}
+
+.zzx-menu__item:last-child {
+    border-bottom: 0;
+}
+
+.zzx-menu__name {
+    font-size: 14px;
+    color: var(--zzx-text);
+}
+
+.zzx-menu__value {
+    margin-left: auto;
+    margin-right: 8px;
+    font-size: 12px;
+    color: var(--zzx-sub);
+}
+
+/* 用两条边框拼一个向右的箭头，避免引入图片 */
+.zzx-menu__arrow {
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-top: 1px solid #c6cad0;
+    border-right: 1px solid #c6cad0;
+    transform: rotate(45deg);
+}
+
+/* 退出登录 */
+.zzx-logout {
+    display: block;
+    width: calc(100% - 24px);
+    max-width: calc(var(--zzx-page) - 24px);
+    margin: 18px auto 0;
+    padding: 12px 0;
+    border: 1px solid var(--zzx-line);
+    border-radius: var(--zzx-radius);
+    text-align: center;
+    font-size: 14px;
+    color: var(--zzx-desc);
+    background: #fbfbfc;
+}
+
+.zzx-version {
+    padding: 14px 0 4px;
+    text-align: center;
+    font-size: 11px;
+    color: #c2c6cc;
+}
+
+/* ---------- 8.5 发布页 ---------- */
+.zzx-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    height: 52px;
+    padding: 0 12px;
+    border-bottom: 1px solid var(--zzx-line);
+}
+
+.zzx-topbar__btn {
+    font-size: 14px;
+    color: var(--zzx-desc);
+}
+
+.zzx-topbar__btn--primary {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: var(--zzx-red);
+    color: var(--zzx-white);
+    font-size: 13px;
+}
+
+.zzx-topbar__btn--title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--zzx-text);
+}
+
+.zzx-editor {
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 14px 12px 0;
+}
+
+.zzx-editor__input {
+    width: 100%;
+    min-height: 148px;
+    border: 0;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--zzx-text);
+    background: transparent;
+}
+
+.zzx-editor__input::placeholder {
+    color: #b8bcc2;
+}
+
+.zzx-pics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 6px 12px 12px;
+}
+
+.zzx-pics__item {
+    position: relative;
+    padding-top: 100%;
+    border-radius: 8px;
+    background: var(--zzx-bg) no-repeat center / cover;
+    overflow: hidden;
+}
+
+.zzx-pics__add {
+    position: relative;
+    padding-top: 0;
+    height: 0;
+    padding-bottom: 100%;
+    border: 1px dashed #d5d8dd;
+    background: #fafbfc;
+}
+
+.zzx-pics__plus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 26px;
+    color: #c6cad0;
+    line-height: 1;
+}
+
+.zzx-option {
+    width: 100%;
+    max-width: var(--zzx-page);
+    margin: 0 auto;
+    padding: 0 12px;
+    border-top: 1px solid var(--zzx-line);
+}
+
+.zzx-option__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 2px;
+    border-bottom: 1px solid var(--zzx-line);
+    font-size: 14px;
+    color: var(--zzx-desc);
+}
+
+.zzx-option__item:last-child {
+    border-bottom: 0;
+}
+
+.zzx-option__value {
+    color: var(--zzx-sub);
+    font-size: 13px;
+}
+
+/* ---------- 9. 宽屏适配 ---------- */
+@media (min-width: 751px) {
+    /* 页面已铺满窗口，把窗口底色统一成白，避免滚到底时露出色差 */
+    body {
+        background: var(--zzx-white);
+    }
+}

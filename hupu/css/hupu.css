@@ -1,0 +1,2257 @@
+/* ==========================================================================
+   虎扑页面复刻（样式层）
+   高级网页设计I · 网页元素设计
+   学号：24002060419    姓名：张志翔
+   所有色值 / 尺寸均取自虎扑线上真实 CSS（bbsIndex_b86b2571.css）
+   主色  #C60100 / #C01E2E      容器 1240px      卡片缩略图 155×88
+   ========================================================================== */
+
+:root {
+    --hp-red: #c60100;
+    --hp-red-deep: #c01e2e;
+    --hp-red-hover: #a41f24;
+    --hp-title: #191c22;
+    --hp-text: #2d3137;
+    --hp-desc: #4e5158;
+    --hp-gray: #7b7e86;
+    --hp-gray-light: #9c9fa4;
+    --hp-line: #f6f6f6;
+    --hp-line2: #f4f4f4;
+    --hp-bg: #f1f3f4;
+    --hp-container: 1240px;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    margin: 0;
+    font-family: PingFangSC-Regular, "PingFang SC", miui, system-ui, -apple-system,
+        BlinkMacSystemFont, "Helvetica Neue", Helvetica, "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+    color: var(--hp-title);
+    background: var(--hp-bg);
+    -webkit-text-size-adjust: none;
+    word-break: break-word;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+    outline: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/* ========================== 1. 顶部快速导航条 ========================== */
+
+.hp-pc-rc-TopMenu-top-container {
+    width: 100%;
+    height: 24px;
+    background-color: #f7f7f7;
+    position: relative;
+    z-index: 999999999;
+}
+
+.hp-pc-rc-TopMenu-top {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: var(--hp-container);
+    height: 24px;
+    background-color: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hp-quickNav {
+    display: flex;
+    float: left;
+}
+
+.hp-quickNav li {
+    float: left;
+    padding: 0 10px;
+    list-style: none;
+}
+
+.hp-quickNav li.line {
+    padding: 0;
+    color: #ececec;
+}
+
+.hp-quickNav .mobileWeb {
+    padding-left: 0;
+}
+
+.hp-quickNav a {
+    color: var(--hp-title);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.hp-quickNav a:hover {
+    color: var(--hp-red-hover);
+}
+
+/* ========================== 2. 红色主导航条 ========================== */
+
+.hp-pc-rc-TopMenu {
+    position: relative;
+    z-index: 99999;
+    width: 100%;
+    height: 62px;
+    line-height: 38px;
+    background: var(--hp-red);
+    color: #fff;
+    font-size: 15px;
+    font-family: PingFangSC-Regular, "PingFang SC";
+}
+
+.hp-pc-rc-TopMenu-banner {
+    display: flex;
+    align-items: center;
+    width: var(--hp-container);
+    height: 62px;
+    margin: 0 auto;
+}
+
+.hp-pc-rc-TopMenu-banner .bannerlogonew {
+    display: flex;
+    align-items: center;
+    margin-right: 28px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.hp-pc-rc-TopMenu-banner .bannerlogonew img {
+    width: 33px;
+    height: 27px;
+    margin-left: 28px;
+}
+
+.hp-pc-rc-TopMenu-banner .banneritem {
+    flex: 1 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.hp-pc-rc-TopMenu-banner .banneritem a {
+    color: #fff;
+    display: inline-block;
+}
+
+.hp-pc-rc-TopMenu-banner .banneritem.active a {
+    font-weight: 600;
+}
+
+.hp-pc-rc-TopMenu-banner .banneritem a:hover {
+    opacity: .85;
+}
+
+/* 游戏中心（下拉） */
+.hp-pc-rc-TopMenu-banner .gamecenter {
+    flex: 1 1;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.hp-pc-rc-TopMenu-banner .gamecenter .gamecenter-header {
+    position: relative;
+    color: #fff;
+}
+
+.hp-pc-rc-TopMenu-banner .gamecenter .gamecenter-header:after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    border-top: 4px solid #fff;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+
+.hp-pc-rc-TopMenu-banner .gamecenter-content {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .04);
+    z-index: 999;
+    background-color: #fff;
+    transition: height .2s;
+}
+
+.hp-pc-rc-TopMenu-banner .gamecenter:hover .gamecenter-content {
+    height: 136px;
+}
+
+.hp-pc-rc-TopMenu-banner .gamecenter-content-item {
+    height: 34px;
+    font-size: 16px;
+    color: var(--hp-title);
+    font-weight: 400;
+    line-height: 34px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.hp-pc-rc-TopMenu-banner .gamecenter-content-item:hover {
+    background: var(--hp-red);
+    color: #fff;
+}
+
+/* ========================== 3. 赛事比分条 ========================== */
+
+.bbs-index-web-cardwarpBander {
+    max-width: var(--hp-container);
+    margin: 15px auto 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.cardListContainer {
+    background: #fff;
+    height: 110px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.cardListContainer .slick-arrow {
+    width: 24px;
+    text-align: center;
+    color: #d6d4d4;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    flex: 0 0 auto;
+}
+
+.cardListContainer .slick-arrow:hover {
+    color: var(--hp-red);
+}
+
+.cardListContainer .cardItemWrap {
+    flex: 1 1;
+    display: flex;
+    overflow: hidden;
+}
+
+.cardListContainer .cardItem {
+    padding: 10px 22px;
+    flex: 0 0 25%;
+    border-right: 1px solid #efefef;
+}
+
+.cardListContainer .cardItem:last-child {
+    border-right: 0;
+}
+
+.cardListContainer .cardItem .cardItemTitle {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    align-items: center;
+}
+
+.cardListContainer .cardItem .cardItemTitle .cardItemName-left {
+    color: var(--hp-gray);
+    font-size: 12px;
+}
+
+.cardListContainer .cardItem .cardItemTitle .cardItemName-right {
+    color: var(--hp-red);
+    font-size: 12px;
+}
+
+.cardListContainer .cardItem .cardItemContent .cardItemContentLine {
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardListContainer .cardItem .cardItemContent .cardItemContentLine .cardImg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--hp-title);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.cardListContainer .cardItem .cardItemContent .cardItemContentLine .cardImg img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+}
+
+.cardListContainer .cardItem .cardItemContent .cardItemContentLine-count {
+    color: var(--hp-red);
+    font-weight: 600;
+    font-size: 14px;
+    padding-left: 8px;
+}
+
+.cardListContainer .cardItem .cardItemContent .cardItemContentLine-count.gray {
+    color: var(--hp-gray);
+    font-weight: 400;
+}
+
+/* ========================== 4. 主体两栏布局 ========================== */
+
+.bbs-index-web-body {
+    display: flex;
+    align-items: flex-start;
+    max-width: var(--hp-container);
+    margin: 16px auto 0;
+    padding-bottom: 20px;
+}
+
+.bbs-index-web-middle {
+    flex-grow: 1;
+    margin: 0 17px 0 0;
+    background: #fff;
+    border-radius: 4px;
+    border-bottom: 1px solid var(--hp-line);
+    min-width: 0;
+}
+
+.bbs-index-web-right {
+    min-width: 400px;
+    width: 400px;
+}
+
+/* --- 中部标题栏 --- */
+.middle-label {
+    margin: 0 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid var(--hp-line);
+    height: 45px;
+    line-height: 45px;
+}
+
+.middle-label:before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 13px;
+    height: 20px;
+    border-left: 3px solid var(--hp-red-deep);
+}
+
+.middle-label .middle-title {
+    font-family: PingFangSC-Semibold, "PingFang SC";
+    color: var(--hp-title);
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.middle-label .middle-title i {
+    color: var(--hp-red-deep);
+    margin-right: 10.5px;
+    font-style: normal;
+}
+
+.middle-label .topic-list {
+    margin-left: 20px;
+    display: flex;
+    gap: 18px;
+}
+
+.middle-label .topic-list a {
+    font-size: 14px;
+    color: var(--hp-gray);
+}
+
+.middle-label .topic-list a:hover,
+.middle-label .topic-list a.on {
+    color: var(--hp-red-deep);
+}
+
+.middle-label .mode-btn {
+    position: absolute;
+    right: 0;
+    display: flex;
+    gap: 12px;
+    color: #d8d8d8;
+}
+
+.middle-label .mode-btn span {
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.middle-label .mode-btn span.on {
+    color: var(--hp-gray);
+}
+
+/* --- 资讯列表项 --- */
+.test-img-list-model {
+    background: #fff;
+}
+
+.test-img-list-model .list-item {
+    justify-content: flex-start;
+    align-items: center;
+    height: 120px;
+    font-size: 14px;
+    color: var(--hp-gray);
+    display: flex;
+    border-bottom: 1px solid var(--hp-line);
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.test-img-list-model .list-item:hover {
+    background: var(--hp-line);
+}
+
+.test-img-list-model .list-item .list-img {
+    width: 155px;
+    height: 88px;
+    background: #f1f1f1;
+    border-radius: 4px;
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+
+.test-img-list-model .list-item .list-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+    transition: transform .4s ease 0s;
+    display: block;
+}
+
+.test-img-list-model .list-item:hover .list-img img {
+    transform: scale(1.1);
+}
+
+.test-img-list-model .list-item .list-item-info {
+    margin-left: 15px;
+    flex: 1 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.test-img-list-model .list-item .list-item-info .list-item-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--hp-title);
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.test-img-list-model .list-item:hover .list-item-info .list-item-title {
+    color: var(--hp-red-deep);
+}
+
+.test-img-list-model .list-item .list-item-info .list-item-desc {
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--hp-desc);
+    margin-top: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.test-img-list-model .list-item .list-item-info .list-item-lights {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--hp-gray);
+    line-height: 17px;
+    margin-top: 8px;
+}
+
+.test-img-list-model .list-item .list-item-info .list-item-lights .t-label a {
+    color: var(--hp-gray);
+    font-size: 14px;
+}
+
+.test-img-list-model .list-item .list-item-info .list-item-lights .t-label a:hover {
+    color: var(--hp-red-deep);
+}
+
+.test-img-list-model .list-item .list-item-info .list-item-lights .light-num {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.test-img-list-model .list-item .list-item-info .list-item-lights .light-num span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ========================== 5. 右侧栏 ========================== */
+
+.bbs-index-web-right .download-app {
+    height: 160px;
+    margin-bottom: 16px;
+    background: 50%/cover no-repeat url("assets/download_bg.jpg");
+    border-radius: 4px;
+}
+
+.bbs-index-web-right .hot-search {
+    background: #fff;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding-bottom: 6px;
+}
+
+.hot-search .hot-search-title {
+    height: 45px;
+    font-family: PingFangSC-Semibold, "PingFang SC";
+    line-height: 45px;
+    color: var(--hp-title);
+    padding: 0 20px;
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.hot-search .hot-search-title:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 13px;
+    height: 20px;
+    border-left: 3px solid var(--hp-red);
+}
+
+.hot-search .hot-search-title .more {
+    float: right;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--hp-gray);
+}
+
+.hot-search .split-line {
+    height: 1px;
+    background: var(--hp-line2);
+    margin: 0 20px;
+}
+
+.hot-search .hot-search-item {
+    display: flex;
+    line-height: 20px;
+    font-size: 14px;
+    color: var(--hp-title);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 12px 20px;
+}
+
+.hot-search .hot-search-item .hot-index {
+    min-width: 22px;
+    font-family: HelveticaNeue-CondensedBold, "Helvetica Neue";
+    font-size: 14px;
+    color: var(--hp-gray-light);
+    flex: 0 0 auto;
+}
+
+.hot-search .hot-search-item .hot-title {
+    font-weight: 400;
+    color: var(--hp-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hot-search .hot-search-item:hover .hot-title {
+    color: var(--hp-red);
+}
+
+/* --- 右侧入口九宫格 --- */
+.entranceLayout {
+    background: #fff;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+.entranceLayout dl {
+    flex-grow: 1;
+    height: 66px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0;
+}
+
+.entranceLayout dl:not(:last-child) {
+    border-right: 1px solid #f5f5f5;
+}
+
+.entranceLayout .entrance-ico {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #fff;
+}
+
+.entranceLayout dt {
+    font-size: 12px;
+    color: var(--hp-title);
+    line-height: 14px;
+}
+
+.entranceLayout dl:hover dt {
+    color: var(--hp-red-deep);
+}
+
+/* ========================== 6. 页脚 ========================== */
+
+.PSiteAllFootNavi_W {
+    max-width: var(--hp-container);
+    margin: 0 auto;
+    padding: 24px 0 36px;
+    text-align: center;
+    color: var(--hp-gray);
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.PSiteAllFootNavi_W a {
+    color: var(--hp-gray);
+    margin: 0 8px;
+    display: inline-block;
+}
+
+.PSiteAllFootNavi_W a:hover {
+    color: var(--hp-red-deep);
+}
+
+.PSiteAllFootNavi_W .copyright {
+    margin-top: 8px;
+    color: var(--hp-gray-light);
+}
+
+/* ==========================================================================
+   虎扑步行街论坛页专属样式
+   取自 bbs-pc-svc/secondaryList_ad8fb71f.css
+   ========================================================================== */
+
+.bbs-sl-web {
+    min-width: 1240px;
+}
+
+.bbs-sl-web-holder {
+    padding: 16px 0;
+    background: #e9e9e9;
+}
+
+.bbs-sl-web-body {
+    display: flex;
+    margin: auto;
+    width: var(--hp-container);
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+/* --- 左侧导航 --- */
+.bbs-sl-web-nav {
+    flex: 0 0 216px;
+    width: 216px;
+}
+
+.hu-pc-navigation-type {
+    position: relative;
+    font-size: 14px;
+    color: #191c22;
+    font-weight: 600;
+    line-height: 36px;
+    padding: 0 12px;
+    background: #fff;
+}
+
+.hu-pc-navigation-type .extra {
+    float: right;
+    font-size: 12px;
+    font-weight: 400;
+    color: #96999f;
+    cursor: pointer;
+}
+
+.hu-pc-navigation-type .extra .iconfont {
+    display: inline-block;
+    margin-left: 2px;
+    font-style: normal;
+}
+
+.hu-pc-navigation-wrap {
+    background: #fff;
+    padding-bottom: 6px;
+}
+
+.hu-pc-navigation-my-focus-item {
+    margin: 0 20px;
+    padding: 12px 0;
+    color: #191c22;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.hu-pc-navigation-my-focus-item.login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 18px;
+    font-size: 12px;
+    color: #96999f;
+}
+
+.hu-pc-navigation-my-focus-item.login>a {
+    display: inline-block;
+    padding: 0 9px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+    color: #fff;
+    background: var(--hp-red-deep);
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.hu-pc-navigation-topic-type-item {
+    padding: 0 12px;
+}
+
+.hu-pc-navigation-topic-type-title {
+    display: block;
+    padding: 8px 0 8px 8px;
+    font-size: 14px;
+    color: #191c22;
+    cursor: pointer;
+}
+
+.hu-pc-navigation-topic-type-title .topic-icon {
+    display: inline-block;
+    margin-right: 6px;
+    width: 18px;
+    height: 18px;
+    transform: translateY(3px);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 2px;
+}
+
+.hu-pc-navigation-topic-type-title .iconfont {
+    float: right;
+    font-style: normal;
+    color: #96999f;
+    font-size: 12px;
+}
+
+.hu-pc-navigation-topic-type-link {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    padding: 0 0 10px 32px;
+}
+
+.hu-pc-navigation-topic-type-link a {
+    font-size: 13px;
+    color: #7b7e86;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.hu-pc-navigation-topic-type-link a:hover {
+    color: var(--hp-red);
+}
+
+/* --- 右侧主内容 --- */
+.bbs-sl-web-topic-wrap {
+    flex: 1 1;
+    max-width: 1008px;
+    margin-left: 16px;
+    padding: 0 20px 30px;
+    background-color: #f9f9f9;
+}
+
+.bbs-sl-web-bread-crumbs {
+    padding: 12px 0;
+    font-size: 12px;
+    color: #7b7e86;
+}
+
+.bbs-sl-web-bread-crumbs a {
+    color: #7b7e86;
+}
+
+.bbs-sl-web-bread-crumbs a:hover {
+    color: #a61624;
+}
+
+/* 版块资料卡 */
+.bbs-sl-web-intro {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 20px 0;
+    border: 1px solid #f5f5f5;
+    border-left: none;
+    position: relative;
+}
+
+.bbs-sl-web-intro-avatar {
+    width: 76px;
+    height: 76px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+
+.bbs-sl-web-intro-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bbs-sl-web-intro-detail {
+    flex: 1 1;
+    margin-left: 20px;
+    position: relative;
+    min-width: 0;
+}
+
+.bbs-sl-web-intro-detail-title-wrap {
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.bbs-sl-web-intro-detail-title {
+    font-family: PingFangSC;
+    font-weight: 600;
+    padding-right: 6px;
+    font-size: 20px;
+    color: #191c22;
+    vertical-align: middle;
+}
+
+.bbs-sl-web-intro-detail-button {
+    padding: 0;
+    width: 66px;
+    height: 22px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #fff;
+    background-color: var(--hp-red);
+    border-radius: 2px;
+    margin-left: 14px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.bbs-sl-web-intro-detail-button:hover {
+    background: #a61624;
+}
+
+.bbs-sl-web-intro-detail-desc {
+    display: flex;
+    margin-top: 6px;
+    line-height: 18px;
+}
+
+.bbs-sl-web-intro-detail-desc-title {
+    flex: 0 0 72px;
+    font-size: 12px;
+    color: #191c22;
+    font-weight: 500;
+}
+
+.bbs-sl-web-intro-detail-desc-text {
+    flex: 1 1;
+    font-size: 12px;
+    color: #4e5158;
+}
+
+.bbs-sl-web-admin-detail-desc-text .admin-auth a {
+    color: #4b8dc3;
+}
+
+/* 排序标签 */
+.bbs-sl-web-type-wrap {
+    border-bottom: 1px solid #e3e3e4;
+}
+
+.bbs-sl-web-type {
+    display: inline-block;
+    margin-right: 40px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #7b7e86;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.bbs-sl-web-type.active {
+    border-color: var(--hp-red);
+    color: #191c22;
+    cursor: default;
+}
+
+/* 帖子列表 */
+.bbs-sl-web-post-layout {
+    display: flex;
+    align-items: center;
+    max-height: 50px;
+    white-space: nowrap;
+}
+
+.bbs-sl-web-post-layout div {
+    padding: 12px 30px 12px 0;
+}
+
+.bbs-sl-web-post-layout div:first-child {
+    flex: 1 1;
+    min-width: 0;
+}
+
+.bbs-sl-web-post-layout div:nth-child(2) {
+    flex-basis: 130px;
+    flex-shrink: 0;
+}
+
+.bbs-sl-web-post-layout div:nth-child(3) {
+    flex-basis: 150px;
+    flex-shrink: 0;
+}
+
+.bbs-sl-web-post-layout div:last-child {
+    padding-right: 0;
+    flex-basis: 130px;
+    flex-shrink: 0;
+}
+
+.bbs-sl-web-post-header {
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #e3e3e4;
+    color: #7b7e86;
+}
+
+.bbs-sl-web-post-header div:first-child {
+    flex: 1 1;
+    padding-left: 20px;
+}
+
+.bbs-sl-web-post-body {
+    line-height: 24px;
+    border-bottom: 1px solid #e3e3e4;
+    list-style: none;
+}
+
+.bbs-sl-web-post-body:hover {
+    background: #f1f1f1;
+}
+
+.bbs-sl-web-post-body .post-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.bbs-sl-web-post-body .post-title .p-title {
+    max-width: 75%;
+    color: #2d3137;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 24px;
+}
+
+.bbs-sl-web-post-body .post-title .p-title:hover {
+    color: var(--hp-red);
+}
+
+.bbs-sl-web-post-body .post-title .light-icon {
+    margin-left: 10px;
+    font-size: 12px;
+    color: var(--hp-red-deep);
+}
+
+.bbs-sl-web-post-body .post-title .shipin-tag {
+    margin-left: 8px;
+    font-size: 12px;
+    color: var(--hp-red-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.bbs-sl-web-post-body .post-title .page-icon {
+    margin-left: 11px;
+    display: inline-block;
+    color: #7b7e86;
+    font-size: 12px;
+}
+
+.bbs-sl-web-post-body .post-title .page-icon .page-icon-item {
+    margin-left: 5px;
+    color: #7b7e86;
+}
+
+.bbs-sl-web-post-body .post-datum {
+    font-size: 12px;
+    color: #7b7e86;
+}
+
+.bbs-sl-web-post-body .post-auth {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bbs-sl-web-post-body .post-auth a {
+    color: #4b8dc3;
+    cursor: pointer;
+}
+
+.bbs-sl-web-post-body .post-time {
+    font-size: 12px;
+    color: #96999f;
+}
+
+/* 分页 */
+.bbs-sl-web-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 24px 0 10px;
+}
+
+.bbs-sl-web-page span {
+    min-width: 30px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    padding: 0 8px;
+    font-size: 13px;
+    color: #4e5158;
+    background: #fff;
+    border: 1px solid #e3e3e4;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.bbs-sl-web-page span:hover {
+    color: var(--hp-red);
+    border-color: var(--hp-red);
+}
+
+.bbs-sl-web-page span.active {
+    background: var(--hp-red);
+    border-color: var(--hp-red);
+    color: #fff;
+}
+
+/* ==========================================================================
+   虎扑帖子详情页  (取自 bbs-pc-web 详情页 CSS)
+   楼层头像 36px、用户名 #4b8dc3、时间/等级 #96999f、操作 #959595
+   ========================================================================== */
+
+.post-wrapper {
+    background: #f3f3f3;
+    padding: 16px 0 40px;
+}
+
+.post-wrapper-inner {
+    width: var(--hp-container);
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.post-main {
+    flex: 1 1;
+    min-width: 0;
+    margin-right: 16px;
+}
+
+.post-side {
+    flex: 0 0 300px;
+    width: 300px;
+}
+
+/* --- 面包屑 --- */
+.post-crumb {
+    padding: 0 0 12px;
+    font-size: 12px;
+    color: #7b7e86;
+}
+
+.post-crumb a {
+    color: #7b7e86;
+}
+
+.post-crumb a:hover {
+    color: #a61624;
+}
+
+/* --- 主贴卡片 --- */
+.post-card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 24px 30px 20px;
+    margin-bottom: 16px;
+}
+
+.post-user-comp {
+    display: flex;
+    align-items: flex-start;
+}
+
+.post-user-comp-avatar-wrapper {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex: 0 0 48px;
+}
+
+.post-user-comp-avatar-wrapper img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: block;
+}
+
+.post-user-comp-info {
+    flex: 1 1;
+    margin-left: 12px;
+    min-width: 0;
+}
+
+.post-user-comp-info-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.post-user-comp-info-top-name {
+    color: #4b8dc3;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.post-user-comp-info-top-level,
+.post-user-comp-info-top-time,
+.post-user-comp-info-user-location {
+    color: #96999f;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.post-user-comp-info-top-tip {
+    display: inline-block;
+    margin-right: 8px;
+    background: #d8d8d8;
+    border-radius: 9px;
+    color: #191c22;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 1px 6px;
+}
+
+.post-user-comp-info-bottom {
+    margin-top: 8px;
+}
+
+.post-user-comp-info-bottom-title {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: #191c22;
+    line-height: 30px;
+    margin-bottom: 8px;
+}
+
+.post-user-comp-info-bottom-from {
+    font-size: 12px;
+    color: #7b7e86;
+}
+
+.post-user-comp-info-bottom-from a {
+    color: #4b8dc3;
+}
+
+/* 正文 */
+.thread-content-detail {
+    margin-top: 18px;
+    font-size: 16px;
+    line-height: 30px;
+    color: #191c22;
+    word-break: break-word;
+}
+
+.thread-content-detail p {
+    margin: 0 0 14px;
+}
+
+/* 主贴操作条 */
+.post-operate {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.post-operate-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 2px;
+    font-size: 13px;
+    color: #7b7e86;
+    background: #f7f7f7;
+    cursor: pointer;
+}
+
+.post-operate-btn:hover {
+    color: #c60100;
+    background: #fdeaea;
+}
+
+.post-operate-btn.on {
+    color: #c60100;
+    font-weight: 600;
+}
+
+.post-operate-share {
+    margin-left: auto;
+    font-size: 13px;
+    color: #7b7e86;
+    display: flex;
+    gap: 12px;
+}
+
+.post-operate-share span {
+    cursor: pointer;
+}
+
+.post-operate-share span:hover {
+    color: #c60100;
+}
+
+/* --- 回复区标题 --- */
+.reply-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 4px 4px 0 0;
+    padding: 0 30px;
+    height: 50px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.reply-header-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #191c22;
+}
+
+.reply-header-title em {
+    font-style: normal;
+    color: #c01e2e;
+}
+
+.reply-header-sort {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: #7b7e86;
+}
+
+.reply-header-sort span {
+    cursor: pointer;
+}
+
+.reply-header-sort span.on {
+    color: #c60100;
+}
+
+/* --- 楼层 --- */
+.reply-list {
+    background: #fff;
+    padding: 0 30px;
+    border-radius: 0 0 4px 4px;
+}
+
+.post-reply-list {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.post-reply-list:last-child {
+    border-bottom: 0;
+}
+
+.reply-list-avatar-wrapper {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.reply-list-avatar-wrapper img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: block;
+}
+
+.reply-list-content {
+    flex: 1 1;
+    min-width: 0;
+}
+
+.post-reply-list-user-info-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-base-info {
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.post-reply-list-user-info-top-name {
+    color: #4b8dc3;
+    font-size: 14px;
+    margin-right: 8px;
+    line-height: 1;
+}
+
+.post-reply-list-user-info-top-level,
+.post-reply-list-user-info-top-time,
+.post-reply-list-user-info-user-location {
+    color: #96999f;
+    font-size: 12px;
+    font-weight: 200;
+    margin-right: 8px;
+}
+
+.user-operate {
+    flex: 0 0 auto;
+    font-size: 12px;
+    color: #959595;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.user-operate span {
+    color: #959595;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.user-operate span:hover {
+    color: #48494a;
+}
+
+.post-reply-list-content {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 26px;
+    color: #191c22;
+    word-break: break-word;
+}
+
+.post-reply-list-content p {
+    margin: 0 0 8px;
+}
+
+/* 引用块 */
+.reply-quote {
+    margin: 10px 0;
+    padding: 10px 14px;
+    background: #f3f3f3;
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #7b7e86;
+}
+
+.reply-quote-head {
+    margin-bottom: 4px;
+    font-size: 13px;
+}
+
+.reply-quote-head a {
+    color: #4b8dc3;
+}
+
+/* 楼层操作 */
+.reply-operate {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+.reply-operate .todo-list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 28px;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #7b7e86;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.reply-operate .todo-list:hover {
+    color: #c60100;
+    background: #fdeaea;
+}
+
+.reply-operate .todo-list.on {
+    color: #c60100;
+    font-weight: 600;
+}
+
+.reply-floor {
+    margin-left: auto;
+    font-size: 12px;
+    color: #afb1b5;
+}
+
+/* --- 底部回复框 --- */
+.reply-editor {
+    background: #fff;
+    border-radius: 4px;
+    margin-top: 16px;
+    padding: 16px 30px 20px;
+}
+
+.reply-editor-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.reply-editor-head-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #191c22;
+}
+
+.reply-editor-head-tip {
+    font-size: 12px;
+    color: #96999f;
+}
+
+.reply-editor textarea {
+    width: 100%;
+    height: 96px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 22px;
+    color: #191c22;
+    background: #fafafa;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    resize: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.reply-editor textarea:focus {
+    border-color: #c60100;
+    background: #fff;
+}
+
+.reply-editor-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.reply-editor-tools {
+    display: flex;
+    gap: 14px;
+    font-size: 16px;
+    color: #afb1b5;
+}
+
+.reply-editor-tools span {
+    cursor: pointer;
+}
+
+.reply-editor-tools span:hover {
+    color: #c60100;
+}
+
+.reply-editor-submit {
+    width: 96px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background: #c60100;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.reply-editor-submit:hover {
+    background: #a61624;
+}
+
+/* --- 右侧栏 --- */
+.post-side-card {
+    background: #fff;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+}
+
+.post-side-card-title {
+    height: 46px;
+    line-height: 46px;
+    padding: 0 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #191c22;
+    position: relative;
+}
+
+.post-side-card-title:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    height: 18px;
+    border-left: 3px solid #c60100;
+}
+
+.post-side-post-item {
+    display: block;
+    padding: 10px 16px;
+}
+
+.post-side-post-item:hover .post-side-post-title {
+    color: #c60100;
+}
+
+.post-side-post-title {
+    font-size: 14px;
+    line-height: 21px;
+    color: #2d3137;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.post-side-post-info {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #96999f;
+}
+
+.post-side-post-info em {
+    font-style: normal;
+    color: #c01e2e;
+}
+
+/* ==========================================================================
+   虎扑频道页（篮球/NBA）  (取自 basketball-pc-web/home.css)
+   比赛卡片 272×55、球队名 80px、资讯标题 18px/16px
+   ========================================================================== */
+
+.channel-page {
+    background: #f1f3f4;
+    padding: 16px 0 40px;
+}
+
+.channel-inner {
+    width: var(--hp-container);
+    margin: 0 auto;
+}
+
+.channel-hero {
+    height: 200px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    position: relative;
+    background: linear-gradient(120deg, #a61624 0%, #c60100 55%, #d94b2b 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 44px;
+    color: #fff;
+}
+
+.channel-hero-title {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.channel-hero-desc {
+    font-size: 14px;
+    opacity: .92;
+    line-height: 24px;
+    max-width: 620px;
+}
+
+.channel-hero-tabs {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+}
+
+.channel-hero-tabs a {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 14px;
+    font-size: 13px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .65);
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+.channel-hero-tabs a.on,
+.channel-hero-tabs a:hover {
+    background: #fff;
+    color: #c60100;
+    font-weight: 600;
+}
+
+.channel-body {
+    display: flex;
+    align-items: flex-start;
+}
+
+.channel-main {
+    flex: 1 1;
+    min-width: 0;
+    margin-right: 16px;
+}
+
+.channel-side {
+    flex: 0 0 360px;
+    width: 360px;
+}
+
+.channel-card {
+    background: #fff;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.channel-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 20px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.channel-card-head h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #191c22;
+    position: relative;
+    padding-left: 12px;
+}
+
+.channel-card-head h3:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    height: 18px;
+    border-left: 3px solid #c60100;
+}
+
+.channel-card-head .more {
+    font-size: 12px;
+    color: #96999f;
+    cursor: pointer;
+}
+
+.channel-card-head .more:hover {
+    color: #c60100;
+}
+
+/* 赛程卡片网格 */
+.nba-match-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    padding: 0 20px 10px;
+}
+
+.match-card {
+    display: block;
+    height: 55px;
+    font-size: 0;
+    border-bottom: 1px solid #f0eff3;
+    position: relative;
+    padding: 0 14px;
+    margin: 0 -14px;
+}
+
+.match-card:hover .team-name,
+.match-card:hover .team-rate {
+    color: #c01e2f;
+}
+
+.match-card-team {
+    width: 132px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px 0;
+}
+
+.match-card-team .team-item {
+    width: 132px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.match-card-team .team-item .team-logo {
+    display: inline-block;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.match-card-team .team-item .team-name {
+    display: inline-block;
+    margin-left: 5px;
+    width: 80px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #191c22;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.match-card-team .team-item .team-rate {
+    font-size: 12px;
+    line-height: 20px;
+    text-align: right;
+    float: right;
+    color: #191c22;
+}
+
+.match-card-team .team-item .team-rate.highlight {
+    color: #c01e2f;
+}
+
+.match-card-team .team-item.light .team-name,
+.match-card-team .team-item.light .team-rate {
+    color: #96999f;
+}
+
+.match-card-detail {
+    display: inline-block;
+    vertical-align: top;
+    width: 96px;
+    padding: 10px 0 0 26px;
+    text-align: right;
+}
+
+.match-card-detail .date-detail {
+    height: 12px;
+    line-height: 12px;
+}
+
+.match-card-detail .date-detail .date {
+    font-size: 12px;
+    color: #7b7e86;
+    margin-right: 9px;
+}
+
+.match-card-detail .date-detail .living-time {
+    font-size: 12px;
+    color: #c01e2e;
+    margin-right: 9px;
+}
+
+.match-card-detail .date-detail .link {
+    font-size: 12px;
+    color: #191c22;
+}
+
+/* 频道资讯列表 */
+.channel-news {
+    padding: 6px 20px 16px;
+}
+
+.channel-news-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f4f4f4;
+    cursor: pointer;
+}
+
+.channel-news-item:last-child {
+    border-bottom: 0;
+}
+
+.channel-news-item:hover .channel-news-title {
+    color: #c01e2f;
+}
+
+.channel-news-text {
+    flex: 1 1;
+    min-width: 0;
+}
+
+.channel-news-title {
+    font-size: 16px;
+    line-height: 24px;
+    color: #2d3137;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.channel-news-item.bold .channel-news-title {
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 700;
+}
+
+.channel-news-meta {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #96999f;
+    display: flex;
+    gap: 14px;
+}
+
+.channel-news-meta em {
+    font-style: normal;
+    color: #c01e2e;
+}
+
+.channel-news-thumb {
+    flex: 0 0 132px;
+    width: 132px;
+    height: 88px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f1f1f1;
+}
+
+.channel-news-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s;
+}
+
+.channel-news-item:hover .channel-news-thumb img {
+    transform: scale(1.08);
+}
+
+/* 频道右侧热榜 */
+.channel-hot-item {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 11px 20px;
+    cursor: pointer;
+}
+
+.channel-hot-item:hover .channel-hot-title {
+    color: #c60100;
+}
+
+.channel-hot-index {
+    flex: 0 0 18px;
+    font-family: HelveticaNeue-CondensedBold, "Helvetica Neue";
+    font-size: 15px;
+    color: #9c9fa4;
+}
+
+.channel-hot-title {
+    font-size: 14px;
+    line-height: 21px;
+    color: #2d3137;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+/* 球队排行 */
+.team-rank-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+}
+
+.team-rank-item:hover .team-rank-name {
+    color: #c60100;
+}
+
+.team-rank-logo {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    flex: 0 0 26px;
+}
+
+.team-rank-name {
+    flex: 1 1;
+    font-size: 14px;
+    color: #191c22;
+}
+
+.team-rank-win {
+    font-size: 13px;
+    color: #7b7e86;
+}
+
+/* a.list-item 需要保持原有 flex 布局（a 默认是行内元素） */
+a.list-item {
+    display: flex;
+    color: inherit;
+}
+
+a.list-item:hover {
+    text-decoration: none;
+}
+
+a.list-item .list-item-info .list-item-title {
+    color: #191c22;
+}
+
+/* 热榜整条可点 */
+.hot-search a {
+    display: block;
+    color: inherit;
+}
+
+.hot-search a:hover {
+    text-decoration: none;
+}
+
+/* 修正：赛程卡片在 3 列网格里自适应，避免 272px 固定宽溢出 */
+.nba-match-container .match-card {
+    width: auto;
+    margin: 0;
+    padding: 0 4px;
+    box-sizing: border-box;
+}
+
+.nba-match-container .match-card-team {
+    width: auto;
+    min-width: 0;
+    flex: 1 1;
+}
+
+.nba-match-container .match-card-team .team-item {
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+
+.nba-match-container .match-card-team .team-item .team-name {
+    width: auto;
+    flex: 1 1;
+    min-width: 0;
+}
+
+.nba-match-container .match-card-team .team-item .team-rate {
+    float: none;
+    margin-left: auto;
+    padding-left: 6px;
+}
+
+.nba-match-container .match-card-detail {
+    width: auto;
+    flex: 0 0 auto;
+    padding-left: 8px;
+}
+
+.nba-match-container .match-card {
+    display: flex;
+    align-items: center;
+}
+
+.nba-match-container .match-card-detail .date-detail {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* 板块标签（list-item 整体是 a，内层不能再用 a） */
+.t-label-link {
+    color: #7b7e86;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.t-label-link:hover {
+    color: #c01e2e;
+}
+
+/* 频道页热榜项为 a 标签，保持 flex 布局 */
+a.channel-hot-item {
+    display: flex;
+    color: inherit;
+}
+
+a.channel-hot-item:hover {
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   响应式适配（学号 24002060419 / 姓名 张志翔）
+   断点：1339px（容器收窄）→ 1023px（收起侧栏）→ 767px（单列）
+   原站为 PC 端固定 1240px 栅格，此处补充多视口下的降级方案
+   ========================================================================== */
+
+@media (max-width: 1339px) {
+
+    :root {
+        --hp-container: calc(100% - 32px);
+    }
+
+    /* 首页右栏随容器收窄 */
+    .bbs-index-web-right {
+        min-width: 340px;
+        width: 340px;
+    }
+
+    /* 频道页侧栏同步收窄 */
+    .channel-side {
+        flex: 0 0 320px;
+        width: 320px;
+    }
+
+    /* 赛程由 3 列降为 2 列，避免卡片被压扁 */
+    .nba-match-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1023px) {
+
+    /* 解除原站的 1240px 最小宽度锁定 */
+    .bbs-sl-web {
+        min-width: 0;
+    }
+
+    /* 右侧辅助栏在多视口下隐藏，主内容占满 */
+    .bbs-index-web-right,
+    .channel-side,
+    .post-side {
+        display: none;
+    }
+
+    .bbs-index-web-middle {
+        margin-right: 0;
+    }
+
+    /* 论坛左栏由 216px 收到 180px */
+    .bbs-sl-web-nav {
+        flex: 0 0 180px;
+        width: 180px;
+    }
+
+    /* 帖子四列中，作者列收窄 */
+    .bbs-sl-web-post-layout div:nth-child(2) {
+        flex-basis: 110px;
+    }
+
+    .bbs-sl-web-post-layout div:nth-child(3) {
+        flex-basis: 120px;
+    }
+
+    /* 顶部导航允许横向滚动，不换行错位 */
+    .hp-pc-rc-TopMenu-banner {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .hp-pc-rc-TopMenu-banner::-webkit-scrollbar {
+        display: none;
+    }
+
+    .banneritem {
+        flex: 0 0 auto;
+    }
+}
+
+@media (max-width: 767px) {
+
+    /* 顶部快速导航条在窄屏收起 */
+    .hp-pc-rc-TopMenu-top-container {
+        display: none;
+    }
+
+    /* 所有左右分栏改为上下堆叠 */
+    .bbs-index-web-body,
+    .bbs-sl-web-body,
+    .channel-body,
+    .post-wrapper-inner {
+        flex-direction: column;
+    }
+
+    .bbs-sl-web-nav {
+        flex: 1 1 auto;
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .bbs-sl-web-topic-wrap {
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+        padding: 0 12px 20px;
+    }
+
+    .post-main {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .post-card,
+    .reply-list,
+    .reply-header {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .post-main,
+    .channel-main {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    /* 赛程单列 */
+    .nba-match-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* 资讯卡片缩略图缩小，保证文字不被挤压 */
+    .test-img-list-model .list-item .list-img,
+    .test-img-list-model .list-item .list-img img {
+        width: 108px;
+        height: 68px;
+    }
+
+    .channel-news-item.bold .channel-news-title {
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    .channel-hero {
+        height: auto;
+        padding: 24px 20px;
+    }
+
+    .channel-hero-title {
+        font-size: 24px;
+    }
+
+    /* 帖子列表在窄屏只留标题与时间 */
+    .bbs-sl-web-post-layout div:nth-child(2),
+    .bbs-sl-web-post-layout div:nth-child(3) {
+        display: none;
+    }
+
+    .bbs-sl-web-post-body .post-title .p-title {
+        max-width: 100%;
+    }
+}

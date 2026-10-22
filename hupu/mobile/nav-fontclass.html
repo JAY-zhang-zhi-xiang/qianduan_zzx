@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+    高级网页设计I · 图像解决方案
+    学号：24002060419      姓名：张志翔
+    选题：虎扑（移动端下导航）
+    实现方式 B：iconfont 字体图标（font-class），与 index.html 的 SVG 版形成技术对比
+    字体包：我自己在 iconfont.cn 建的图标项目「zhangzhixiang2026」（项目 id 5244713）下载
+      首页 → icon-index-copy      U+E622  icon_id=19985212  首页-选中
+      专区 → icon-xiaoxi          U+E64B  icon_id=1183007   消息
+      深聊 → icon-taifenglujing   U+E649  icon_id=2984471   台风路径
+      我的 → icon-wode            U+E641  icon_id=5004078   我的
+      发布 → 包内 icon-jiahao 系自带圆形外框，叠在红色圆钮上会形成双环，
+             故仍用 CSS 两条线画加号（见 hupu-mobile.css 的 .zzx-tabbar__plusmark）
+    字体文件：font/iconfont.woff2 / woff / ttf，@font-face 与类名见 css/iconfont.css
+    说明：本页刻意不再引入 SVG 雪碧图，以体现两种方案的实现差异
+-->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#c60100">
+    <title>下导航 · 字体图标版 - 虎扑</title>
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/hupu-mobile.css">
+</head>
+
+<body>
+
+
+<div class="zzx-page">
+
+    <!-- 技术说明条：标明本页用的是字体图标，并给出返回 SVG 版的入口 -->
+    <div class="zzx-note">
+        <span class="zzx-note__text">本页为<b>字体图标版</b>（font-class）</span>
+        <a class="zzx-note__link" href="index.html">切换 SVG 版</a>
+    </div>
+
+    <!-- 顶部：logo / 搜索 / 头像 -->
+    <header class="zzx-header">
+        <span class="zzx-header__logo">虎扑</span>
+        <div class="zzx-header__search">
+            <span class="zzx-header__placeholder">大家都在搜：kpl</span>
+            <span class="zzx-header__submit">搜索</span>
+        </div>
+    </header>
+
+    <!-- 顶部频道 tab -->
+    <nav class="zzx-channels" aria-label="频道">
+        <a class="zzx-channels__item zzx-channels__item--hot" href="#">热榜</a>
+        <a class="zzx-channels__item is-active" href="#">推荐</a>
+        <a class="zzx-channels__item" href="#">NBA</a>
+        <a class="zzx-channels__item" href="#">AI工坊</a>
+        <a class="zzx-channels__item" href="#">中国篮球</a>
+    </nav>
+
+    <!-- 比分条 -->
+    <section class="zzx-score">
+        <div class="zzx-score__row">
+            <span class="zzx-score__team">湖人</span>
+            <span class="zzx-score__num">108</span>
+            <span class="zzx-score__mid">第四节 02:14</span>
+            <span class="zzx-score__num">105</span>
+            <span class="zzx-score__team zzx-score__team--right">凯尔特人</span>
+        </div>
+        <div class="zzx-score__state">文字直播中 · 12.8 万人正在看</div>
+    </section>
+
+    <!-- 信息流 -->
+    <ul class="zzx-feed">
+        <li class="zzx-feed__item">
+            <img class="zzx-feed__thumb" src="../assets/news1.png" alt="">
+            <div class="zzx-feed__body">
+                <h2 class="zzx-feed__title">末节连得 9 分！湖人在客场完成逆转，系列赛扳成 2:2</h2>
+                <div class="zzx-feed__meta">
+                    <span class="zzx-feed__tag">NBA</span>
+                    <span>3.2 万阅读</span>
+                    <span>486 回复</span>
+                </div>
+            </div>
+        </li>
+        <li class="zzx-feed__item">
+            <img class="zzx-feed__thumb" src="../assets/news3.png" alt="">
+            <div class="zzx-feed__body">
+                <h2 class="zzx-feed__title">步行街热议：为什么现在的球员很少打满 82 场了？</h2>
+                <div class="zzx-feed__meta">
+                    <span class="zzx-feed__tag">步行街</span>
+                    <span>1.7 万阅读</span>
+                    <span>912 回复</span>
+                </div>
+            </div>
+        </li>
+        <li class="zzx-feed__item">
+            <img class="zzx-feed__thumb" src="../assets/news2.jpg" alt="">
+            <div class="zzx-feed__body">
+                <h2 class="zzx-feed__title">CBA 新赛季揭幕战定档，季票明日上午十点开售</h2>
+                <div class="zzx-feed__meta">
+                    <span class="zzx-feed__tag">中国篮球</span>
+                    <span>9862 阅读</span>
+                    <span>231 回复</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <!-- 步行街热帖 -->
+    <section class="zzx-hot">
+        <h3 class="zzx-hot__head">
+            <span class="zzx-hot__title">步行街 · 热帖</span>
+            <a class="zzx-hot__more" href="#">更多</a>
+        </h3>
+        <ul class="zzx-hot__list">
+            <li class="zzx-hot__item">
+                <span class="zzx-hot__rank">1</span>
+                <a class="zzx-hot__link" href="#">打了十年球，第一次见到这种防守站位</a>
+                <span class="zzx-hot__num">1286 亮</span>
+            </li>
+            <li class="zzx-hot__item">
+                <span class="zzx-hot__rank">2</span>
+                <a class="zzx-hot__link" href="#">为什么职业球员罚球命中率还不如业余的？</a>
+                <span class="zzx-hot__num">974 亮</span>
+            </li>
+            <li class="zzx-hot__item">
+                <span class="zzx-hot__rank">3</span>
+                <a class="zzx-hot__link" href="#">晒晒我收藏的 90 年代球衣，全都是真品</a>
+                <span class="zzx-hot__num">655 亮</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 深聊：对应底部「深聊」tab 的内容 -->
+    <section class="zzx-talk">
+        <h3 class="zzx-hot__head">
+            <span class="zzx-hot__title">深聊 · 正在热议</span>
+            <a class="zzx-hot__more" href="#">进入</a>
+        </h3>
+
+        <ul class="zzx-talk__list">
+            <li class="zzx-talk__item">
+                <div class="zzx-talk__top">
+                    <img class="zzx-talk__avatar" src="../assets/bbs_avatar.png" alt="">
+                    <span class="zzx-talk__user">登哥的眼神</span>
+                    <span class="zzx-talk__time">10 分钟前</span>
+                </div>
+                <p class="zzx-talk__text">教科书级别的神怼！一句话把对面噎住了</p>
+                <div class="zzx-talk__foot">
+                    <span>1286 人参与</span>
+                    <span>2 分钟前有新回复</span>
+                </div>
+            </li>
+            <li class="zzx-talk__item">
+                <div class="zzx-talk__top">
+                    <img class="zzx-talk__avatar" src="../assets/nbalogo0.png" alt="">
+                    <span class="zzx-talk__user">骑蜗牛赛跑</span>
+                    <span class="zzx-talk__time">32 分钟前</span>
+                </div>
+                <p class="zzx-talk__text">如果只能留一个球员建队，你会选谁？理由说清楚</p>
+                <div class="zzx-talk__foot">
+                    <span>942 人参与</span>
+                    <span>8 分钟前有新回复</span>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+</div>
+
+<!-- ================= 下导航（实验核心） ================= -->
+<nav class="zzx-tabbar" aria-label="底部导航">
+    <div class="zzx-tabbar__inner">
+
+        <a class="zzx-tabbar__item is-active" href="nav-fontclass.html" aria-current="page">
+            <i class="iconfont icon-index-copy zzx-tabbar__font" aria-hidden="true"></i>
+            <span class="zzx-tabbar__text">首页</span>
+        </a>
+
+        <a class="zzx-tabbar__item" href="zone.html">
+            <i class="iconfont icon-xiaoxi zzx-tabbar__font" aria-hidden="true"></i>
+            <span class="zzx-tabbar__text">专区</span>
+        </a>
+
+        <!-- 中间：凸起的发布按钮，不属于 tab，点击跳转到发布页 -->
+        <a class="zzx-tabbar__publish" href="publish.html" aria-label="发布内容">
+            <span class="zzx-tabbar__plusmark" aria-hidden="true"></span>
+        </a>
+
+        <a class="zzx-tabbar__item" href="chat.html">
+            <i class="iconfont icon-taifenglujing zzx-tabbar__font" aria-hidden="true"></i>
+            <span class="zzx-tabbar__text">深聊</span>
+        </a>
+
+        <a class="zzx-tabbar__item" href="mine.html">
+            <i class="iconfont icon-wode zzx-tabbar__font" aria-hidden="true"></i>
+            <span class="zzx-tabbar__text">我的</span>
+        </a>
+
+    </div>
+</nav>
+
+<script>
+    /* 点击切换当前 tab：先切 class 让选中态立刻可见，再跳转到对应页面 */
+    (function () {
+        var items = document.querySelectorAll('.zzx-tabbar__item');
+        for (var i = 0; i < items.length; i++) {
+            items[i].addEventListener('click', function (e) {
+                for (var j = 0; j < items.length; j++) {
+                    items[j].classList.remove('is-active');
+                    items[j].removeAttribute('aria-current');
+                }
+                this.classList.add('is-active');
+                this.setAttribute('aria-current', 'page');
+            });
+        }
+    })();
+</script>
+
+</body>
+
+</html>
