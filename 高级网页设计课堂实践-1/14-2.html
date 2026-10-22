@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 姓名：张志翔 | 日期：2026-10-22 | 功能：JavaScript 数据类型 -->
+    <h2>张志翔的JavaScript数据类型</h2>
+    <script>
+        //1.数字型 Number（整数和小数都是数字型）
+        var zzxAge = 20;
+        var zzxPrice = 9.9;
+        console.log(zzxAge, typeof zzxAge);
+        console.log(zzxPrice, typeof zzxPrice);
+
+        //2.字符串型 String（用引号包裹的内容）
+        var zzxName = "张志翔";
+        var zzxSchool = '我的大学';
+        console.log(zzxName, typeof zzxName);
+        console.log(zzxSchool, typeof zzxSchool);
+
+        //3.布尔型 Boolean（只有 true 和 false 两个值）
+        var zzxIsStudent = true;
+        var zzxIsConfirm = false;
+        console.log(zzxIsStudent, typeof zzxIsStudent);
+        console.log(zzxIsConfirm, typeof zzxIsConfirm);
+
+        //4.未定义型 Undefined（声明了但没赋值）
+        var zzxScore;
+        console.log(zzxScore, typeof zzxScore);
+
+        //5.空值 Null（表示空对象）
+        var zzxResult = null;
+        console.log(zzxResult, typeof zzxResult);
+
+        //6.对象型 Object（数组、对象都属于 object）
+        var zzxStudent = { name: "张志翔", age: 20 };
+        var zzxHobby = ["篮球", "音乐", "编程"];
+        console.log(zzxStudent, typeof zzxStudent);
+        console.log(zzxHobby, typeof zzxHobby);
+
+        //数据类型转换
+        var zzxNum1 = "10";
+        var zzxNum2 = 5;
+        console.log(zzxNum1 + zzxNum2);              //字符串拼接：105
+        console.log(Number(zzxNum1) + zzxNum2);      //转换成数字再相加：15
+        console.log(String(zzxNum2), typeof String(zzxNum2));
+        console.log(Boolean(0), Boolean(1));
+    </script>
+</body>
+</html>
