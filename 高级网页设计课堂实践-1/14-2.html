@@ -1,53 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张志翔的JavaScript数据类型</title>
+    <link rel="stylesheet" href="../font_5244713_yt3vridbf1h/iconfont.css">
+    <style>
+        /* ===== 基础与背景 ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #2d3748;
+        }
+        .zzx-container { max-width: 1000px; margin: 0 auto; }
+
+        /* ===== 头部 ===== */
+        .zzx-header { text-align: center; margin-bottom: 36px; }
+        .zzx-header .iconfont {
+            font-size: 46px;
+            color: #fff;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            width: 84px; height: 84px; line-height: 84px;
+            border-radius: 24px;
+            display: inline-block;
+            box-shadow: 0 10px 24px rgba(102, 126, 234, .4);
+        }
+        .zzx-header h1 { font-size: 30px; margin: 16px 0 8px; letter-spacing: 2px; }
+        .zzx-header p { color: #718096; font-size: 14px; }
+
+        /* ===== 卡片网格 ===== */
+        .zzx-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .zzx-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 4px 14px rgba(45, 55, 72, .08);
+            border-top: 4px solid var(--zzx-accent);
+            transition: transform .25s, box-shadow .25s;
+        }
+        .zzx-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(45, 55, 72, .16);
+        }
+        .zzx-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .zzx-card-icon {
+            width: 44px; height: 44px; line-height: 44px;
+            text-align: center; border-radius: 12px;
+            background: var(--zzx-accent);
+            flex-shrink: 0;
+        }
+        .zzx-card-icon .iconfont { font-size: 22px; color: #fff; }
+        .zzx-card-head h2 { font-size: 19px; }
+        .zzx-card-head span {
+            display: block; font-size: 12px; font-weight: normal;
+            color: #a0aec0; margin-top: 2px;
+        }
+        .zzx-code {
+            background: #f7fafc;
+            border: 1px solid #edf2f7;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 13px;
+            color: #4a5568;
+            margin-bottom: 12px;
+            white-space: pre-wrap;
+        }
+        .zzx-result { font-size: 14px; color: #718096; }
+        .zzx-result b {
+            color: var(--zzx-accent);
+            background: color-mix(in srgb, var(--zzx-accent) 12%, #fff);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-family: Consolas, monospace;
+        }
+
+        /* ===== 类型转换区 ===== */
+        .zzx-convert {
+            margin-top: 24px;
+            background: #2d3748;
+            border-radius: 16px;
+            padding: 26px;
+            color: #e2e8f0;
+            box-shadow: 0 4px 14px rgba(45, 55, 72, .2);
+        }
+        .zzx-convert-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .zzx-convert-head .iconfont {
+            font-size: 20px; color: #fff;
+            width: 40px; height: 40px; line-height: 40px;
+            text-align: center; border-radius: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        .zzx-convert-head h2 { font-size: 19px; }
+        .zzx-convert table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .zzx-convert td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+        .zzx-convert tr:last-child td { border-bottom: none; }
+        .zzx-convert td:first-child {
+            font-family: Consolas, monospace;
+            color: #90cdf4;
+            width: 45%;
+        }
+        .zzx-convert td b { color: #f6e05e; font-family: Consolas, monospace; }
+
+        /* ===== 页脚 ===== */
+        .zzx-footer {
+            text-align: center;
+            margin-top: 28px;
+            color: #a0aec0;
+            font-size: 13px;
+        }
+    </style>
 </head>
 <body>
     <!-- 姓名：张志翔 | 日期：2026-10-22 | 功能：JavaScript 数据类型 -->
-    <h2>张志翔的JavaScript数据类型</h2>
+    <div class="zzx-container">
+
+        <!-- 页面头部 -->
+        <header class="zzx-header">
+            <i class="iconfont icon-icon_ruixingkafei1"></i>
+            <h1>JavaScript 数据类型</h1>
+            <p>张志翔 · 2026-10-22 · 高级网页设计课堂实践</p>
+        </header>
+
+        <!-- 六种数据类型卡片 -->
+        <main class="zzx-grid">
+
+            <section class="zzx-card" style="--zzx-accent:#4f8cff">
+                <div class="zzx-card-head">
+                    <div class="zzx-card-icon"><i class="iconfont icon-zengjia"></i></div>
+                    <h2>Number<span>数字型：整数和小数</span></h2>
+                </div>
+                <div class="zzx-code">var zzxAge = 20;
+var zzxPrice = 9.9;</div>
+                <p class="zzx-result">typeof zzxAge → <b id="zzx-type-number"></b></p>
+            </section>
+
+            <section class="zzx-card" style="--zzx-accent:#f2994a">
+                <div class="zzx-card-head">
+                    <div class="zzx-card-icon"><i class="iconfont icon-bianji"></i></div>
+                    <h2>String<span>字符串型：引号包裹的内容</span></h2>
+                </div>
+                <div class="zzx-code">var zzxName = "张志翔";
+var zzxSchool = '我的大学';</div>
+                <p class="zzx-result">typeof zzxName → <b id="zzx-type-string"></b></p>
+            </section>
+
+            <section class="zzx-card" style="--zzx-accent:#27ae60">
+                <div class="zzx-card-head">
+                    <div class="zzx-card-icon"><i class="iconfont icon-dianzan"></i></div>
+                    <h2>Boolean<span>布尔型：只有 true / false</span></h2>
+                </div>
+                <div class="zzx-code">var zzxIsStudent = true;
+var zzxIsConfirm = false;</div>
+                <p class="zzx-result">typeof zzxIsStudent → <b id="zzx-type-boolean"></b></p>
+            </section>
+
+            <section class="zzx-card" style="--zzx-accent:#9b51e0">
+                <div class="zzx-card-head">
+                    <div class="zzx-card-icon"><i class="iconfont icon-shenglvehao"></i></div>
+                    <h2>Undefined<span>未定义：声明了但没赋值</span></h2>
+                </div>
+                <div class="zzx-code">var zzxScore;
+// 没有赋值</div>
+                <p class="zzx-result">typeof zzxScore → <b id="zzx-type-undefined"></b></p>
+            </section>
+
+            <section class="zzx-card" style="--zzx-accent:#eb5757">
+                <div class="zzx-card-head">
+                    <div class="zzx-card-icon"><i class="iconfont icon-shanchu"></i></div>
+                    <h2>Null<span>空值：表示空对象</span></h2>
+                </div>
+                <div class="zzx-code">var zzxResult = null;</div>
+                <p class="zzx-result">typeof zzxResult → <b id="zzx-type-null"></b></p>
+            </section>
+
+            <section class="zzx-card" style="--zzx-accent:#d69e2e">
+                <div class="zzx-card-head">
+                    <div class="zzx-card-icon"><i class="iconfont icon-doubao"></i></div>
+                    <h2>Object<span>对象型：对象、数组都算</span></h2>
+                </div>
+                <div class="zzx-code">var zzxStudent = {name:"张志翔", age:20};
+var zzxHobby = ["篮球","音乐","编程"];</div>
+                <p class="zzx-result">typeof zzxHobby → <b id="zzx-type-object"></b></p>
+            </section>
+
+        </main>
+
+        <!-- 数据类型转换 -->
+        <section class="zzx-convert">
+            <div class="zzx-convert-head">
+                <i class="iconfont icon-fanhui"></i>
+                <h2>数据类型转换</h2>
+            </div>
+            <table>
+                <tr>
+                    <td>"10" + 5</td>
+                    <td>结果 <b id="zzx-cv1"></b>（字符串拼接）</td>
+                </tr>
+                <tr>
+                    <td>Number("10") + 5</td>
+                    <td>结果 <b id="zzx-cv2"></b>（先转数字再相加）</td>
+                </tr>
+                <tr>
+                    <td>String(5)</td>
+                    <td>类型 <b id="zzx-cv3"></b>（数字转字符串）</td>
+                </tr>
+                <tr>
+                    <td>Boolean(0) / Boolean(1)</td>
+                    <td>结果 <b id="zzx-cv4"></b>（0 为假，非 0 为真）</td>
+                </tr>
+            </table>
+        </section>
+
+        <footer class="zzx-footer">— 原生 HTML / CSS / JS 实现 · 图标来自本地 iconfont —</footer>
+    </div>
+
     <script>
-        //1.数字型 Number（整数和小数都是数字型）
+        //1.数字型 Number
         var zzxAge = 20;
         var zzxPrice = 9.9;
-        console.log(zzxAge, typeof zzxAge);
-        console.log(zzxPrice, typeof zzxPrice);
+        document.getElementById("zzx-type-number").textContent = typeof zzxAge;
 
-        //2.字符串型 String（用引号包裹的内容）
+        //2.字符串型 String
         var zzxName = "张志翔";
         var zzxSchool = '我的大学';
-        console.log(zzxName, typeof zzxName);
-        console.log(zzxSchool, typeof zzxSchool);
+        document.getElementById("zzx-type-string").textContent = typeof zzxName;
 
-        //3.布尔型 Boolean（只有 true 和 false 两个值）
+        //3.布尔型 Boolean
         var zzxIsStudent = true;
         var zzxIsConfirm = false;
-        console.log(zzxIsStudent, typeof zzxIsStudent);
-        console.log(zzxIsConfirm, typeof zzxIsConfirm);
+        document.getElementById("zzx-type-boolean").textContent = typeof zzxIsStudent;
 
-        //4.未定义型 Undefined（声明了但没赋值）
+        //4.未定义型 Undefined
         var zzxScore;
-        console.log(zzxScore, typeof zzxScore);
+        document.getElementById("zzx-type-undefined").textContent = typeof zzxScore;
 
-        //5.空值 Null（表示空对象）
+        //5.空值 Null
         var zzxResult = null;
-        console.log(zzxResult, typeof zzxResult);
+        document.getElementById("zzx-type-null").textContent = typeof zzxResult;
 
-        //6.对象型 Object（数组、对象都属于 object）
+        //6.对象型 Object
         var zzxStudent = { name: "张志翔", age: 20 };
         var zzxHobby = ["篮球", "音乐", "编程"];
-        console.log(zzxStudent, typeof zzxStudent);
-        console.log(zzxHobby, typeof zzxHobby);
+        document.getElementById("zzx-type-object").textContent = typeof zzxHobby;
 
         //数据类型转换
         var zzxNum1 = "10";
         var zzxNum2 = 5;
-        console.log(zzxNum1 + zzxNum2);              //字符串拼接：105
-        console.log(Number(zzxNum1) + zzxNum2);      //转换成数字再相加：15
-        console.log(String(zzxNum2), typeof String(zzxNum2));
-        console.log(Boolean(0), Boolean(1));
+        document.getElementById("zzx-cv1").textContent = zzxNum1 + zzxNum2;
+        document.getElementById("zzx-cv2").textContent = Number(zzxNum1) + zzxNum2;
+        document.getElementById("zzx-cv3").textContent = typeof String(zzxNum2);
+        document.getElementById("zzx-cv4").textContent = Boolean(0) + " / " + Boolean(1);
     </script>
 </body>
 </html>
