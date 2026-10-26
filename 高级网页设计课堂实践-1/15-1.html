@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数 7 游戏｜张志翔的高级网页设计课堂实践</title>
+    <style>
+        :root {
+            --paper: #f4f0e8;
+            --white: #fffdf8;
+            --ink: #202522;
+            --muted: #72776f;
+            --green: #315c4b;
+            --line: #d8d2c6;
+            --orange: #b9673c;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: var(--paper);
+        }
+
+        .zzx-page {
+            width: min(880px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 64px 0 40px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .zzx-eyebrow {
+            margin: 0 0 20px;
+            color: var(--orange);
+            font-size: 13px;
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: Georgia, "Songti SC", serif;
+            font-size: clamp(34px, 6vw, 54px);
+            font-weight: normal;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .zzx-intro {
+            max-width: 520px;
+            margin: 20px 0 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .zzx-section-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin: 44px 0 20px;
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        h2 {
+            margin: 0;
+            font-family: Georgia, "Songti SC", serif;
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        .zzx-count {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .zzx-legend {
+            display: flex;
+            gap: 26px;
+            margin-bottom: 18px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .zzx-legend i {
+            display: inline-block;
+            width: 14px; height: 14px;
+            margin-right: 7px;
+            vertical-align: -2px;
+            background: var(--white);
+            border: 1px solid var(--line);
+        }
+
+        .zzx-legend .zzx-chip-seven {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        /* 100 个盒子 */
+        .zzx-board {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 6px;
+        }
+
+        .zzx-box {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            border: 1px solid var(--line);
+            font-family: Georgia, serif;
+            font-size: 15px;
+            transition: .2s ease;
+        }
+
+        .zzx-box:hover { border-color: var(--ink); }
+
+        /* 满足"数7"规则的空盒子 */
+        .zzx-box-seven {
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .zzx-note {
+            margin-top: 40px;
+            padding: 22px 24px;
+            background: var(--white);
+            border: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .zzx-note strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--ink);
+            font-weight: normal;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 18px 0 28px;
+            color: var(--muted);
+            font-size: 13px;
+            border-top: 1px solid var(--line);
+        }
+    </style>
+</head>
+<body>
+    <!-- 姓名：张志翔 | 日期：2026-10-26 | 功能：数7游戏（1~100，7 的倍数或含数字 7 的显示空盒子） -->
+    <div class="zzx-page">
+        <header>
+            <p class="zzx-eyebrow">JAVASCRIPT / COUNT SEVEN</p>
+            <h1>数 7 游戏</h1>
+            <p class="zzx-intro">
+                从 1 数到 100，遇到 7 的倍数、或者数字里带 7 的数，
+                就不能报出来，用一个空盒子代替。下面是这 100 个盒子的结果。
+            </p>
+        </header>
+
+        <main>
+            <div class="zzx-section-title">
+                <h2>一百个盒子</h2>
+                <span class="zzx-count" id="zzx-count"></span>
+            </div>
+
+            <div class="zzx-legend">
+                <span><i></i>正常报数</span>
+                <span><i class="zzx-chip-seven"></i>数 7（空盒子）</span>
+            </div>
+
+            <!-- 盒子棋盘：由 JS 生成 -->
+            <div class="zzx-board" id="zzx-board"></div>
+
+            <div class="zzx-note">
+                <strong>本页面提示词</strong>
+                编写 15-1.html，一百个盒子，里面有数字，按照数 7 的规则
+                （7 的倍数，个位数为 7 的数字等），不满足的要求显示数字，
+                满足要求的显示空盒子。
+            </div>
+        </main>
+
+        <footer>© 2026 张志翔 · 高级网页设计课堂实践</footer>
+    </div>
+
+    <script>
+        //数7规则：是 7 的倍数，或者数字中含 7（如 7、17、70）
+        var zzxBoard = document.getElementById("zzx-board");
+        var zzxSevenCount = 0;
+
+        for (var zzxNum = 1; zzxNum <= 100; zzxNum++) {
+            var zzxBox = document.createElement("div");
+            //判断：7 的倍数，或转成字符串后包含 "7"
+            var zzxIsSeven = (zzxNum % 7 === 0) || (String(zzxNum).indexOf("7") !== -1);
+            if (zzxIsSeven) {
+                zzxBox.className = "zzx-box zzx-box-seven"; //空盒子：不显示数字
+                zzxSevenCount++;
+            } else {
+                zzxBox.className = "zzx-box";
+                zzxBox.textContent = zzxNum; //不满足规则：显示数字
+            }
+            zzxBoard.appendChild(zzxBox);
+        }
+
+        //统计结果
+        document.getElementById("zzx-count").textContent =
+            "共 100 格 · 数 7 的 " + zzxSevenCount + " 格";
+    </script>
+</body>
+</html>
