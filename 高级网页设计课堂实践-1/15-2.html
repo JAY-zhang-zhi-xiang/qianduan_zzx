@@ -1,0 +1,245 @@
+<!-- 袁磊 | 建立时间：2026-10-26 23:50 | 大模型功能：Kimi-K2.5 · AI 代码生成 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 程序结构｜张志翔的高级网页设计课堂实践</title>
+    <style>
+        :root {
+            --paper: #f4f0e8;
+            --white: #fffdf8;
+            --ink: #202522;
+            --muted: #72776f;
+            --green: #315c4b;
+            --line: #d8d2c6;
+            --orange: #b9673c;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: var(--paper);
+        }
+
+        .zzx-page { width: min(880px, calc(100% - 40px)); margin: 0 auto; }
+
+        header { padding: 64px 0 40px; border-bottom: 1px solid var(--line); }
+        .zzx-eyebrow { margin: 0 0 20px; color: var(--orange); font-size: 13px; letter-spacing: 3px; }
+        h1 {
+            margin: 0;
+            font-family: Georgia, "Songti SC", serif;
+            font-size: clamp(34px, 6vw, 54px);
+            font-weight: normal;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+        .zzx-intro { max-width: 560px; margin: 20px 0 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
+
+        .zzx-section { margin: 44px 0; }
+        .zzx-section-title {
+            display: flex; align-items: baseline; justify-content: space-between;
+            margin: 0 0 20px; padding-bottom: 14px; border-bottom: 2px solid var(--ink);
+        }
+        h2 { margin: 0; font-family: Georgia, "Songti SC", serif; font-size: 24px; font-weight: normal; }
+        .zzx-sub { color: var(--muted); font-size: 13px; }
+
+        .zzx-lead { margin: 0 0 16px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+
+        /* 代码块 */
+        .zzx-code {
+            margin: 0 0 16px; padding: 18px 20px;
+            background: var(--white); border: 1px solid var(--line);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 13px; line-height: 1.8; color: var(--ink);
+            white-space: pre; overflow-x: auto;
+        }
+        .zzx-code .zzx-kw { color: var(--orange); }     /* 关键字 */
+        .zzx-code .zzx-str { color: var(--green); }      /* 字符串 */
+        .zzx-code .zzx-cm { color: var(--muted); font-style: italic; } /* 注释 */
+
+        /* 运行结果 */
+        .zzx-result {
+            margin: 0 0 8px; padding: 14px 18px;
+            background: var(--white); border: 1px solid var(--line);
+            font-family: "Consolas", monospace; font-size: 13px; line-height: 1.8;
+        }
+        .zzx-result strong { color: var(--green); font-weight: normal; }
+
+        /* 控件 */
+        .zzx-ctrl { display: flex; align-items: center; gap: 10px; margin: 10px 0 16px; }
+        .zzx-input {
+            width: 90px; padding: 6px 10px;
+            background: var(--white); border: 1px solid var(--line);
+            font-family: inherit; font-size: 14px; color: var(--ink);
+        }
+        .zzx-btn {
+            padding: 7px 16px;
+            background: var(--green); border: 1px solid var(--green);
+            color: #fffdf8; font-family: inherit; font-size: 13px;
+            cursor: pointer; transition: .2s;
+        }
+        .zzx-btn:hover { background: #26473a; }
+        .zzx-label { color: var(--muted); font-size: 13px; }
+
+        .zzx-note {
+            margin-top: 40px; padding: 22px 24px;
+            background: var(--white); border: 1px solid var(--line);
+            color: var(--muted); font-size: 13px; line-height: 1.9;
+        }
+        .zzx-note strong { display: block; margin-bottom: 6px; color: var(--ink); font-weight: normal; }
+
+        footer { margin-top: 40px; padding: 18px 0 28px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+    </style>
+</head>
+<body>
+    <div class="zzx-page">
+        <header>
+            <p class="zzx-eyebrow">JAVASCRIPT / PROGRAM STRUCTURE</p>
+            <h1>JavaScript 程序结构</h1>
+            <p class="zzx-intro">
+                一个程序由"顺序、条件、循环"三种基本结构组成。
+                下面分别用可运行的例子演示这三种结构是如何配合工作的。
+            </p>
+        </header>
+
+        <main>
+
+            <!-- 1. 程序结构（顺序执行） -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2>一、程序结构（顺序执行）</h2>
+                    <span class="zzx-sub">从上到下，依次执行</span>
+                </div>
+                <p class="zzx-lead">顺序结构是最基础的结构：语句按书写顺序一条条执行。下面计算三科成绩的总分与平均分。</p>
+                <pre class="zzx-code"><span class="zzx-cm">// 1. 声明变量</span>
+<span class="zzx-kw">var</span> zzxChinese = 92;
+<span class="zzx-kw">var</span> zzxMath = 88;
+<span class="zzx-kw">var</span> zzxEnglish = 95;
+
+<span class="zzx-cm">// 2. 运算</span>
+<span class="zzx-kw">var</span> zzxTotal = zzxChinese + zzxMath + zzxEnglish;
+<span class="zzx-kw">var</span> zzxAvg = zzxTotal / 3;
+
+<span class="zzx-cm">// 3. 输出结果</span>
+console.log(<span class="zzx-str">"总分："</span> + zzxTotal);
+console.log(<span class="zzx-str">"平均分："</span> + zzxAvg.toFixed(1));</pre>
+                <div class="zzx-result" id="zzx-seqResult"></div>
+            </section>
+
+            <!-- 2. 条件语句 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2>二、条件语句</h2>
+                    <span class="zzx-sub">if / else if / else · switch</span>
+                </div>
+                <p class="zzx-lead">根据条件选择不同的执行路径。输入一个分数（0~100），判断等级。</p>
+                <pre class="zzx-code"><span class="zzx-kw">var</span> zzxScore = 85;
+<span class="zzx-kw">if</span> (zzxScore >= 90) {
+    console.log(<span class="zzx-str">"优秀"</span>);
+} <span class="zzx-kw">else if</span> (zzxScore >= 80) {
+    console.log(<span class="zzx-str">"良好"</span>);
+} <span class="zzx-kw">else if</span> (zzxScore >= 60) {
+    console.log(<span class="zzx-str">"及格"</span>);
+} <span class="zzx-kw">else</span> {
+    console.log(<span class="zzx-str">"不及格"</span>);
+}</pre>
+                <div class="zzx-ctrl">
+                    <span class="zzx-label">分数：</span>
+                    <input class="zzx-input" type="number" id="zzxScore" min="0" max="100" value="85">
+                    <button class="zzx-btn" id="zzxJudgeBtn">判断等级</button>
+                </div>
+                <div class="zzx-result" id="zzx-judgeResult"></div>
+            </section>
+
+            <!-- 3. 循环语句 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2>三、循环语句</h2>
+                    <span class="zzx-sub">for · while</span>
+                </div>
+                <p class="zzx-lead">重复执行一段代码。用 <code>for</code> 求 1~100 的和，用 <code>while</code> 列出 1~20 的偶数。</p>
+                <pre class="zzx-code"><span class="zzx-cm">// for 循环：1 加到 100</span>
+<span class="zzx-kw">var</span> zzxSum = 0;
+<span class="zzx-kw">for</span> (<span class="zzx-kw">var</span> i = 1; i <= 100; i++) {
+    zzxSum += i;
+}
+
+<span class="zzx-cm">// while 循环：列出 1~20 的偶数</span>
+<span class="zzx-kw">var</span> j = 1;
+<span class="zzx-kw">while</span> (j <= 20) {
+    <span class="zzx-kw">if</span> (j % 2 === 0) console.log(j);
+    j++;
+}</pre>
+                <div class="zzx-ctrl">
+                    <button class="zzx-btn" id="zzxLoopBtn">运行循环</button>
+                </div>
+                <div class="zzx-result" id="zzx-loopResult"></div>
+            </section>
+
+            <div class="zzx-note">
+                <strong>本页面提示词</strong>
+                完成 15-2.html，展示 JavaScript 程序结构（顺序）、条件语句
+                （if / switch）、循环语句（for / while），每个部分配可运行的示例。
+            </div>
+        </main>
+
+        <footer>© 2026 张志翔 · 高级网页设计课堂实践</footer>
+    </div>
+
+    <script>
+        //========== 一、顺序执行：计算总分与平均分 ==========
+        var zzxChinese = 92;
+        var zzxMath = 88;
+        var zzxEnglish = 95;
+        var zzxTotal = zzxChinese + zzxMath + zzxEnglish;
+        var zzxAvg = zzxTotal / 3;
+        document.getElementById("zzx-seqResult").innerHTML =
+            "语文 " + zzxChinese + " 分，数学 " + zzxMath + " 分，英语 " + zzxEnglish + " 分<br>" +
+            "总分：<strong>" + zzxTotal + "</strong>　平均分：<strong>" + zzxAvg.toFixed(1) + "</strong>";
+
+        //========== 二、条件语句：根据分数判等级 ==========
+        function zzxJudge() {
+            var zzxScore = parseInt(document.getElementById("zzxScore").value, 10);
+            var zzxLevel;
+            if (isNaN(zzxScore) || zzxScore < 0 || zzxScore > 100) {
+                zzxLevel = "请输入 0 ~ 100 之间的分数";
+            } else if (zzxScore >= 90) {
+                zzxLevel = "优秀";
+            } else if (zzxScore >= 80) {
+                zzxLevel = "良好";
+            } else if (zzxScore >= 60) {
+                zzxLevel = "及格";
+            } else {
+                zzxLevel = "不及格";
+            }
+            document.getElementById("zzx-judgeResult").innerHTML =
+                "分数 " + zzxScore + " → 等级：<strong>" + zzxLevel + "</strong>";
+        }
+        document.getElementById("zzxJudgeBtn").addEventListener("click", zzxJudge);
+        zzxJudge(); // 页面加载时先算一次
+
+        //========== 三、循环语句：for 求和 + while 列偶数 ==========
+        function zzxRunLoop() {
+            var zzxSum = 0;
+            for (var i = 1; i <= 100; i++) {
+                zzxSum += i;
+            }
+            var zzxEvens = [];
+            var j = 1;
+            while (j <= 20) {
+                if (j % 2 === 0) zzxEvens.push(j);
+                j++;
+            }
+            document.getElementById("zzx-loopResult").innerHTML =
+                "for 循环：1 + 2 + ... + 100 = <strong>" + zzxSum + "</strong><br>" +
+                "while 循环：1~20 的偶数有 <strong>" + zzxEvens.join(", ") + "</strong>";
+        }
+        document.getElementById("zzxLoopBtn").addEventListener("click", zzxRunLoop);
+        zzxRunLoop();
+    </script>
+</body>
+</html>
