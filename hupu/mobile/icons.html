@@ -34,20 +34,22 @@ h2 .zzx-n { color: var(--zzx-sub); font-weight: 400; font-size: 13px; margin-lef
 
 /* 下导航 5 枚对照 */
 .zzx-nv { list-style: none; margin: 0 0 6px; padding: 0; display: flex; gap: 10px; }
-.zzx-nv-cell { width: 188px; flex: 0 0 188px; border: 1px solid var(--zzx-line); border-radius: 5px; padding: 14px 0 12px; text-align: center; }
-.zzx-nv-pair { display: flex; justify-content: center; gap: 20px; margin-bottom: 9px; }
+.zzx-nv-cell { width: 140px; flex: 0 0 140px; border: 1px solid var(--zzx-line); border-radius: 5px; padding: 14px 0 12px; text-align: center; }
+.zzx-nv-pair { display: flex; justify-content: center; gap: 14px; margin-bottom: 9px; }
 .zzx-nv-box { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; }
-.zzx-nv-box .iconfont { font-size: 26px; color: var(--zzx-text); }
-.zzx-nv-svg { width: 26px; height: 26px; fill: var(--zzx-text); }
+.zzx-nv-legend { display: flex; gap: 14px; padding-left: 40px; margin: 0 0 8px; }
+.zzx-nv-legend span { width: 34px; flex: 0 0 34px; text-align: center; font-size: 9px; color: var(--zzx-sub); white-space: nowrap; }
+.zzx-nv-box .iconfont { font-size: 27px; color: var(--zzx-text); }
+.zzx-nv-svg { width: 28px; height: 28px; fill: var(--zzx-text); }
 .zzx-nv-label { display: block; font-size: 13px; font-weight: 600; }
 .zzx-nv-cls { display: block; font-size: 10px; color: var(--zzx-sub); margin-top: 2px;
           font-family: Consolas, monospace; white-space: nowrap; }
 .zzx-nv-note { display: block; font-size: 9.5px; color: var(--zzx-red); margin-top: 4px;
            line-height: 1.4; padding: 0 6px; min-height: 13px; }
-.zzx-nv-cssplus { position: relative; display: block; width: 26px; height: 26px; }
+.zzx-nv-cssplus { position: relative; display: block; width: 28px; height: 28px; }
 .zzx-nv-cssplus::before, .zzx-nv-cssplus::after { content: ''; position: absolute; background: var(--zzx-text); border-radius: 1px; }
-.zzx-nv-cssplus::before { left: 50%; top: 0; bottom: 0; width: 2.9px; transform: translateX(-50%); }
-.zzx-nv-cssplus::after { top: 50%; left: 0; right: 0; height: 2.9px; transform: translateY(-50%); }
+.zzx-nv-cssplus::before { left: 50%; top: 0; bottom: 0; width: 3px; transform: translateX(-50%); }
+.zzx-nv-cssplus::after { top: 50%; left: 0; right: 0; height: 3px; transform: translateY(-50%); }
 
 /* 34 枚网格 */
 .zzx-ic { list-style: none; margin: 0; padding: 0;
@@ -81,12 +83,13 @@ h2 .zzx-n { color: var(--zzx-sub); font-weight: 400; font-size: 13px; margin-lef
 
   <div class="zzx-rule"></div>
 
-  <h2>一、下导航选用的 5 枚<span class="zzx-n">SVG 版（方案 A）与字体图标版（方案 B）逐枚对照</span></h2>
-  <p class="zzx-note">左为 SVG symbol（方案 A 实际使用），右为 font-class（方案 B 实际使用）。图标库中没有「专区」「深聊」两个语义，分别借用「消息」气泡与「台风路径」旋涡字形；中间发布按钮采用 CSS 绘制。</p>
-  <ul class="zzx-nv">
+  <h2>一、下导航实际使用的 5 枚<span class="zzx-n">SVG symbol 与 iconfont 字体版逐枚对照</span></h2>
+  <p class="zzx-note">左栏为页面实际使用的内联 SVG symbol（定义于各页 &lt;svg&gt; sprite 中）；右栏为同一语义的 iconfont 字体图标备选方案。图标库里没有「专区」「深聊」两个语义，分别借用「消息」气泡与「台风路径」旋涡字形；中间的发布按钮用 CSS 画红圆加白十字。</p>
+  <div class="zzx-nv-legend"><span>SVG 版</span><span>字体版</span></div>
+<ul class="zzx-nv">
 <li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-home"></use></svg></span><span class="zzx-nv-box"><i class="iconfont icon-index-copy"></i></span></div><span class="zzx-nv-label">首页</span><span class="zzx-nv-cls">#zzx-ico-home</span><span class="zzx-nv-cls">.icon-index-copy</span><span class="zzx-nv-note">&nbsp;</span></li>
 <li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-zone"></use></svg></span><span class="zzx-nv-box"><i class="iconfont icon-xiaoxi"></i></span></div><span class="zzx-nv-label">专区</span><span class="zzx-nv-cls">#zzx-ico-zone</span><span class="zzx-nv-cls">.icon-xiaoxi</span><span class="zzx-nv-note">借用「消息」气泡字形</span></li>
-<li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-plus"></use></svg></span><span class="zzx-nv-box"><span class="zzx-nv-cssplus"></span></span></div><span class="zzx-nv-label">发布</span><span class="zzx-nv-cls">#zzx-ico-plus</span><span class="zzx-nv-cls">CSS 绘制</span><span class="zzx-nv-note">字体加号自带圆框会双环，改用 CSS 两条线绘制，比 SVG 版略细</span></li>
+<li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-plus"></use></svg></span><span class="zzx-nv-box"><span class="zzx-nv-cssplus"></span></span></div><span class="zzx-nv-label">发布</span><span class="zzx-nv-cls">#zzx-ico-plus</span><span class="zzx-nv-cls">CSS 绘制</span><span class="zzx-nv-note">字体加号自带圆框会双环，改用 CSS 两条线绘制</span></li>
 <li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-chat"></use></svg></span><span class="zzx-nv-box"><i class="iconfont icon-taifenglujing"></i></span></div><span class="zzx-nv-label">深聊</span><span class="zzx-nv-cls">#zzx-ico-chat</span><span class="zzx-nv-cls">.icon-taifenglujing</span><span class="zzx-nv-note">借用「台风路径」旋涡字形</span></li>
 <li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-mine"></use></svg></span><span class="zzx-nv-box"><i class="iconfont icon-wode"></i></span></div><span class="zzx-nv-label">我的</span><span class="zzx-nv-cls">#zzx-ico-mine</span><span class="zzx-nv-cls">.icon-wode</span><span class="zzx-nv-note">&nbsp;</span></li>
   </ul>
