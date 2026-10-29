@@ -5,347 +5,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>篮球 - 虎扑</title>
+    <title>篮球|虎扑篮球-虎扑网</title>
+    <meta name="keywords" content="虎扑,NBA,篮球,CBA,赛程">
     <link rel="stylesheet" href="css/hupu.css">
 </head>
 
-<body>
-    <div id="container">
+<body class="zzx-page-nba">
+    <div class="zzx-container">
 
-        <!-- ============ 顶部快速导航条 ============ -->
-        <div class="hp-pc-rc-TopMenu-top-container">
-            <div class="hp-pc-rc-TopMenu-top">
-                <ul class="hp-quickNav">
-                    <li class="mobileWeb"><a href="#">手机虎扑</a></li>
-                    <li class="line">|</li>
-                    <li class="mobileclientDown"><a href="#">下载虎扑App</a></li>
-                    <li class="line">|</li>
-                    <li class="mobileclientDown"><a href="#">加入虎扑</a></li>
+        <!-- ============ 1. 顶部快速导航条 ============ -->
+        <div class="zzx-hp-pc-rc-TopMenu-top-container">
+            <div class="zzx-hp-pc-rc-TopMenu-top">
+                <ul class="zzx-hp-quickNav">
+                    <li class="zzx-mobileWeb"><a href="bbs.html">手机虎扑</a></li>
+                    <li class="zzx-line">|</li>
+                    <li class="zzx-mobileclientDown"><a href="bbs.html">下载虎扑App</a></li>
+                    <li class="zzx-line">|</li>
+                    <li class="zzx-mobileclientDown"><a href="bbs.html">加入虎扑</a></li>
                 </ul>
-                <div class="hp-topLogin-info"></div>
+                <div class="zzx-hp-topLogin-info">
+                    <span>欢迎访问虎扑，请先</span>
+                    <a class="zzx-hp-top-btn" href="bbs.html">注册</a>
+                    <span>或者</span>
+                    <a class="zzx-hp-top-btn" href="bbs.html">登录</a>
+                </div>
             </div>
         </div>
 
-        <!-- ============ 红色主导航条 ============ -->
-        <div class="hp-pc-rc-TopMenu">
-            <div class="hp-pc-rc-TopMenu-banner">
-                <div class="bannerlogonew"><a href="index.html"><img src="assets/logo.png" alt="虎扑"></a></div>
-                <div class="banneritem"><a href="index.html">虎扑首页</a></div>
-                <div class="banneritem chan-link" data-c="nba"><a href="channel.html?c=nba">NBA</a></div>
-                <div class="banneritem chan-link" data-c="cba"><a href="channel.html?c=cba">CBA</a></div>
-                <div class="banneritem chan-link" data-c="soccer"><a href="channel.html?c=soccer">足球</a></div>
-                <div class="banneritem"><a href="bbs.html">步行街</a></div>
-                <div class="banneritem"><a href="bbs.html">社区</a></div>
-                <div class="banneritem chan-link" data-c="lol"><a href="channel.html?c=lol">电竞</a></div>
-                <div class="gamecenter">
-                    <div class="gamecenter-header">游戏中心</div>
-                    <div class="gamecenter-content">
-                        <div class="gamecenter-content-item">美职篮篮球世界</div>
-                        <div class="gamecenter-content-item">球场风云</div>
-                        <div class="gamecenter-content-item">仙剑奇侠传：新的开始</div>
-                        <div class="gamecenter-content-item">世界大战</div>
+        <!-- ============ 2. 红色主导航条 ============ -->
+        <div class="zzx-hp-pc-rc-TopMenu">
+            <div class="zzx-hp-pc-rc-TopMenu-banner">
+                <div class="zzx-bannerlogonew"><a href="index.html"><img src="assets/logo.png" alt="虎扑"></a></div>
+                <div class="zzx-banneritem"><a href="index.html">虎扑首页</a></div>
+                <div class="zzx-banneritem zzx-active"><a href="channel.html?c=nba">NBA</a></div>
+                <div class="zzx-banneritem"><a href="bbs.html">社区</a></div>
+                <div class="zzx-banneritem"><a href="bbs.html">步行街</a></div>
+                <div class="zzx-banneritem"><a href="channel.html?c=soccer">国际足球</a></div>
+                <div class="zzx-banneritem"><a href="channel.html?c=cba">CBA</a></div>
+                <div class="zzx-banneritem"><a href="channel.html?c=lol">电竞</a></div>
+                <div class="zzx-banneritem"><a href="bbs.html">装备</a></div>
+                <div class="zzx-banneritem"><a href="bbs.html">空间</a></div>
+                <div class="zzx-gamecenter">
+                    <div class="zzx-gamecenter-header">游戏中心</div>
+                    <div class="zzx-gamecenter-content">
+                        <div class="zzx-gamecenter-content-item">美职篮篮球世界</div>
+                        <div class="zzx-gamecenter-content-item">球场风云</div>
+                        <div class="zzx-gamecenter-content-item">仙剑奇侠传：新的开始</div>
+                        <div class="zzx-gamecenter-content-item">世界大战</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ============ 频道主体 ============ -->
-        <div class="channel-page">
-            <div class="channel-inner">
-
-                <!-- 频道头图 -->
-                <div class="channel-hero">
-                    <div>
-                        <div class="channel-hero-title" id="heroTitle">篮球</div>
-                        <div class="channel-hero-desc" id="heroDesc"></div>
-                        <div class="channel-hero-tabs">
-                            <a class="on">全部</a>
-                            <a>赛程</a>
-                            <a>新闻</a>
-                            <a>数据榜</a>
-                            <a>球队</a>
-                        </div>
-                    </div>
+        <!-- ============ 3. 二级导航 ============ -->
+        <div class="zzx-hp-pc-menu-sub-menu">
+            <div class="zzx-hp-pc-menu-sub-menu-container">
+                <ul class="zzx-rc-menu">
+                    <li class="zzx-rc-menu-item"><a class="zzx-rc-submenu-item-active" href="channel.html?c=nba">首页</a></li>
+                    <li class="zzx-rc-menu-item"><a href="channel.html?c=nba">视频</a></li>
+                    <li class="zzx-rc-menu-item"><a href="channel.html?c=nba">新闻</a></li>
+                    <li class="zzx-rc-menu-item"><a href="channel.html?c=nba">赛程</a></li>
+                    <li class="zzx-rc-menu-item"><a href="channel.html?c=nba">数据</a></li>
+                    <li class="zzx-rc-menu-item"><a href="channel.html?c=nba">球队</a></li>
+                    <li class="zzx-rc-menu-item"><a href="channel.html?c=nba">球员</a></li>
+                    <li class="zzx-rc-menu-item"><a href="channel.html?c=nba">专题</a></li>
+                </ul>
+                <div class="zzx-searchArea">
+                    <input class="zzx-search-input" type="text" placeholder="输入关键字">
+                    <svg class="zzx-search-icon" viewBox="0 0 16 16" fill="none">
+                        <circle cx="7" cy="7" r="5.2" stroke="currentColor" stroke-width="1.4"></circle>
+                        <path d="M11 11l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+                    </svg>
                 </div>
-
-                <div class="channel-body">
-
-                    <!-- ---------- 左：赛程 + 资讯 ---------- -->
-                    <div class="channel-main">
-
-                        <div class="channel-card">
-                            <div class="channel-card-head">
-                                <h3 id="matchTitle">赛程</h3>
-                                <span class="more">查看更多 &#8250;</span>
-                            </div>
-                            <div class="nba-match-container" id="matchList"></div>
-                        </div>
-
-                        <div class="channel-card">
-                            <div class="channel-card-head">
-                                <h3 id="newsTitle">最新资讯</h3>
-                                <span class="more">更多 &#8250;</span>
-                            </div>
-                            <div class="channel-news" id="newsList"></div>
-                        </div>
-
-                    </div>
-
-                    <!-- ---------- 右：热榜 + 球队 ---------- -->
-                    <div class="channel-side">
-
-                        <div class="channel-card">
-                            <div class="channel-card-head">
-                                <h3>热帖榜</h3>
-                                <span class="more">换一批</span>
-                            </div>
-                            <div id="hotList" style="padding-bottom:8px"></div>
-                        </div>
-
-                        <div class="channel-card">
-                            <div class="channel-card-head">
-                                <h3>球队排行</h3>
-                                <span class="more">全部 &#8250;</span>
-                            </div>
-                            <div id="teamList" style="padding-bottom:8px"></div>
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
         </div>
 
-        <!-- ============ 页脚 ============ -->
-        <div class="PSiteAllFootNavi_W">
+        <!-- ============ 4. 主体 ============ -->
+        <div class="zzx-nba-wrap">
+
+            <!-- 左侧大面板：视频区 + 资讯区 -->
+            <div class="zzx-nba-panel">
+
+                <div class="zzx-nba-left">
+                    <a class="zzx-nba-hero" href="post.html">
+                        <img src="assets/nba_hero0.jpg" alt="JRs赛季评选本周综述">
+                        <span class="zzx-nba-hero-play">
+                            <svg viewBox="0 0 24 24"><path d="M8 5.5l11 6.5-11 6.5z" fill="#fff"></path></svg>
+                        </span>
+                        <span class="zzx-nba-hero-mask"></span>
+                        <span class="zzx-nba-hero-title">JRs赛季评选本周综述：顾全高层下课榜&amp;四川成最大黑马</span>
+                        <span class="zzx-nba-hero-dots"><i class="zzx-on"></i><i></i><i></i><i></i></span>
+                    </a>
+
+                    <ul class="zzx-nba-list">
+                        <li class="zzx-brief"><a class="zzx-t-bold" href="post.html">本场得分挂零！庞峥麟本赛季场均12.8分，投篮命中率仅31.5%</a>
+                            <a class="zzx-t-norm" href="post.html">辽宁男篮发布赛前前瞻：明晚19时35分客场挑战浙江广厦</a>
+                            <a class="zzx-t-norm" href="post.html">CBA全场集锦回顾：韦瑟斯庞24分，青岛大胜南京</a>
+                        </li>
+                        <li class="zzx-brief"><a class="zzx-t-bold" href="post.html">济南时报发文：明晚主场对阵北京首钢，班凯罗能否自我救赎</a>
+                            <a class="zzx-t-norm" href="post.html">CBA全场集锦回顾：威金顿19分，山西大胜江苏</a>
+                            <a class="zzx-t-norm" href="post.html">CBA官方：邹阳当选常规赛第一周中国人寿周最佳球员</a>
+                        </li>
+                        <li class="zzx-brief"><a class="zzx-t-bold" href="post.html">19分钟5投0中没有得分！庞峥麟本赛季似乎彻底迷失</a>
+                            <a class="zzx-t-norm" href="post.html">于德豪更新社媒分享日常：又是新的一天</a>
+                        </li>
+                        <li class="zzx-brief"><a class="zzx-t-bold" href="post.html">俣李永炜晒与杰伦-威廉姆斯照片并配文：早日康复，涅槃重生</a>
+                            <a class="zzx-t-norm" href="post.html">CBA经典关键时刻回顾：哈维压哨绝杀，上海1分险胜广东</a>
+                        </li>
+                        <li class="zzx-brief"><a class="zzx-t-bold" href="post.html">广东主帅：今晚将是场艰苦的比赛，对手有板凳深度&amp;经验</a>
+                            <a class="zzx-t-norm" href="post.html">陈盈骏对阵广州个人集锦回顾，全场砍下22分8助攻</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="zzx-nba-mid">
+                    <ul class="zzx-nba-news">
+                        <li><a class="zzx-t-bold" href="post.html">东契奇超神&amp;小瓦末节爆发送尼克斯连败，今日最佳你选谁？</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">外媒解析前NBA球员为何选择中国：待遇更高、竞争更轻</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">库珀：我是杨鸣指导的球迷，我们共同创造了非常难忘的时刻</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">状态不佳！贺希宁近两场比赛正负值共-89，命中率19中5</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">里夫斯：凯斯勒从不抱怨，总是主动去防守对方的头号得分手</a></li>
+
+                        <li><a class="zzx-t-bold" href="post.html">杰伦-威廉姆斯重摔在地脚踝严重扭曲，被担架抬离球场</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">太阳神！德文-布克当选今日JRs评选最佳球员</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">莫布利：当阿伦都投进三分时，会点燃全队所有人的士气</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">里萨谢：我们打出了想要的节奏，防守端沟通做得不错</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">前3战0胜0负：尼克斯、勇士、热火、雄鹿、篮网、鹈鹕、国王</a></li>
+
+                        <li><a class="zzx-t-bold" href="post.html">萨格斯快攻无对抗右膝反关节拉伤，倒地表情痛苦被搀离</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">波蒂斯：时代变了，篮板需要全队一起拼抢，不能只靠一个人</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">BR列当下急需交易的5队：勇士/鹈鹕/国王/国王/国王</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">奎克利采访全文：从这场比赛吸取教训，在下一场打得更好</a></li>
+
+                        <li><a class="zzx-t-bold" href="post.html">西雅图扩张遇阻，拉斯维加斯落选财团不愿转投</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">目前战绩0胜3负：活塞、森林狼、湖人、雷霆、火箭、灰熊</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">杰罗姆采访全文：年轻的灰熊没有放弃，布泽尔非常成熟</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">小萨采访全文：要减少小细节失误，关键时刻要明确进攻选择</a></li>
+
+                        <li><a class="zzx-t-bold" href="post.html">ESPN：比斯利正就赌博案件与司法部商谈认罪协议</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">拉文采访全文：球队缺乏领袖的锐气，热火是顶级得分手之一</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">拉文谈三节31分：嘴巴被打出血都没吹哨，这激起了我的侵略性</a></li>
+                        <li><a class="zzx-t-norm" href="post.html">猛龙主帅采访全文：巴恩斯只是没投进，我觉得他的机会很好</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- 右栏 -->
+            <aside class="zzx-nba-rail">
+
+                <div class="zzx-rail-card">
+                    <div class="zzx-rail-head">
+                        <span class="zzx-rail-tab zzx-on" data-tab="nba">NBA</span>
+                        <span class="zzx-rail-tab" data-tab="cba">CBA</span>
+                    </div>
+                    <div class="zzx-rail-sub">
+                        <span class="zzx-rail-date">10月26日</span>
+                        <span class="zzx-rail-day">共7场比赛</span>
+                        <a class="zzx-rail-more" href="channel.html?c=nba">查看更多</a>
+                    </div>
+                    <table class="zzx-rank-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2"></th>
+                                <th>战力</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="zzx-rk"><img src="assets/team0.png" alt=""></td><td class="zzx-tn">湖人</td><td class="zzx-tv">132</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team1.png" alt=""></td><td class="zzx-tn">勇士</td><td class="zzx-tv">123</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team2.png" alt=""></td><td class="zzx-tn">步行者</td><td class="zzx-tv">136</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team3.png" alt=""></td><td class="zzx-tn">篮网</td><td class="zzx-tv">109</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team4.png" alt=""></td><td class="zzx-tn">森林狼</td><td class="zzx-tv">117</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team5.png" alt=""></td><td class="zzx-tn">快船</td><td class="zzx-tv">101</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team6.png" alt=""></td><td class="zzx-tn">魔术</td><td class="zzx-tv">110</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team7.png" alt=""></td><td class="zzx-tn">尼克斯</td><td class="zzx-tv">102</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team0.png" alt=""></td><td class="zzx-tn">76人</td><td class="zzx-tv">106</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team1.png" alt=""></td><td class="zzx-tn">灰熊</td><td class="zzx-tv">123</td><td class="zzx-tr">数据</td></tr>
+                            <tr><td class="zzx-rk"><img src="assets/team2.png" alt=""></td><td class="zzx-tn">国王</td><td class="zzx-tv">112</td><td class="zzx-tr">数据</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="zzx-rail-card">
+                    <div class="zzx-rail-head">
+                        <span class="zzx-rail-title">近期比赛</span>
+                        <a class="zzx-rail-more" href="channel.html?c=nba">全部</a>
+                    </div>
+                    <ul class="zzx-match-list">
+                        <li><a href="channel.html?c=nba"><span class="zzx-mt-name">森林狼<br>骑士</span><span class="zzx-mt-time">10-27 7:00</span><span class="zzx-mt-tag">前瞻</span></a></li>
+                        <li><a href="channel.html?c=nba"><span class="zzx-mt-name">奇才<br>黄蜂</span><span class="zzx-mt-time">10-27 7:00</span><span class="zzx-mt-tag">前瞻</span></a></li>
+                        <li><a href="channel.html?c=nba"><span class="zzx-mt-name">公牛<br>凯尔特人</span><span class="zzx-mt-time">10-27 7:30</span><span class="zzx-mt-tag">前瞻</span></a></li>
+                        <li><a href="channel.html?c=nba"><span class="zzx-mt-name">骑士<br>热火</span><span class="zzx-mt-time">10-27 7:30</span><span class="zzx-mt-tag">前瞻</span></a></li>
+                        <li><a href="channel.html?c=nba"><span class="zzx-mt-name">步行者<br>猛龙</span><span class="zzx-mt-time">10-27 7:00</span><span class="zzx-mt-tag">前瞻</span></a></li>
+                    </ul>
+                </div>
+
+            </aside>
+        </div>
+
+        <!-- ============ 5. 数据榜 ============ -->
+        <div class="zzx-nba-bottom">
+
+            <div class="zzx-bottom-card">
+                <div class="zzx-bottom-head">
+                    <span class="zzx-bottom-title">今日最佳</span>
+                    <a class="zzx-bottom-more" href="channel.html?c=nba">更多数据 &#8250;</a>
+                </div>
+                <ul class="zzx-player-grid">
+                    <li><img src="assets/players/p1.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">东契奇</span><span class="zzx-pl-team">湖人</span></div><span class="zzx-pl-num">52</span></li>
+                    <li><img src="assets/players/p2.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">萨博尼斯</span><span class="zzx-pl-team">国王</span></div><span class="zzx-pl-num">15</span></li>
+                    <li><img src="assets/players/p3.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">加兰</span><span class="zzx-pl-team">骑士</span></div><span class="zzx-pl-num">11</span></li>
+                    <li><img src="assets/players/p4.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">拉文</span><span class="zzx-pl-team">国王</span></div><span class="zzx-pl-num">37</span></li>
+                    <li><img src="assets/players/p5.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">唐斯</span><span class="zzx-pl-team">尼克斯</span></div><span class="zzx-pl-num">14</span></li>
+                    <li><img src="assets/players/p1.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">东契奇</span><span class="zzx-pl-team">湖人</span></div><span class="zzx-pl-num">10</span></li>
+                </ul>
+            </div>
+
+            <div class="zzx-bottom-card">
+                <div class="zzx-bottom-head">
+                    <span class="zzx-bottom-title">球员场均榜</span>
+                    <a class="zzx-bottom-more" href="channel.html?c=nba">更多数据 &#8250;</a>
+                </div>
+                <ul class="zzx-player-grid">
+                    <li><img src="assets/players/p6.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">杰罗姆</span><span class="zzx-pl-team">灰熊</span></div><span class="zzx-pl-num">34.7</span></li>
+                    <li><img src="assets/players/p7.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">萨博尼斯</span><span class="zzx-pl-team">国王</span></div><span class="zzx-pl-num">17.3</span></li>
+                    <li><img src="assets/players/p8.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">杨</span><span class="zzx-pl-team">老鹰</span></div><span class="zzx-pl-num">11.3</span></li>
+                    <li><img src="assets/players/p1.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">东契奇</span><span class="zzx-pl-team">湖人</span></div><span class="zzx-pl-num">34.3</span></li>
+                    <li><img src="assets/players/p8.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">戈贝尔</span><span class="zzx-pl-team">森林狼</span></div><span class="zzx-pl-num">12.3</span></li>
+                    <li><img src="assets/players/p9.png" alt=""><div class="zzx-pl-info"><span class="zzx-pl-name">约翰逊</span><span class="zzx-pl-team">马刺</span></div><span class="zzx-pl-num">10.0</span></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- ============ 6. 页脚 ============ -->
+        <div class="zzx-PSiteAllFootNavi_W">
             <div>
                 <a href="index.html">虎扑首页</a>
-                <a href="#">手机虎扑</a>
+                <a href="bbs.html">手机虎扑</a>
                 <a href="channel.html?c=nba">NBA</a>
                 <a href="channel.html?c=soccer">足球</a>
-                <a href="#">虎扑APP</a>
-                <a href="#">服务协议</a>
-                <a href="#">隐私协议</a>
-                <a href="#">社会招聘</a>
-                <a href="#">校园招聘</a>
-                <a href="#">意见反馈</a>
-                <a href="#">商务合作</a>
+                <a href="bbs.html">虎扑APP</a>
+                <a href="bbs.html">服务协议</a>
+                <a href="bbs.html">隐私协议</a>
+                <a href="bbs.html">社会招聘</a>
+                <a href="bbs.html">校园招聘</a>
+                <a href="bbs.html">意见反馈</a>
+                <a href="bbs.html">商务合作</a>
             </div>
-            <div class="copyright">Copyright © 2021 KUANGHUI All Rights Reserved. 上海宽娱数码科技有限公司</div>
+            <div class="zzx-copyright">Copyright © 2021 KUANGHUI All Rights Reserved. 上海宽娱数码科技有限公司</div>
         </div>
 
     </div>
 
     <script>
-        // ============================================================
-        // 频道数据：内容取自虎扑线上真实抓取
-        // 通过 URL 的 ?c= 参数切换频道（nba / cba / soccer / lol）
-        // ============================================================
-        var CHANNELS = {
-            nba: {
-                name: '篮球',
-                title: '篮球 · NBA',
-                desc: '虎扑篮球频道：NBA、CBA 全部赛事动态、流言板、球员数据与球队排行。JRs 的篮球主场。',
-                matchTitle: 'NBA 赛程',
-                newsTitle: '篮球最新资讯',
-                matches: [
-                    { type: 'NBA季前赛', status: '已结束', teams: ['猛龙', '尼克斯'], rates: ['120', '122'], logos: ['nbalogo0.png', 'nbalogo1.png'] },
-                    { type: 'NBA季前赛', status: '已结束', teams: ['雷霆', '火箭'], rates: ['89', '116'], logos: ['nbalogo2.png', 'nbalogo3.png'] },
-                    { type: 'NBA季前赛', status: '未开始', teams: ['雄鹿', '步行者'], rates: ['-', '-'], date: '10-17 7:00', logos: ['nbalogo4.png', 'nbalogo5.png'] },
-                    { type: 'NBA季前赛', status: '未开始', teams: ['凯尔特人', '76人'], rates: ['-', '-'], date: '10-17 7:00', logos: ['nbalogo6.png', 'nbalogo7.png'] },
-                    { type: 'NBA季前赛', status: '未开始', teams: ['热火', '魔术'], rates: ['-', '-'], date: '10-17 7:00', logos: ['nbalogo8.png', 'nbalogo9.png'] },
-                    { type: 'NBA常规赛', status: '未开始', teams: ['活塞', '黄蜂'], rates: ['-', '-'], date: '10-18 8:00', logos: ['nbalogo1.png', 'nbalogo4.png'] }
-                ],
-                news: [
-                    { t: '禅师：曾告诫乔丹得分王和冠军难兼得，想夺冠必须减少出手', l: 12, r: 34, bold: 1, img: 'news1.png' },
-                    { t: '戈贝尔：鲍尔需在最高级别比赛证明自己，否则一切都不作数', l: 5, r: 21, img: 'news2.jpg' },
-                    { t: '美媒：杜兰特上赛季场均26分，成为最年长单赛季2000+分球员', l: 9, r: 47, img: 'news3.png' },
-                    { t: '哈克斯进入提前续约窗口，最高可签5年约2.45亿', l: 3, r: 18, img: 'news4.png' },
-                    { t: '詹姆斯8年湖人生涯均入选全明星，年龄跨度从34岁到41岁', l: 15, r: 62, img: 'news5.png' },
-                    { t: 'Shams：尤班克斯胸肌撕裂将长期缺阵，尼克斯会将其裁掉', l: 2, r: 9, img: 'news6.png' }
-                ],
-                hot: [
-                    '为什么一说詹姆斯都是是科密？', '现在才发现东契奇只要4000多万呀，真便宜呀',
-                    '但凡看过去年湖人比赛的', '美媒盘点：现役最被低估的十大防守球员',
-                    '文班亚马增重后对抗效果如何？', '追梦：新体系让我重新找回打球的乐趣'
-                ],
-                teams: [
-                    ['凯尔特人', '12胜3负'], ['雷霆', '11胜4负'], ['骑士', '11胜4负'],
-                    ['掘金', '10胜5负'], ['火箭', '10胜5负'], ['尼克斯', '9胜6负']
-                ]
-            },
-            cba: {
-                name: 'CBA',
-                title: '中国篮球 · CBA',
-                desc: '虎扑 CBA 频道：新赛季常规赛全部赛程、球队动态、球员流言与赛后采访。',
-                matchTitle: 'CBA 赛程',
-                newsTitle: 'CBA 最新资讯',
-                matches: [
-                    { type: 'CBA常规赛', status: '未开始', teams: ['上海', '深圳'], rates: ['-', '-'], date: '10-16 19:35', living: '今晚', logos: ['nbalogo6.png', 'nbalogo7.png'] },
-                    { type: 'CBA常规赛', status: '未开始', teams: ['山东', '广厦'], rates: ['-', '-'], date: '12-08 19:35', logos: ['nbalogo8.png', 'nbalogo9.png'] },
-                    { type: 'CBA常规赛', status: '未开始', teams: ['新疆', '青岛'], rates: ['-', '-'], date: '12-07 20:00', logos: ['nbalogo0.png', 'nbalogo1.png'] },
-                    { type: 'CBA常规赛', status: '未开始', teams: ['天津', '上海'], rates: ['-', '-'], date: '12-07 19:35', logos: ['nbalogo2.png', 'nbalogo3.png'] },
-                    { type: 'CBA常规赛', status: '未开始', teams: ['北控', '四川'], rates: ['-', '-'], date: '12-07 19:35', logos: ['nbalogo4.png', 'nbalogo5.png'] },
-                    { type: 'CBA常规赛', status: '未开始', teams: ['福建', '广州'], rates: ['-', '-'], date: '12-07 19:35', logos: ['nbalogo6.png', 'nbalogo7.png'] }
-                ],
-                news: [
-                    { t: '北青：CBA新赛季京沪争霸成主线&amp;四川保级前景并不乐观', l: 8, r: 26, bold: 1, img: 'news7.jpg' },
-                    { t: '徐嘉妮：曾繁日有很多联赛经验，这是我们年轻队员所缺少的', l: 4, r: 12, img: 'news8.png' },
-                    { t: '赵继伟：新赛季希望能给大家新面貌，打法会跟上赛季有变化', l: 6, r: 30, img: 'news1.png' },
-                    { t: '博主：广东男篮大外援阿祖布克已抵达球队，阵容总算齐整了', l: 9, r: 44, img: 'news2.jpg' },
-                    { t: '贺希宁：揭幕战要打出状态和态度&amp;新赛季希望更好地带领球队', l: 3, r: 15, img: 'news3.png' },
-                    { t: 'CBA：新赛季常规赛首轮今日正式拉开帷幕，上海主场迎战深圳', l: 11, r: 38, img: 'news4.png' }
-                ],
-                hot: [
-                    'CBA预热今晚上海vs深圳揭幕战：19:35，赛场争锋一触即发',
-                    '卢伟：戒指意味着我们一年的付出，希望也能延续到今年比赛',
-                    '媒体人：2020年中国篮协曾提出25年男女篮均要有5人效力海外',
-                    '超三联赛官方公布常规赛各大奖项，于喜淼蝉联常规赛MVP',
-                    '贺希宁：顾全接手球队很亲切&amp;正在适应新的体系和理念',
-                    '上海玄鸟官方发文：欢迎威尔逊、布莱森、马尔库松加盟'
-                ],
-                teams: [
-                    ['辽宁', '36胜8负'], ['广东', '34胜10负'], ['浙江', '33胜11负'],
-                    ['广厦', '31胜13负'], ['新疆', '30胜14负'], ['上海', '28胜16负']
-                ]
-            },
-            soccer: {
-                name: '足球',
-                title: '足球 · 五大联赛',
-                desc: '虎扑足球频道：英超、西甲、意甲、德甲、欧冠全部赛事与流言板，国际足球资讯一手掌握。',
-                matchTitle: '足球赛程',
-                newsTitle: '足球最新资讯',
-                matches: [
-                    { type: '欧冠', status: '已结束', teams: ['萨尔茨堡', 'AC米兰'], rates: ['0', '4'], logos: ['nbalogo1.png', 'nbalogo2.png'] },
-                    { type: '欧冠', status: '已结束', teams: ['里昂', '水晶宫'], rates: ['3', '2'], logos: ['nbalogo3.png', 'nbalogo4.png'] },
-                    { type: '欧冠', status: '已结束', teams: ['塞尔塔', '尤文图斯'], rates: ['1', '2'], logos: ['nbalogo5.png', 'nbalogo6.png'] },
-                    { type: '英超', status: '未开始', teams: ['曼城', '利物浦'], rates: ['-', '-'], date: '10-18 22:30', logos: ['nbalogo7.png', 'nbalogo8.png'] },
-                    { type: '西甲', status: '未开始', teams: ['皇家马德里', '巴塞罗那'], rates: ['-', '-'], date: '10-19 03:00', living: '德比', logos: ['nbalogo9.png', 'nbalogo0.png'] },
-                    { type: '英超', status: '未开始', teams: ['阿森纳', '曼联'], rates: ['-', '-'], date: '10-19 00:30', logos: ['nbalogo1.png', 'nbalogo2.png'] }
-                ],
-                news: [
-                    { t: 'Opta超算最新欧冠夺冠预测：阿森纳遥遥领先，巴黎仅第5', l: 4, r: 23, bold: 1, img: 'news5.png' },
-                    { t: 'TA：利马不满不谈续约涨薪、曼联后勤、缺乏领导力、输球等', l: 7, r: 31, img: 'news6.png' },
-                    { t: '马卡：皇马两后腰传球数不如库瓦，出球能力被废暴露软肋', l: 5, r: 19, img: 'news7.jpg' },
-                    { t: '帕克：就哈兰德的踢球风格而言，我会拒绝把他引进曼联', l: 6, r: 28, img: 'news8.png' },
-                    { t: '尼科经纪人：巴萨无法提供出场保障，我们不能冒险让他加盟', l: 3, r: 14, img: 'news1.png' },
-                    { t: '英媒：曼城球迷上世纪就擅长自嘲；马雷斯卡希望香蕉能再出现', l: 2, r: 11, img: 'news2.jpg' }
-                ],
-                hot: [
-                    '贝林的处境还是难', '专家：皇马可能四大皆空，若维尼修斯就此离队&amp;对他或是好事',
-                    '足协官方：国足11月将在广州与马来西亚、巴林进行热身赛',
-                    '阿斯：居莱尔在场皇马从未落后，穆帅清楚必须给他更重角色',
-                    '罗马诺：曼联对利马罚款；高层欣赏许策勒但依然信任卡里克',
-                    '传奥利塞即将签约耐克，过去几年曾一直拒绝任何球鞋赞助'
-                ],
-                teams: [
-                    ['利物浦', '8胜1平1负'], ['阿森纳', '7胜2平1负'], ['曼城', '7胜1平2负'],
-                    ['切尔西', '6胜2平2负'], ['热刺', '5胜3平2负'], ['曼联', '5胜2平3负']
-                ]
-            },
-            lol: {
-                name: '电竞',
-                title: '电竞 · LPL',
-                desc: '虎扑电竞频道：英雄联盟、云顶之弈、王者荣耀等赛事资讯与选手动态。',
-                matchTitle: '电竞赛程',
-                newsTitle: '电竞最新资讯',
-                matches: [
-                    { type: 'LPL', status: '已结束', teams: ['BLG', 'AL'], rates: ['2', '1'], logos: ['nbalogo0.png', 'nbalogo1.png'] },
-                    { type: 'LPL', status: '已结束', teams: ['TES', 'JDG'], rates: ['2', '0'], logos: ['nbalogo2.png', 'nbalogo3.png'] },
-                    { type: 'LPL', status: '未开始', teams: ['WBG', 'LNG'], rates: ['-', '-'], date: '10-17 17:00', logos: ['nbalogo4.png', 'nbalogo5.png'] },
-                    { type: 'LPL', status: '未开始', teams: ['EDG', 'RNG'], rates: ['-', '-'], date: '10-18 19:00', logos: ['nbalogo6.png', 'nbalogo7.png'] },
-                    { type: '云顶之弈', status: '未开始', teams: ['T1', 'GEN'], rates: ['-', '-'], date: '10-19 14:00', logos: ['nbalogo8.png', 'nbalogo9.png'] },
-                    { type: 'LPL', status: '未开始', teams: ['IG', 'FPX'], rates: ['-', '-'], date: '10-19 17:00', logos: ['nbalogo0.png', 'nbalogo3.png'] }
-                ],
-                news: [
-                    { t: '【直播】四队谁最有可能拿到赛区最高成绩，Crisp：感觉是BLG跟AL', l: 5, r: 27, bold: 1, img: 'news3.png' },
-                    { t: '2026年10月16日17:00 北京WB vs 南通Hero久竞，赛事前瞻', l: 8, r: 41, img: 'news4.png' },
-                    { t: '[流言板]T1 传承之境棋盘预览视频：打出王者风范！', l: 2, r: 8, img: 'news5.png' },
-                    { t: '年总积分榜：大师组竞争白热化，北京WB状态引发讨论', l: 4, r: 22, img: 'news6.png' },
-                    { t: 'PGS10 突围赛今日18:00开打：逗木 寅兮解说', l: 3, r: 13, img: 'news7.jpg' },
-                    { t: 'LPL 季后赛赛程公布，四支种子队伍均有人事变动', l: 6, r: 35, img: 'news8.png' }
-                ],
-                hot: [
-                    'Crisp：今年最有可能拿到赛区最高成绩的是BLG跟AL',
-                    '北京WB大场跟小局积分全都是大师组垫底，状态越打越不对劲',
-                    'T1 传承之境棋盘预览视频：打出王者风范！',
-                    'BLG 3:1 击败 AL，成功晋级下一轮',
-                    'UZI 直播间点评：今年 LPL 整体强度比去年高',
-                    'LNG 官宣新赛季阵容，中野组合引发热议'
-                ],
-                teams: [
-                    ['BLG', '14胜2负'], ['AL', '12胜4负'], ['TES', '11胜5负'],
-                    ['JDG', '10胜6负'], ['WBG', '9胜7负'], ['LNG', '8胜8负']
-                ]
-            }
-        };
-
-        var key = (location.search.match(/[?&]c=([a-z]+)/) || [])[1] || 'nba';
-        var d = CHANNELS[key] || CHANNELS.nba;
-
-        document.title = d.title + ' - 虎扑';
-
-        // 顶部导航高亮
-        var items = document.querySelectorAll('.chan-link');
-        for (var i = 0; i < items.length; i++) {
-            if (items[i].getAttribute('data-c') === key) items[i].classList.add('active');
+        /* 球队榜 NBA / CBA 切换 */
+        var tabs = document.querySelectorAll('.rail-tab');
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].addEventListener('click', function () {
+                for (var j = 0; j < tabs.length; j++) {
+                    tabs[j].classList.remove('on');
+                }
+                this.classList.add('on');
+            });
         }
-
-        document.getElementById('heroTitle').textContent = d.name;
-        document.getElementById('heroDesc').textContent = d.desc;
-        document.getElementById('matchTitle').textContent = d.matchTitle;
-        document.getElementById('newsTitle').textContent = d.newsTitle;
-
-        // ---- 赛程卡片 ----
-        var mL = document.getElementById('matchList');
-        d.matches.forEach(function (m) {
-            var ended = m.status === '已结束';
-            var t1 = '<div class="team-item' + (ended && +m.rates[0] < +m.rates[1] ? ' light' : '') + '">' +
-                '<img class="team-logo" src="assets/' + m.logos[0] + '">' +
-                '<span class="team-name">' + m.teams[0] + '</span>' +
-                '<span class="team-rate' + (ended && +m.rates[0] > +m.rates[1] ? ' highlight' : '') + '">' + m.rates[0] + '</span></div>';
-            var t2 = '<div class="team-item' + (ended && +m.rates[1] < +m.rates[0] ? ' light' : '') + '">' +
-                '<img class="team-logo" src="assets/' + m.logos[1] + '">' +
-                '<span class="team-name">' + m.teams[1] + '</span>' +
-                '<span class="team-rate' + (ended && +m.rates[1] > +m.rates[0] ? ' highlight' : '') + '">' + m.rates[1] + '</span></div>';
-            var detail = ended
-                ? '<div class="date-detail"><span class="date">已结束</span><span class="link">集锦</span></div>'
-                : '<div class="date-detail">' + (m.living ? '<span class="living-time">' + m.living + '</span>' : '') +
-                '<span class="date">' + (m.date || '') + '</span></div>';
-            mL.innerHTML += '<a class="match-card" href="post.html">' +
-                '<div class="match-card-team">' + t1 + t2 + '</div>' +
-                '<div class="match-card-detail">' + detail + '</div></a>';
-        });
-
-        // ---- 资讯列表 ----
-        var nL = document.getElementById('newsList');
-        d.news.forEach(function (n) {
-            nL.innerHTML += '<div class="channel-news-item' + (n.bold ? ' bold' : '') + '">' +
-                '<div class="channel-news-text">' +
-                '<div class="channel-news-title">' + n.t + '</div>' +
-                '<div class="channel-news-meta"><span><em>' + n.l + '亮</em> · ' + n.r + '回复</span><span>虎扑' + d.name + '资讯</span></div>' +
-                '</div>' +
-                '<div class="channel-news-thumb"><img src="assets/' + n.img + '" alt=""></div>' +
-                '</div>';
-        });
-
-        // ---- 热帖榜 ----
-        var hL = document.getElementById('hotList');
-        d.hot.forEach(function (t, i) {
-            var color = i === 0 ? '#C01E2E' : i === 1 ? '#FC7F00' : i === 2 ? '#FBB21A' : '#9C9FA4';
-            hL.innerHTML += '<a class="channel-hot-item" href="post.html"><div class="channel-hot-index" style="color:' + color + '">' + (i + 1) + '</div>' +
-                '<div class="channel-hot-title">' + t + '</div></a>';
-        });
-
-        // ---- 球队排行 ----
-        var tL = document.getElementById('teamList');
-        d.teams.forEach(function (t, i) {
-            tL.innerHTML += '<div class="team-rank-item">' +
-                '<img class="team-rank-logo" src="assets/nbalogo' + (i % 10) + '.png" alt="">' +
-                '<span class="team-rank-name">' + t[0] + '</span>' +
-                '<span class="team-rank-win">' + t[1] + '</span></div>';
-        });
     </script>
 </body>
 

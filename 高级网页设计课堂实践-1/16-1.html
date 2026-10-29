@@ -1,0 +1,693 @@
+<!-- 张志翔 | 建立时间：2026-10-29 13:45 | 大模型功能：DeepSeek-V4.1-Flash · AI 代码生成 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 数组常用方法｜张志翔的高级网页设计课堂实践</title>
+    <link rel="stylesheet" href="../font_5244713_yt3vridbf1h/iconfont.css">
+    <style>
+        :root {
+            --paper: #f4f0e8;
+            --white: #fffdf8;
+            --ink: #202522;
+            --muted: #72776f;
+            --green: #315c4b;
+            --line: #d8d2c6;
+            --orange: #b9673c;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: var(--paper);
+        }
+
+        .zzx-page { width: min(1000px, calc(100% - 40px)); margin: 0 auto; }
+
+        /* ===== 页头 ===== */
+        header { padding: 64px 0 40px; border-bottom: 1px solid var(--line); }
+        .zzx-eyebrow { margin: 0 0 20px; color: var(--orange); font-size: 13px; letter-spacing: 3px; }
+        h1 {
+            margin: 0;
+            font-family: Georgia, "Songti SC", serif;
+            font-size: clamp(34px, 6vw, 54px);
+            font-weight: normal;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+        .zzx-intro { max-width: 620px; margin: 20px 0 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
+
+        /* ===== 区块 ===== */
+        .zzx-section { margin: 46px 0; }
+        .zzx-section-title {
+            display: flex; align-items: baseline; justify-content: space-between;
+            gap: 12px; margin: 0 0 20px; padding-bottom: 14px;
+            border-bottom: 2px solid var(--ink);
+        }
+        h2 {
+            display: flex; align-items: center; gap: 10px;
+            margin: 0;
+            font-family: Georgia, "Songti SC", serif;
+            font-size: 24px; font-weight: normal;
+        }
+        h2 .iconfont { font-size: 20px; color: var(--green); }
+        .zzx-sub { color: var(--muted); font-size: 13px; }
+
+        /* ===== 演示台 ===== */
+        .zzx-live {
+            padding: 26px;
+            background: var(--white);
+            border: 1px solid var(--line);
+        }
+        .zzx-live-chips { display: flex; gap: 8px; flex-wrap: wrap; min-height: 48px; }
+        .zzx-live-msg {
+            margin: 16px 0 18px;
+            color: var(--muted);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .zzx-live-msg b { color: var(--green); font-weight: normal; }
+        .zzx-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+        .zzx-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 14px;
+            background: var(--white);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 12px;
+            cursor: pointer;
+            transition: .15s;
+        }
+        .zzx-btn:hover { border-color: var(--green); color: var(--green); }
+        .zzx-btn .iconfont { font-size: 13px; }
+        .zzx-btn-strong { background: var(--green); border-color: var(--green); color: #fffdf8; }
+        .zzx-btn-strong:hover { background: #26473a; color: #fffdf8; }
+
+        /* ===== 方法卡片 ===== */
+        .zzx-list { display: grid; gap: 14px; }
+
+        .zzx-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+        }
+        .zzx-card-head {
+            display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+            padding: 13px 18px;
+            border-bottom: 1px solid var(--line);
+            background: #faf6ee;
+        }
+        .zzx-card-head h3 {
+            margin: 0;
+            color: var(--green);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 15px; font-weight: normal;
+        }
+        .zzx-card-head p { margin: 0; color: var(--muted); font-size: 13px; }
+
+        .zzx-body {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 22px;
+            padding: 18px;
+        }
+
+        /* 数组可视化 */
+        .zzx-visual {
+            display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+            align-content: flex-start;
+        }
+        .zzx-stage { display: flex; flex-direction: column; gap: 7px; }
+        .zzx-stage-label { color: var(--muted); font-size: 11px; letter-spacing: 1px; }
+        .zzx-chips { display: flex; gap: 5px; flex-wrap: wrap; }
+
+        .zzx-chip {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-width: 40px; padding: 6px 8px;
+            background: var(--white);
+            border: 1px solid var(--line);
+            font-family: Georgia, "Songti SC", serif;
+            font-size: 13px; line-height: 1.25;
+            white-space: nowrap;
+        }
+        .zzx-chip small { margin-top: 3px; color: var(--muted); font-family: "Consolas", monospace; font-size: 9px; }
+        .zzx-chip-add { background: var(--green); border-color: var(--green); color: #fffdf8; }
+        .zzx-chip-add small { color: #cddbc9; }
+        .zzx-chip-del {
+            border-style: dashed; border-color: var(--orange);
+            color: var(--orange); text-decoration: line-through;
+        }
+        .zzx-chip-del small { text-decoration: none; color: var(--orange); }
+        .zzx-chip-res { border-color: var(--green); color: var(--green); }
+
+        .zzx-arrow { color: var(--muted); font-family: Georgia, serif; font-size: 18px; }
+
+        /* 代码与输出 */
+        .zzx-code {
+            margin: 0; padding: 13px 15px;
+            background: #faf6ee;
+            border: 1px solid var(--line);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 12px; line-height: 1.8;
+            white-space: pre-wrap; word-break: break-word;
+        }
+        .zzx-code .zzx-cm { color: var(--muted); font-style: italic; }
+
+        .zzx-out {
+            margin: 10px 0 0; padding-left: 11px;
+            border-left: 2px solid var(--green);
+            color: var(--muted); font-size: 12px; line-height: 1.8;
+        }
+        .zzx-out b { color: var(--ink); font-weight: normal; }
+
+        /* 小标签 */
+        .zzx-tag {
+            display: inline-block; margin-left: 6px; padding: 1px 6px;
+            border: 1px solid var(--line);
+            color: var(--muted); font-size: 11px; font-style: normal;
+        }
+
+        /* ===== 页脚 ===== */
+        .zzx-note {
+            margin-top: 46px; padding: 22px 24px;
+            background: var(--white); border: 1px solid var(--line);
+            color: var(--muted); font-size: 13px; line-height: 1.9;
+        }
+        .zzx-note strong { display: block; margin-bottom: 6px; color: var(--ink); font-weight: normal; }
+
+        footer { margin-top: 40px; padding: 18px 0 28px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+
+        @media (max-width: 760px) {
+            header { padding-top: 46px; }
+            .zzx-body { grid-template-columns: 1fr; }
+            .zzx-live { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="zzx-page">
+        <header>
+            <p class="zzx-eyebrow">JAVASCRIPT / ARRAY METHODS</p>
+            <h1>数组的常用方法</h1>
+            <p class="zzx-intro">
+                数组是存放一组数据的"盒子"，方法就是操作这些盒子的动作。
+                下面每一项都画出"调用前 → 调用后"的对照：绿色是新增的元素，
+                橙色虚线划掉的是被删除的元素。
+            </p>
+        </header>
+
+        <main>
+
+            <!-- 一、演示台 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="zzx-icon iconfont icon-icon_ruixingkafei1"></i>一、动手试一试</h2>
+                    <span class="zzx-sub">点按钮，看数组怎么变</span>
+                </div>
+                <div class="zzx-live">
+                    <div class="zzx-live-chips" id="zzxLiveChips"></div>
+                    <p class="zzx-live-msg" id="zzxLiveMsg"></p>
+                    <div class="zzx-btns" id="zzxLiveBtns">
+                        <button class="zzx-btn" data-op="push">push(40)</button>
+                        <button class="zzx-btn" data-op="pop">pop()</button>
+                        <button class="zzx-btn" data-op="unshift">unshift(5)</button>
+                        <button class="zzx-btn" data-op="shift">shift()</button>
+                        <button class="zzx-btn" data-op="reverse">reverse()</button>
+                        <button class="zzx-btn" data-op="sort">sort()</button>
+                        <button class="zzx-btn zzx-btn-strong" data-op="reset">
+                            <i class="iconfont icon-fanhui"></i>还原
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 二、增加与删除 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="iconfont icon-zengjia"></i>二、增加与删除</h2>
+                    <span class="zzx-sub">push · pop · unshift · shift · splice</span>
+                </div>
+                <div class="zzx-list" id="zzxListAdd"></div>
+            </section>
+
+            <!-- 三、查找与筛选 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="iconfont icon-0201chazhao"></i>三、查找与筛选</h2>
+                    <span class="zzx-sub">indexOf · includes · find · filter</span>
+                </div>
+                <div class="zzx-list" id="zzxListFind"></div>
+            </section>
+
+            <!-- 四、遍历与计算 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="iconfont icon-bianji"></i>四、遍历与计算</h2>
+                    <span class="zzx-sub">forEach · map · reduce</span>
+                </div>
+                <div class="zzx-list" id="zzxListLoop"></div>
+            </section>
+
+            <!-- 五、转换与排序 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="iconfont icon-shenglvehao"></i>五、转换与排序</h2>
+                    <span class="zzx-sub">join · slice · concat · sort · reverse</span>
+                </div>
+                <div class="zzx-list" id="zzxListConv"></div>
+            </section>
+
+            <div class="zzx-note">
+                <strong>本页面提示词</strong>
+                完成 16-1.html，展示 JavaScript 数组的主要方法，形象一些。
+            </div>
+        </main>
+
+        <footer>© 2026 张志翔 · 高级网页设计课堂实践</footer>
+    </div>
+
+    <script>
+        /* ============================================================
+           一、数组可视化：把数组画成一排小方块
+           ============================================================ */
+
+        // 生成单个方块；zzxShowIndex 为 true 时在方块下方显示下标
+        function zzxChip(zzxValue, zzxIndex, zzxState, zzxShowIndex) {
+            var zzxCls = "zzx-chip";
+            if (zzxState === "add") { zzxCls += " zzx-chip-add"; }   //新增的元素
+            if (zzxState === "del") { zzxCls += " zzx-chip-del"; }   //被删除的元素
+            if (zzxState === "res") { zzxCls += " zzx-chip-res"; }   //方法返回的结果
+            var zzxSub = zzxShowIndex ? "<small>" + zzxIndex + "</small>" : "";
+            return '<span class="' + zzxCls + '">' + zzxValue + zzxSub + "</span>";
+        }
+
+        // 对比调用前后两个数组：标记哪些元素是新增的、哪些被删掉了
+        function zzxMark(zzxFrom, zzxTo) {
+            var zzxPool = zzxTo.slice();
+            return zzxFrom.map(function (zzxValue) {
+                var zzxAt = zzxPool.indexOf(zzxValue);
+                if (zzxAt === -1) { return "del"; }
+                zzxPool.splice(zzxAt, 1);
+                return "same";
+            });
+        }
+
+        // 把代码文本转成带注释着色的 HTML（转义 < > &，注释变灰）
+        function zzxCodeHtml(zzxLines) {
+            return zzxLines.map(function (zzxLine) {
+                var zzxSafe = zzxLine
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;");
+                var zzxPos = zzxSafe.indexOf("//");
+                if (zzxPos === -1) { return zzxSafe; }
+                return zzxSafe.slice(0, zzxPos) +
+                    '<span class="zzx-cm">' + zzxSafe.slice(zzxPos) + "</span>";
+            }).join("\n");
+        }
+
+        /* ============================================================
+           二、方法演示数据：每个方法都真的跑一遍，结果不是写死的
+           ============================================================ */
+
+        var zzxDemos = {
+
+            // ---------- 增加与删除 ----------
+            add: [
+                {
+                    name: "push()", desc: "在末尾添加一个或多个元素",
+                    before: [10, 20, 30], mutates: true, resultLabel: "调用后",
+                    run: function (zzxArr) {
+                        var zzxLen = zzxArr.push(40, 50);
+                        return { after: zzxArr, out: "返回新长度 <b>" + zzxLen + "</b>，元素加在数组尾部。" };
+                    },
+                    code: [
+                        "var zzxArr = [10, 20, 30];",
+                        "zzxArr.push(40, 50);   // 末尾加两个",
+                        "// 结果：[10, 20, 30, 40, 50]"
+                    ]
+                },
+                {
+                    name: "unshift()", desc: "在开头添加元素，其他元素整体后移",
+                    before: [10, 20, 30], mutates: true, resultLabel: "调用后",
+                    run: function (zzxArr) {
+                        var zzxLen = zzxArr.unshift(5);
+                        return { after: zzxArr, out: "返回新长度 <b>" + zzxLen + "</b>，新元素排在最前面。" };
+                    },
+                    code: [
+                        "var zzxArr = [10, 20, 30];",
+                        "zzxArr.unshift(5);",
+                        "// 结果：[5, 10, 20, 30]"
+                    ]
+                },
+                {
+                    name: "pop()", desc: "删除并返回最后一个元素",
+                    before: [10, 20, 30], mutates: true, resultLabel: "调用后",
+                    run: function (zzxArr) {
+                        var zzxOut = zzxArr.pop();
+                        return { after: zzxArr, out: "返回被删掉的 <b>" + zzxOut + "</b>，数组长度减 1。" };
+                    },
+                    code: [
+                        "var zzxArr = [10, 20, 30];",
+                        "var zzxOut = zzxArr.pop();",
+                        "// zzxOut 是 30，数组变成 [10, 20]"
+                    ]
+                },
+                {
+                    name: "shift()", desc: "删除并返回第一个元素",
+                    before: [10, 20, 30], mutates: true, resultLabel: "调用后",
+                    run: function (zzxArr) {
+                        var zzxOut = zzxArr.shift();
+                        return { after: zzxArr, out: "返回被删掉的 <b>" + zzxOut + "</b>，后面的元素依次前移。" };
+                    },
+                    code: [
+                        "var zzxArr = [10, 20, 30];",
+                        "var zzxOut = zzxArr.shift();",
+                        "// zzxOut 是 10，数组变成 [20, 30]"
+                    ]
+                },
+                {
+                    name: "splice()", desc: "从指定位置删除若干个，还能顺手插入新的",
+                    before: ["a", "b", "c", "d"], mutates: true, resultLabel: "调用后",
+                    run: function (zzxArr) {
+                        var zzxOut = zzxArr.splice(1, 2, "X");
+                        return { after: zzxArr, out: "从下标 1 开始删 2 个（b、c），插入 X；返回被删的 <b>[" + zzxOut.join(", ") + "]</b>。" };
+                    },
+                    code: [
+                        "var zzxArr = [\"a\", \"b\", \"c\", \"d\"];",
+                        "// 从下标 1 开始，删 2 个，插入 \"X\"",
+                        "zzxArr.splice(1, 2, \"X\");",
+                        "// 结果：[\"a\", \"X\", \"d\"]"
+                    ]
+                }
+            ],
+
+            // ---------- 查找与筛选 ----------
+            find: [
+                {
+                    name: "indexOf()", desc: "找元素第一次出现的位置，找不到返回 -1",
+                    before: [10, 20, 30, 20], mutates: false, resultLabel: "返回值",
+                    run: function (zzxArr) {
+                        var zzxAt = zzxArr.indexOf(20);
+                        return { after: [zzxAt], out: "20 第一次出现在下标 <b>" + zzxAt + "</b>；找不到就是 -1。" };
+                    },
+                    code: [
+                        "var zzxArr = [10, 20, 30, 20];",
+                        "zzxArr.indexOf(20);   // 1",
+                        "zzxArr.indexOf(99);   // -1"
+                    ]
+                },
+                {
+                    name: "includes()", desc: "只关心有没有，返回 true / false",
+                    before: [10, 20, 30], mutates: false, resultLabel: "返回值",
+                    run: function (zzxArr) {
+                        var zzxHas = zzxArr.includes(99);
+                        return { after: [String(zzxHas)], out: "数组里没有 99，所以返回 <b>" + zzxHas + "</b>。" };
+                    },
+                    code: [
+                        "var zzxArr = [10, 20, 30];",
+                        "zzxArr.includes(20);   // true",
+                        "zzxArr.includes(99);   // false"
+                    ]
+                },
+                {
+                    name: "find()", desc: "找出第一个符合条件的元素",
+                    before: [12, 45, 67, 88], mutates: false, resultLabel: "返回值",
+                    run: function (zzxArr) {
+                        var zzxHit = zzxArr.find(function (zzxValue) { return zzxValue > 50; });
+                        return { after: [zzxHit], out: "第一个大于 50 的是 <b>" + zzxHit + "</b>，后面的 88 不再检查。" };
+                    },
+                    code: [
+                        "var zzxArr = [12, 45, 67, 88];",
+                        "var zzxHit = zzxArr.find(function (v) {",
+                        "    return v > 50;",
+                        "});",
+                        "// zzxHit 是 67"
+                    ]
+                },
+                {
+                    name: "filter()", desc: "筛出所有符合条件的元素，组成新数组",
+                    before: [12, 45, 67, 88], mutates: false, resultLabel: "新数组",
+                    run: function (zzxArr) {
+                        var zzxNew = zzxArr.filter(function (zzxValue) { return zzxValue > 50; });
+                        return { after: zzxNew, out: "把所有大于 50 的都留下，原数组不变，得到新数组 <b>[" + zzxNew.join(", ") + "]</b>。" };
+                    },
+                    code: [
+                        "var zzxArr = [12, 45, 67, 88];",
+                        "var zzxNew = zzxArr.filter(function (v) {",
+                        "    return v > 50;",
+                        "});",
+                        "// zzxNew 是 [67, 88]"
+                    ]
+                }
+            ],
+
+            // ---------- 遍历与计算 ----------
+            loop: [
+                {
+                    name: "forEach()", desc: "逐个取出来处理，本身没有返回值",
+                    before: [1, 2, 3], mutates: false, resultLabel: "遍历输出",
+                    run: function (zzxArr) {
+                        var zzxPrinted = [];
+                        zzxArr.forEach(function (zzxValue, zzxIndex) {
+                            zzxPrinted.push("第" + zzxIndex + "个：" + zzxValue);
+                        });
+                        return { after: [1, 2, 3], out: "依次执行 " + zzxPrinted.join("，") + "；返回值是 <b>undefined</b>。" };
+                    },
+                    code: [
+                        "var zzxArr = [1, 2, 3];",
+                        "zzxArr.forEach(function (v, i) {",
+                        "    console.log(i, v);   // 逐项输出",
+                        "});"
+                    ]
+                },
+                {
+                    name: "map()", desc: "每一项都加工一遍，返回等长的新数组",
+                    before: [1, 2, 3], mutates: false, resultLabel: "新数组",
+                    run: function (zzxArr) {
+                        var zzxNew = zzxArr.map(function (zzxValue) { return zzxValue * 2; });
+                        return { after: zzxNew, out: "每项乘 2 得到 <b>[" + zzxNew.join(", ") + "]</b>，原数组保持不变。" };
+                    },
+                    code: [
+                        "var zzxArr = [1, 2, 3];",
+                        "var zzxNew = zzxArr.map(function (v) {",
+                        "    return v * 2;",
+                        "});",
+                        "// zzxNew 是 [2, 4, 6]"
+                    ]
+                },
+                {
+                    name: "reduce()", desc: "把整组数据压缩成一个值，比如求和",
+                    before: [10, 20, 30], mutates: false, resultLabel: "计算结果",
+                    run: function (zzxArr) {
+                        var zzxSum = zzxArr.reduce(function (zzxPrev, zzxValue) {
+                            return zzxPrev + zzxValue;
+                        }, 0);
+                        return { after: [zzxSum], out: "10 + 20 + 30 = <b>" + zzxSum + "</b>，累加器从 0 开始。" };
+                    },
+                    code: [
+                        "var zzxArr = [10, 20, 30];",
+                        "var zzxSum = zzxArr.reduce(function (prev, v) {",
+                        "    return prev + v;",
+                        "}, 0);",
+                        "// zzxSum 是 60"
+                    ]
+                }
+            ],
+
+            // ---------- 转换与排序 ----------
+            conv: [
+                {
+                    name: "join()", desc: "用分隔符把元素连成一个字符串",
+                    before: ["张", "志", "翔"], mutates: false, resultLabel: "返回字符串",
+                    run: function (zzxArr) {
+                        var zzxStr = zzxArr.join("-");
+                        return { after: [zzxStr], out: "连起来得到 <b>\"" + zzxStr + "\"</b>，原数组不变。" };
+                    },
+                    code: [
+                        "var zzxArr = [\"张\", \"志\", \"翔\"];",
+                        "zzxArr.join(\"-\");   // \"张-志-翔\"",
+                        "zzxArr.join(\"\");    // \"张志翔\""
+                    ]
+                },
+                {
+                    name: "slice()", desc: "截取一段，不改变原数组",
+                    before: [1, 2, 3, 4, 5], mutates: false, resultLabel: "截取结果",
+                    run: function (zzxArr) {
+                        var zzxPart = zzxArr.slice(1, 3);
+                        return { after: zzxPart, out: "从下标 1 取到下标 3（不含 3），得到 <b>[" + zzxPart.join(", ") + "]</b>。" };
+                    },
+                    code: [
+                        "var zzxArr = [1, 2, 3, 4, 5];",
+                        "zzxArr.slice(1, 3);   // [2, 3]",
+                        "// 原数组还是 [1, 2, 3, 4, 5]"
+                    ]
+                },
+                {
+                    name: "concat()", desc: "把两个数组合并成一个新数组",
+                    before: [1, 2], mutates: false, resultLabel: "合并结果",
+                    run: function (zzxArr) {
+                        var zzxNew = zzxArr.concat([3, 4]);
+                        return { after: zzxNew, out: "两个数组合并成 <b>[" + zzxNew.join(", ") + "]</b>，双方都没被改动。" };
+                    },
+                    code: [
+                        "var zzxArr = [1, 2];",
+                        "zzxArr.concat([3, 4]);   // [1, 2, 3, 4]"
+                    ]
+                },
+                {
+                    name: "sort()", desc: "排序，默认按字符串比较，数字要传比较函数",
+                    before: [30, 4, 100, 20], mutates: true, resultLabel: "调用后",
+                    run: function (zzxArr) {
+                        var zzxNaive = zzxArr.slice().sort();
+                        zzxArr.sort(function (zzxA, zzxB) { return zzxA - zzxB; });
+                        return {
+                            after: zzxArr,
+                            out: "不传比较函数会按字符串排成 <b>[" + zzxNaive.join(", ") + "]</b>；加上比较函数才是 <b>[" + zzxArr.join(", ") + "]</b>。"
+                        };
+                    },
+                    code: [
+                        "var zzxArr = [30, 4, 100, 20];",
+                        "zzxArr.sort();   // 按字符串：[100, 20, 30, 4]",
+                        "zzxArr.sort(function (a, b) {",
+                        "    return a - b;   // 真正的升序",
+                        "});"
+                    ]
+                },
+                {
+                    name: "reverse()", desc: "把数组倒过来，直接改原数组",
+                    before: [1, 2, 3], mutates: true, resultLabel: "调用后",
+                    run: function (zzxArr) {
+                        zzxArr.reverse();
+                        return { after: zzxArr, out: "原来的最后一项跑到最前面，得到 <b>[" + zzxArr.join(", ") + "]</b>。" };
+                    },
+                    code: [
+                        "var zzxArr = [1, 2, 3];",
+                        "zzxArr.reverse();   // [3, 2, 1]"
+                    ]
+                }
+            ]
+        };
+
+        /* ============================================================
+           三、把每个方法渲染成一张卡片
+           ============================================================ */
+
+        function zzxBuildCard(zzxDemo) {
+            var zzxBefore = zzxDemo.before.slice();
+            var zzxResult = zzxDemo.run(zzxBefore.slice());   //真的调用一次方法
+            var zzxAfter = zzxResult.after;
+
+            // 调用前 / 调用后的方块状态
+            var zzxBeforeStates = zzxDemo.mutates ? zzxMark(zzxBefore, zzxAfter) : zzxBefore.map(function () { return "same"; });
+            var zzxAfterStates = zzxDemo.mutates
+                // zzxMark 标出来的是"原来没有的"，对调用后来说就是新增
+                ? zzxMark(zzxAfter, zzxBefore).map(function (zzxState) {
+                    return zzxState === "del" ? "add" : "same";
+                })
+                : zzxAfter.map(function () { return "res"; });
+
+            var zzxBeforeHtml = zzxBefore.map(function (zzxValue, zzxIndex) {
+                return zzxChip(zzxValue, zzxIndex, zzxBeforeStates[zzxIndex], true);
+            }).join("");
+
+            var zzxAfterHtml = zzxAfter.map(function (zzxValue, zzxIndex) {
+                return zzxChip(zzxValue, zzxIndex, zzxAfterStates[zzxIndex], !zzxDemo.mutates && zzxAfter.length > 1);
+            }).join("");
+
+            var zzxTag = zzxDemo.mutates ? '<em class="zzx-tag">改原数组</em>' : '<em class="zzx-tag">不改原数组</em>';
+
+            return '<article class="zzx-card">' +
+                    '<div class="zzx-card-head">' +
+                        "<h3>" + zzxDemo.name + "</h3>" +
+                        "<p>" + zzxDemo.desc + zzxTag + "</p>" +
+                    "</div>" +
+                    '<div class="zzx-body">' +
+                        '<div class="zzx-visual">' +
+                            '<div class="zzx-stage">' +
+                                '<span class="zzx-stage-label">原数组</span>' +
+                                '<div class="zzx-chips">' + zzxBeforeHtml + "</div>" +
+                            "</div>" +
+                            '<span class="zzx-arrow">→</span>' +
+                            '<div class="zzx-stage">' +
+                                '<span class="zzx-stage-label">' + zzxDemo.resultLabel + "</span>" +
+                                '<div class="zzx-chips">' + zzxAfterHtml + "</div>" +
+                            "</div>" +
+                        "</div>" +
+                        "<div>" +
+                            '<pre class="zzx-code">' + zzxCodeHtml(zzxDemo.code) + "</pre>" +
+                            '<p class="zzx-out">' + zzxResult.out + "</p>" +
+                        "</div>" +
+                    "</div>" +
+                "</article>";
+        }
+
+        function zzxRenderList(zzxId, zzxDemos) {
+            document.getElementById(zzxId).innerHTML = zzxDemos.map(zzxBuildCard).join("");
+        }
+
+        zzxRenderList("zzxListAdd", zzxDemos.add);
+        zzxRenderList("zzxListFind", zzxDemos.find);
+        zzxRenderList("zzxListLoop", zzxDemos.loop);
+        zzxRenderList("zzxListConv", zzxDemos.conv);
+
+        /* ============================================================
+           四、上面的演示台：按钮直接操作数组
+           ============================================================ */
+
+        var zzxOrigin = [10, 20, 30];       //初始数组
+        var zzxLive = zzxOrigin.slice();    //正在演示的数组
+        var zzxLiveChips = document.getElementById("zzxLiveChips");
+        var zzxLiveMsg = document.getElementById("zzxLiveMsg");
+
+        function zzxDrawLive(zzxText) {
+            zzxLiveChips.innerHTML = zzxLive.map(function (zzxValue, zzxIndex) {
+                return zzxChip(zzxValue, zzxIndex, "same", true);
+            }).join("");
+            zzxLiveMsg.innerHTML = (zzxText || "当前数组，长度 " + zzxLive.length) +
+                "　|　<span style=\"color:#b9673c\">长度：" + zzxLive.length + "</span>";
+        }
+
+        document.getElementById("zzxLiveBtns").addEventListener("click", function (zzxEvent) {
+            var zzxBtn = zzxEvent.target.closest("[data-op]");
+            if (!zzxBtn) { return; }
+
+            var zzxOp = zzxBtn.getAttribute("data-op");
+            var zzxMsg = "";
+
+            if (zzxOp === "push") {
+                zzxLive.push(40);
+                zzxMsg = "push(40) → 返回 <b>" + zzxLive.length + "</b>，元素加在末尾";
+            } else if (zzxOp === "pop") {
+                var zzxPopped = zzxLive.pop();
+                zzxMsg = "pop() → 返回被删的 <b>" + zzxPopped + "</b>";
+            } else if (zzxOp === "unshift") {
+                zzxLive.unshift(5);
+                zzxMsg = "unshift(5) → 返回 <b>" + zzxLive.length + "</b>，元素加在开头";
+            } else if (zzxOp === "shift") {
+                var zzxShifted = zzxLive.shift();
+                zzxMsg = "shift() → 返回被删的 <b>" + zzxShifted + "</b>";
+            } else if (zzxOp === "reverse") {
+                zzxLive.reverse();
+                zzxMsg = "reverse() → 数组原地翻转";
+            } else if (zzxOp === "sort") {
+                zzxLive.sort(function (zzxA, zzxB) { return zzxA - zzxB; });
+                zzxMsg = "sort() → 升序排列";
+            } else if (zzxOp === "reset") {
+                zzxLive = zzxOrigin.slice();
+                zzxMsg = "还原成 <b>[10, 20, 30]</b>";
+            }
+
+            zzxDrawLive(zzxMsg);
+        });
+
+        zzxDrawLive("当前数组");
+    </script>
+</body>
+</html>

@@ -33,29 +33,29 @@
         </div>
     </header>
     <div class="zzx-filter">
-        <a class="zzx-filter__item is-active" href="#">全部</a>
-        <a class="zzx-filter__item" href="#">热议</a>
-        <a class="zzx-filter__item" href="#">提问</a>
-        <a class="zzx-filter__item" href="#">投票</a>
-        <a class="zzx-filter__item" href="#">我参与的</a>
+        <button type="button" class="zzx-filter__item zzx-is-active">全部</button>
+        <button type="button" class="zzx-filter__item">热议</button>
+        <button type="button" class="zzx-filter__item">提问</button>
+        <button type="button" class="zzx-filter__item">投票</button>
+        <button type="button" class="zzx-filter__item">我参与的</button>
     </div>
 
     <div class="zzx-subhead">
         <h2 class="zzx-subhead__title">热门话题</h2>
-        <a class="zzx-subhead__more" href="#">全部</a>
+        <button type="button" class="zzx-subhead__more">全部</button>
     </div>
     <div class="zzx-tags">
-        <a class="zzx-tags__item" href="#">#总决赛MVP</a>
-        <a class="zzx-tags__item" href="#">#休赛期转会</a>
-        <a class="zzx-tags__item" href="#">#新秀观察</a>
-        <a class="zzx-tags__item" href="#">#战术板</a>
-        <a class="zzx-tags__item" href="#">#球鞋测评</a>
-        <a class="zzx-tags__item" href="#">#今日最佳镜头</a>
+        <button type="button" class="zzx-tags__item">#总决赛MVP</button>
+        <button type="button" class="zzx-tags__item">#休赛期转会</button>
+        <button type="button" class="zzx-tags__item">#新秀观察</button>
+        <button type="button" class="zzx-tags__item">#战术板</button>
+        <button type="button" class="zzx-tags__item">#球鞋测评</button>
+        <button type="button" class="zzx-tags__item">#今日最佳镜头</button>
     </div>
 
     <div class="zzx-subhead">
         <h2 class="zzx-subhead__title">正在热议</h2>
-        <a class="zzx-subhead__more" href="#">按热度</a>
+        <button type="button" class="zzx-subhead__more">按热度</button>
     </div>
 
     <section class="zzx-talk">
@@ -144,7 +144,7 @@
             <svg class="zzx-tabbar__plus" aria-hidden="true"><use href="#zzx-ico-plus" xlink:href="#zzx-ico-plus"></use></svg>
         </a>
 
-        <a class="zzx-tabbar__item is-active" href="chat.html" aria-current="page">
+        <a class="zzx-tabbar__item zzx-is-active" href="chat.html" aria-current="page">
             <svg class="zzx-tabbar__icon" aria-hidden="true"><use href="#zzx-ico-chat" xlink:href="#zzx-ico-chat"></use></svg>
             <span class="zzx-tabbar__text">深聊</span>
         </a>
@@ -157,22 +157,6 @@
     </div>
 </nav>
 
-<script>
-    /* 点击切换当前 tab：先切 class 让选中态立刻可见，再跳转到对应页面 */
-    (function () {
-        var items = document.querySelectorAll('.zzx-tabbar__item');
-        for (var i = 0; i < items.length; i++) {
-            items[i].addEventListener('click', function (e) {
-                for (var j = 0; j < items.length; j++) {
-                    items[j].classList.remove('is-active');
-                    items[j].removeAttribute('aria-current');
-                }
-                this.classList.add('is-active');
-                this.setAttribute('aria-current', 'page');
-            });
-        }
-    })();
-</script>
 
 </body>
 

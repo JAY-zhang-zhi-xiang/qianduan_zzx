@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 24002060419 张志翔 —— iconfont 图标库总览（辅助说明页，不计入正式页面） -->
+<title>iconfont 图标库总览 · 24002060419 张志翔</title>
+<link rel="stylesheet" href="css/iconfont.css">
+<style>
+:root {
+    --zzx-red: #e00009;
+    --zzx-text: #191c22;
+    --zzx-desc: #4e5158;
+    --zzx-sub: #a3a6ab;
+    --zzx-line: #ececee;
+    --zzx-bg: #f4f5f6;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0; padding: 32px 28px 40px;
+    background: var(--zzx-bg); color: var(--zzx-text);
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+.zzx-wrap { max-width: 1080px; margin: 0 auto; background: #fff; padding: 34px 36px 38px;
+        border: 1px solid var(--zzx-line); border-radius: 6px; }
+h1 { font-size: 22px; margin: 0 0 6px; letter-spacing: .5px; }
+.zzx-meta { font-size: 13px; color: var(--zzx-desc); line-height: 1.9; margin-bottom: 4px; }
+.zzx-meta b { color: var(--zzx-red); font-weight: 600; }
+.zzx-rule { height: 1px; background: var(--zzx-line); margin: 22px 0 24px; }
+h2 { font-size: 15px; margin: 0 0 4px; }
+h2 .zzx-n { color: var(--zzx-sub); font-weight: 400; font-size: 13px; margin-left: 6px; }
+.zzx-note { font-size: 12px; color: var(--zzx-sub); margin: 0 0 18px; }
+
+/* 下导航 5 枚对照 */
+.zzx-nv { list-style: none; margin: 0 0 6px; padding: 0; display: flex; gap: 10px; }
+.zzx-nv-cell { width: 188px; flex: 0 0 188px; border: 1px solid var(--zzx-line); border-radius: 5px; padding: 14px 0 12px; text-align: center; }
+.zzx-nv-pair { display: flex; justify-content: center; gap: 20px; margin-bottom: 9px; }
+.zzx-nv-box { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; }
+.zzx-nv-box .iconfont { font-size: 26px; color: var(--zzx-text); }
+.zzx-nv-svg { width: 26px; height: 26px; fill: var(--zzx-text); }
+.zzx-nv-label { display: block; font-size: 13px; font-weight: 600; }
+.zzx-nv-cls { display: block; font-size: 10px; color: var(--zzx-sub); margin-top: 2px;
+          font-family: Consolas, monospace; white-space: nowrap; }
+.zzx-nv-note { display: block; font-size: 9.5px; color: var(--zzx-red); margin-top: 4px;
+           line-height: 1.4; padding: 0 6px; min-height: 13px; }
+.zzx-nv-cssplus { position: relative; display: block; width: 26px; height: 26px; }
+.zzx-nv-cssplus::before, .zzx-nv-cssplus::after { content: ''; position: absolute; background: var(--zzx-text); border-radius: 1px; }
+.zzx-nv-cssplus::before { left: 50%; top: 0; bottom: 0; width: 2.9px; transform: translateX(-50%); }
+.zzx-nv-cssplus::after { top: 50%; left: 0; right: 0; height: 2.9px; transform: translateY(-50%); }
+
+/* 34 枚网格 */
+.zzx-ic { list-style: none; margin: 0; padding: 0;
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.zzx-ic-cell { position: relative; border: 1px solid var(--zzx-line); border-radius: 5px;
+           padding: 16px 6px 12px; text-align: center; background: #fff; }
+.zzx-ic-cell.zzx-is-used { border-color: var(--zzx-red); background: #fff7f7; }
+.zzx-ic-glyph { display: block; height: 34px; line-height: 34px; margin-bottom: 8px; }
+.zzx-ic-glyph .iconfont { font-size: 26px; color: var(--zzx-text); }
+.zzx-ic-name { display: block; font-size: 12px; color: var(--zzx-text); }
+.zzx-ic-cls { display: block; font-size: 10px; color: var(--zzx-desc); margin-top: 2px;
+          word-break: break-all; line-height: 1.35; }
+.zzx-ic-code { display: block; font-size: 10px; color: var(--zzx-sub); margin-top: 2px;
+           font-family: Consolas, monospace; }
+.zzx-ic-badge { position: absolute; top: -1px; right: -1px; background: var(--zzx-red); color: #fff;
+            font-size: 9px; padding: 2px 5px; border-radius: 0 4px 0 4px; letter-spacing: .5px; }
+
+.zzx-foot { margin-top: 26px; padding-top: 18px; border-top: 1px dashed var(--zzx-line);
+        font-size: 12px; color: var(--zzx-sub); line-height: 1.9; }
+.zzx-foot b { color: var(--zzx-desc); }
+</style>
+</head>
+<body>
+<svg class="zzx-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="zzx-ico-home" viewBox="0 0 1024 1024"><g transform="translate(51.92 90.34) scale(0.82363)"><path d="M104.606906 532.330587c-23.679251 0-43.346028-0.395596-62.95629 0s-39.559608-3.390824-41.481075-24.41393a59.00033 59.00033 0 0 1 16.954118-42.950431C86.805083 400.540579 158.238432 337.979884 229.50224 274.854053Q372.029856 148.206793 514.613986 21.559534c31.534659-28.256863 43.741624-28.708973 75.050228-1.52587q249.621126 216.504083 498.959683 433.403762a118.113687 118.113687 0 0 1 23.566224 24.074847c13.280726 21.07962-1.525871 47.528043-29.443651 50.862353-25.9398 3.164769-52.218683 3.051741-81.492792 4.521098v350.611154c0 96.864526-43.459055 140.436608-139.24982 140.436608H231.988844c-90.421961 0-128.229644-39.559608-127.607993-129.472945 0.847706-119.413502 0.226055-238.827005 0.226055-362.139954z m536.880394 419.783954c0-80.136463 0.621651-156.99513-0.90422-233.853797 0-8.307518-11.020177-20.62751-19.553749-23.735765a200.115103 200.115103 0 0 0-132.355145-2.769172c-16.954118 5.31229-24.979067 16.332467-24.639985 35.829702 1.073761 68.551149 0.339082 137.158812 0.565138 205.709961a138.684683 138.684683 0 0 0 2.599631 18.762557z"/></g></symbol><symbol id="zzx-ico-zone" viewBox="0 0 1024 1024"><g transform="translate(-39.97 -74.52) scale(1.07817)"><path d="M275.413333 810.666667L85.333333 960V170.666667a42.666667 42.666667 0 0 1 42.666667-42.666667h768a42.666667 42.666667 0 0 1 42.666667 42.666667v597.333333a42.666667 42.666667 0 0 1-42.666667 42.666667H275.413333z m-29.525333-85.333334H853.333333V213.333333H170.666667v571.093334L245.888 725.333333zM341.333333 426.666667h341.333334v85.333333H341.333333v-85.333333z"/></g></symbol><symbol id="zzx-ico-chat" viewBox="0 0 1024 1024"><g transform="translate(22.07 36.11) scale(0.92948)"><path d="M1019.178365 471.186674c-7.357617-101.752868-47.28011-198.556666-102.115799-265.567066-17.387731-22.270812-47.28011-54.439764-72.289407-71.860488a131.909197 131.909197 0 0 0-74.730949-22.3368c-7.423604 0-12.405667 2.507529-19.862265 2.507529-64.733828 9.964126-112.11292 64.601853-112.11292 129.038737 0 4.949069 2.474535 12.372674 2.474535 19.829271 7.522586 37.217002 27.516826 66.944413 54.901677 89.314207 49.919614 39.559562 254.250194 166.222745 286.584114 332.313515 0 2.573516 2.573516 7.489592 2.573516 9.964127 7.423604-14.880202 37.381971-91.68976 37.085027-188.559546 0-12.372674-2.507529-22.303806-2.507529-34.643486M214.426682 389.329066c14.979183 7.423604 29.892379 9.931133 47.379091 9.931132 4.949069 0 12.405667-2.507529 19.928253-2.507528 37.381971-5.081045 67.241357-27.318863 89.644144-54.604733 4.982063-4.949069 10.063108-12.405667 14.979184-19.829271 49.787639-72.025457 169.555119-245.605819 326.671576-270.516136C698.049747 44.378926 623.285804 17.093057 531.002156 17.093057h-2.441541c-12.570636 0-24.976304 0-39.955487 2.540522-102.247774 7.423604-196.873982 49.556682-264.181326 104.260396-19.994241 17.321743-54.901677 47.049153-69.781879 71.926476-14.94619 19.73029-22.468775 44.640606-22.468775 71.893482 0 7.423604 0 14.880202 2.540522 22.3368 7.423604 47.148135 39.790518 81.824615 79.713012 99.278333m196.906976 386.918248c0-7.39061 0-14.880202-2.507529-22.270812-7.489592-37.249996-27.516826-64.502872-54.901677-86.773685-52.328161-39.757524-261.60781-163.814198-286.518126-332.511478-7.555579 14.94619-34.94043 86.905659-34.940431 176.219866 0 14.847208 0 27.219882 2.540523 42.133078 7.456598 101.653886 49.787639 193.475621 104.689315 260.453027 17.387731 22.3368 47.214122 54.637727 72.190426 69.484935 19.994241 14.913196 44.871563 22.369794 69.847867 22.369794 7.456598 0 14.913196 0 22.402788-2.540523 62.358275-9.898139 107.196844-64.469878 107.196844-126.564202m381.177327-153.850072c-4.982063 0-12.438661 2.540522-19.895259 2.540522-27.384851 2.507529-52.361155 17.420724-72.22342 34.775462l-14.946189 14.913196c-29.925373 37.217002-107.097863 158.766147-209.378631 235.509717-42.397028 29.793398-87.301585 52.097204-137.089224 59.553802 14.781221 7.39061 94.692195 37.217002 191.858925 37.217002 9.99712 0 22.402788-2.540522 32.399908-2.540522 104.689315-7.456598 199.381511-47.049153 269.16339-101.68688 22.369794-17.321743 54.736708-47.049153 72.190426-71.893482a130.688427 130.688427 0 0 0 22.468775-74.40101v-2.540523c0-7.456598-2.540522-12.372674-2.540522-19.796277-12.438661-64.469878-67.175369-111.651006-132.008179-111.651007" stroke="currentColor" stroke-width="30" stroke-linejoin="round"/></g></symbol><symbol id="zzx-ico-mine" viewBox="0 0 1024 1024"><g transform="translate(-39.97 -39.97) scale(1.07817)"><path d="M512 938.666667C276.352 938.666667 85.333333 747.648 85.333333 512S276.352 85.333333 512 85.333333s426.666667 191.018667 426.666667 426.666667-191.018667 426.666667-426.666667 426.666667z m0-85.333334a341.333333 341.333333 0 1 0 0-682.666666 341.333333 341.333333 0 0 0 0 682.666666z m-170.666667-298.666666h341.333334a170.666667 170.666667 0 0 1-341.333334 0z" stroke="currentColor" stroke-width="15" stroke-linejoin="round"/></g></symbol><symbol id="zzx-ico-plus" viewBox="0 0 1024 1024"><path d="M925.696 384q19.456 0 37.376 7.68t30.72 20.48 20.48 30.72 7.68 37.376q0 20.48-7.68 37.888t-20.48 30.208-30.72 20.48-37.376 7.68l-287.744 0 0 287.744q0 20.48-7.68 37.888t-20.48 30.208-30.72 20.48-37.376 7.68q-20.48 0-37.888-7.68t-30.208-20.48-20.48-30.208-7.68-37.888l0-287.744-287.744 0q-20.48 0-37.888-7.68t-30.208-20.48-20.48-30.208-7.68-37.888q0-19.456 7.68-37.376t20.48-30.72 30.208-20.48 37.888-7.68l287.744 0 0-287.744q0-19.456 7.68-37.376t20.48-30.72 30.208-20.48 37.888-7.68q39.936 0 68.096 28.16t28.16 68.096l0 287.744 287.744 0z" /></symbol></svg>
+<div class="zzx-wrap">
+  <h1>iconfont 图标库总览</h1>
+  <p class="zzx-meta">
+    来源：iconfont.cn &nbsp;·&nbsp; 项目名 <b>zhangzhixiang2026</b> &nbsp;·&nbsp; 项目 id <b>5244713</b><br>
+    字体文件：<b>mobile/font/iconfont.woff2 / .woff / .ttf</b> &nbsp;·&nbsp; 图标总数 <b>34</b> 枚，其中 <b>5</b> 枚用于下导航
+  </p>
+
+  <div class="zzx-rule"></div>
+
+  <h2>一、下导航选用的 5 枚<span class="zzx-n">SVG 版（方案 A）与字体图标版（方案 B）逐枚对照</span></h2>
+  <p class="zzx-note">左为 SVG symbol（方案 A 实际使用），右为 font-class（方案 B 实际使用）。图标库中没有「专区」「深聊」两个语义，分别借用「消息」气泡与「台风路径」旋涡字形；中间发布按钮采用 CSS 绘制。</p>
+  <ul class="zzx-nv">
+<li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-home"></use></svg></span><span class="zzx-nv-box"><i class="iconfont icon-index-copy"></i></span></div><span class="zzx-nv-label">首页</span><span class="zzx-nv-cls">#zzx-ico-home</span><span class="zzx-nv-cls">.icon-index-copy</span><span class="zzx-nv-note">&nbsp;</span></li>
+<li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-zone"></use></svg></span><span class="zzx-nv-box"><i class="iconfont icon-xiaoxi"></i></span></div><span class="zzx-nv-label">专区</span><span class="zzx-nv-cls">#zzx-ico-zone</span><span class="zzx-nv-cls">.icon-xiaoxi</span><span class="zzx-nv-note">借用「消息」气泡字形</span></li>
+<li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-plus"></use></svg></span><span class="zzx-nv-box"><span class="zzx-nv-cssplus"></span></span></div><span class="zzx-nv-label">发布</span><span class="zzx-nv-cls">#zzx-ico-plus</span><span class="zzx-nv-cls">CSS 绘制</span><span class="zzx-nv-note">字体加号自带圆框会双环，改用 CSS 两条线绘制，比 SVG 版略细</span></li>
+<li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-chat"></use></svg></span><span class="zzx-nv-box"><i class="iconfont icon-taifenglujing"></i></span></div><span class="zzx-nv-label">深聊</span><span class="zzx-nv-cls">#zzx-ico-chat</span><span class="zzx-nv-cls">.icon-taifenglujing</span><span class="zzx-nv-note">借用「台风路径」旋涡字形</span></li>
+<li class="zzx-nv-cell"><div class="zzx-nv-pair"><span class="zzx-nv-box"><svg class="zzx-nv-svg"><use href="#zzx-ico-mine"></use></svg></span><span class="zzx-nv-box"><i class="iconfont icon-wode"></i></span></div><span class="zzx-nv-label">我的</span><span class="zzx-nv-cls">#zzx-ico-mine</span><span class="zzx-nv-cls">.icon-wode</span><span class="zzx-nv-note">&nbsp;</span></li>
+  </ul>
+
+  <div class="zzx-rule"></div>
+
+  <h2>二、图标库全部 34 枚<span class="zzx-n">font-class 渲染，红框为下导航已选用</span></h2>
+  <p class="zzx-note">每格自上而下为：图形 / 名称 / 类名 / Unicode 码点。</p>
+  <ul class="zzx-ic">
+<li class="zzx-ic-cell zzx-is-used"><span class="zzx-ic-glyph"><i class="iconfont icon-xiaoxi"></i></span><span class="zzx-ic-name">消息</span><span class="zzx-ic-cls">.icon-xiaoxi</span><span class="zzx-ic-code">\e64b</span><span class="zzx-ic-badge">已选用</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-xiaoxi1"></i></span><span class="zzx-ic-name">消息 备选1</span><span class="zzx-ic-cls">.icon-xiaoxi1</span><span class="zzx-ic-code">\e628</span></li>
+<li class="zzx-ic-cell zzx-is-used"><span class="zzx-ic-glyph"><i class="iconfont icon-taifenglujing"></i></span><span class="zzx-ic-name">专区</span><span class="zzx-ic-cls">.icon-taifenglujing</span><span class="zzx-ic-code">\e649</span><span class="zzx-ic-badge">已选用</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-jiahao"></i></span><span class="zzx-ic-name">加号</span><span class="zzx-ic-cls">.icon-jiahao</span><span class="zzx-ic-code">\e60a</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-xiaoxi2"></i></span><span class="zzx-ic-name">消息 备选2</span><span class="zzx-ic-cls">.icon-xiaoxi2</span><span class="zzx-ic-code">\e6c9</span></li>
+<li class="zzx-ic-cell zzx-is-used"><span class="zzx-ic-glyph"><i class="iconfont icon-wode"></i></span><span class="zzx-ic-name">我的</span><span class="zzx-ic-cls">.icon-wode</span><span class="zzx-ic-code">\e641</span><span class="zzx-ic-badge">已选用</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-xiaoxi3"></i></span><span class="zzx-ic-name">消息 备选3</span><span class="zzx-ic-cls">.icon-xiaoxi3</span><span class="zzx-ic-code">\e671</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-xiaoxi4"></i></span><span class="zzx-ic-name">消息 备选4</span><span class="zzx-ic-cls">.icon-xiaoxi4</span><span class="zzx-ic-code">\e81c</span></li>
+<li class="zzx-ic-cell zzx-is-used"><span class="zzx-ic-glyph"><i class="iconfont icon-index-copy"></i></span><span class="zzx-ic-name">首页</span><span class="zzx-ic-cls">.icon-index-copy</span><span class="zzx-ic-code">\e622</span><span class="zzx-ic-badge">已选用</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-jiahao-"></i></span><span class="zzx-ic-name">加号 备选</span><span class="zzx-ic-cls">.icon-jiahao-</span><span class="zzx-ic-code">\e614</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-wode-copy"></i></span><span class="zzx-ic-name">我的 备选</span><span class="zzx-ic-cls">.icon-wode-copy</span><span class="zzx-ic-code">\e608</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-taifenglujing1"></i></span><span class="zzx-ic-name">专区 备选</span><span class="zzx-ic-cls">.icon-taifenglujing1</span><span class="zzx-ic-code">\e60e</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-jiahaoanniu_jiahaoanniu"></i></span><span class="zzx-ic-name">加号按钮</span><span class="zzx-ic-cls">.icon-jiahaoanniu_jiahaoanniu</span><span class="zzx-ic-code">\e609</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-bianji"></i></span><span class="zzx-ic-name">编辑</span><span class="zzx-ic-cls">.icon-bianji</span><span class="zzx-ic-code">\e600</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-shanchu"></i></span><span class="zzx-ic-name">删除</span><span class="zzx-ic-cls">.icon-shanchu</span><span class="zzx-ic-code">\e601</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-shouye"></i></span><span class="zzx-ic-name">首页</span><span class="zzx-ic-cls">.icon-shouye</span><span class="zzx-ic-code">\e602</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-dianzan"></i></span><span class="zzx-ic-name">点赞</span><span class="zzx-ic-cls">.icon-dianzan</span><span class="zzx-ic-code">\e603</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-my"></i></span><span class="zzx-ic-name">my</span><span class="zzx-ic-cls">.icon-my</span><span class="zzx-ic-code">\e635</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-0201chazhao"></i></span><span class="zzx-ic-name">find</span><span class="zzx-ic-cls">.icon-0201chazhao</span><span class="zzx-ic-code">\e604</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-ego-fav"></i></span><span class="zzx-ic-name">收藏</span><span class="zzx-ic-cls">.icon-ego-fav</span><span class="zzx-ic-code">\e60c</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-tongxunlu"></i></span><span class="zzx-ic-name">通讯录</span><span class="zzx-ic-cls">.icon-tongxunlu</span><span class="zzx-ic-code">\e6c2</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-sousuo"></i></span><span class="zzx-ic-name">搜索</span><span class="zzx-ic-cls">.icon-sousuo</span><span class="zzx-ic-code">\e86e</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-shipin_o"></i></span><span class="zzx-ic-name">视频_o</span><span class="zzx-ic-cls">.icon-shipin_o</span><span class="zzx-ic-code">\eb81</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-dianzan1"></i></span><span class="zzx-ic-name">点赞</span><span class="zzx-ic-cls">.icon-dianzan1</span><span class="zzx-ic-code">\e60b</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-login"></i></span><span class="zzx-ic-name">login</span><span class="zzx-ic-cls">.icon-login</span><span class="zzx-ic-code">\e8ef</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-shoucang"></i></span><span class="zzx-ic-name">收藏</span><span class="zzx-ic-cls">.icon-shoucang</span><span class="zzx-ic-code">\e610</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-fanhui"></i></span><span class="zzx-ic-name">返回</span><span class="zzx-ic-cls">.icon-fanhui</span><span class="zzx-ic-code">\e634</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-zengjia"></i></span><span class="zzx-ic-name">增加</span><span class="zzx-ic-cls">.icon-zengjia</span><span class="zzx-ic-code">\e8c0</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-icon_ruixingkafei1"></i></span><span class="zzx-ic-name">icon_瑞幸咖啡</span><span class="zzx-ic-cls">.icon-icon_ruixingkafei1</span><span class="zzx-ic-code">\e605</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-shouye1"></i></span><span class="zzx-ic-name">首页</span><span class="zzx-ic-cls">.icon-shouye1</span><span class="zzx-ic-code">\e606</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-shenglvehao"></i></span><span class="zzx-ic-name">省略号</span><span class="zzx-ic-cls">.icon-shenglvehao</span><span class="zzx-ic-code">\e64f</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-luckin_logo_lightblue"></i></span><span class="zzx-ic-name">瑞幸-copy</span><span class="zzx-ic-cls">.icon-luckin_logo_lightblue</span><span class="zzx-ic-code">\e611</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-shenglvehao1"></i></span><span class="zzx-ic-name">省略号</span><span class="zzx-ic-cls">.icon-shenglvehao1</span><span class="zzx-ic-code">\e607</span></li>
+<li class="zzx-ic-cell"><span class="zzx-ic-glyph"><i class="iconfont icon-doubao"></i></span><span class="zzx-ic-name">豆包</span><span class="zzx-ic-cls">.icon-doubao</span><span class="zzx-ic-code">\e61e</span></li>
+  </ul>
+
+  <div class="zzx-foot">
+    <b>说明：</b>本页图标的类名 <b>icon-*</b> 与 <b>iconfont</b> 由 iconfont 平台随字体文件一并生成，必须与
+    font 目录下的字体文件保持同名，因此<b>未加 zzx- 姓名缩写前缀</b>；项目自有样式类则统一使用 zzx- 前缀。
+    本页为辅助说明页，不计入正式页面数。
+  </div>
+</div>
+</body>
+</html>

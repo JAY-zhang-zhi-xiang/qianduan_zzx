@@ -47,11 +47,11 @@
 
     <!-- 顶部频道 tab -->
     <nav class="zzx-channels" aria-label="频道">
-        <a class="zzx-channels__item zzx-channels__item--hot" href="#">热榜</a>
-        <a class="zzx-channels__item is-active" href="#">推荐</a>
-        <a class="zzx-channels__item" href="#">NBA</a>
-        <a class="zzx-channels__item" href="#">AI工坊</a>
-        <a class="zzx-channels__item" href="#">中国篮球</a>
+        <button type="button" class="zzx-channels__item zzx-channels__item--hot">热榜</button>
+        <button type="button" class="zzx-channels__item zzx-is-active">推荐</button>
+        <button type="button" class="zzx-channels__item">NBA</button>
+        <button type="button" class="zzx-channels__item">AI工坊</button>
+        <button type="button" class="zzx-channels__item">中国篮球</button>
     </nav>
 
     <!-- 比分条 -->
@@ -107,22 +107,22 @@
     <section class="zzx-hot">
         <h3 class="zzx-hot__head">
             <span class="zzx-hot__title">步行街 · 热帖</span>
-            <a class="zzx-hot__more" href="#">更多</a>
+            <button type="button" class="zzx-hot__more">更多</button>
         </h3>
         <ul class="zzx-hot__list">
             <li class="zzx-hot__item">
                 <span class="zzx-hot__rank">1</span>
-                <a class="zzx-hot__link" href="#">打了十年球，第一次见到这种防守站位</a>
+                <button type="button" class="zzx-hot__link">打了十年球，第一次见到这种防守站位</button>
                 <span class="zzx-hot__num">1286 亮</span>
             </li>
             <li class="zzx-hot__item">
                 <span class="zzx-hot__rank">2</span>
-                <a class="zzx-hot__link" href="#">为什么职业球员罚球命中率还不如业余的？</a>
+                <button type="button" class="zzx-hot__link">为什么职业球员罚球命中率还不如业余的？</button>
                 <span class="zzx-hot__num">974 亮</span>
             </li>
             <li class="zzx-hot__item">
                 <span class="zzx-hot__rank">3</span>
-                <a class="zzx-hot__link" href="#">晒晒我收藏的 90 年代球衣，全都是真品</a>
+                <button type="button" class="zzx-hot__link">晒晒我收藏的 90 年代球衣，全都是真品</button>
                 <span class="zzx-hot__num">655 亮</span>
             </li>
         </ul>
@@ -132,7 +132,7 @@
     <section class="zzx-talk">
         <h3 class="zzx-hot__head">
             <span class="zzx-hot__title">深聊 · 正在热议</span>
-            <a class="zzx-hot__more" href="#">进入</a>
+            <button type="button" class="zzx-hot__more">进入</button>
         </h3>
 
         <ul class="zzx-talk__list">
@@ -169,7 +169,7 @@
 <nav class="zzx-tabbar" aria-label="底部导航">
     <div class="zzx-tabbar__inner">
 
-        <a class="zzx-tabbar__item is-active" href="nav-fontclass.html" aria-current="page">
+        <a class="zzx-tabbar__item zzx-is-active" href="nav-fontclass.html" aria-current="page">
             <i class="iconfont icon-index-copy zzx-tabbar__font" aria-hidden="true"></i>
             <span class="zzx-tabbar__text">首页</span>
         </a>
@@ -197,22 +197,6 @@
     </div>
 </nav>
 
-<script>
-    /* 点击切换当前 tab：先切 class 让选中态立刻可见，再跳转到对应页面 */
-    (function () {
-        var items = document.querySelectorAll('.zzx-tabbar__item');
-        for (var i = 0; i < items.length; i++) {
-            items[i].addEventListener('click', function (e) {
-                for (var j = 0; j < items.length; j++) {
-                    items[j].classList.remove('is-active');
-                    items[j].removeAttribute('aria-current');
-                }
-                this.classList.add('is-active');
-                this.setAttribute('aria-current', 'page');
-            });
-        }
-    })();
-</script>
 
 </body>
 

@@ -1,0 +1,642 @@
+<!-- 张志翔 | 建立时间：2026-10-29 14:05 | 大模型功能：DeepSeek-V4.1-Flash · AI 代码生成 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 对象｜张志翔的高级网页设计课堂实践</title>
+    <link rel="stylesheet" href="../font_5244713_yt3vridbf1h/iconfont.css">
+    <style>
+        :root {
+            --paper: #f4f0e8;
+            --white: #fffdf8;
+            --ink: #202522;
+            --muted: #72776f;
+            --green: #315c4b;
+            --line: #d8d2c6;
+            --orange: #b9673c;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: var(--paper);
+        }
+
+        .zzx-page { width: min(1000px, calc(100% - 40px)); margin: 0 auto; }
+
+        /* ===== 页头 ===== */
+        header { padding: 64px 0 40px; border-bottom: 1px solid var(--line); }
+        .zzx-eyebrow { margin: 0 0 20px; color: var(--orange); font-size: 13px; letter-spacing: 3px; }
+        h1 {
+            margin: 0;
+            font-family: Georgia, "Songti SC", serif;
+            font-size: clamp(34px, 6vw, 54px);
+            font-weight: normal;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+        .zzx-intro { max-width: 640px; margin: 20px 0 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
+
+        /* ===== 区块 ===== */
+        .zzx-section { margin: 46px 0; }
+        .zzx-section-title {
+            display: flex; align-items: baseline; justify-content: space-between;
+            gap: 12px; margin: 0 0 20px; padding-bottom: 14px;
+            border-bottom: 2px solid var(--ink);
+        }
+        h2 {
+            display: flex; align-items: center; gap: 10px;
+            margin: 0;
+            font-family: Georgia, "Songti SC", serif;
+            font-size: 24px; font-weight: normal;
+        }
+        h2 .iconfont { font-size: 20px; color: var(--green); }
+        .zzx-sub { color: var(--muted); font-size: 13px; }
+
+        /* ===== 通用两栏 ===== */
+        .zzx-split {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 22px;
+            align-items: start;
+        }
+
+        /* ===== 对象卡片 ===== */
+        .zzx-obj {
+            background: var(--white);
+            border: 1px solid var(--line);
+        }
+        .zzx-obj-head {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 16px;
+            background: #faf6ee;
+            border-bottom: 1px solid var(--line);
+        }
+        .zzx-obj-head .iconfont { font-size: 15px; color: var(--green); }
+        .zzx-obj-name {
+            color: var(--green);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 14px;
+        }
+        .zzx-obj-meta { margin-left: auto; color: var(--muted); font-size: 12px; }
+        .zzx-obj-body { padding: 4px 16px 10px; }
+
+        .zzx-row {
+            display: flex; align-items: baseline; gap: 6px;
+            padding: 9px 0;
+            border-bottom: 1px dashed var(--line);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .zzx-row:last-child { border-bottom: 0; }
+        .zzx-key { color: var(--green); }
+        .zzx-colon { color: var(--muted); }
+        .zzx-val { color: var(--ink); word-break: break-all; }
+        .zzx-val-str { color: var(--orange); }
+        .zzx-val-fn { color: var(--muted); font-style: italic; }
+        .zzx-type {
+            margin-left: auto; padding: 1px 6px;
+            border: 1px solid var(--line);
+            color: var(--muted); font-size: 11px;
+            white-space: nowrap;
+        }
+        .zzx-row-void { opacity: .62; }
+        .zzx-row-void .zzx-key, .zzx-row-void .zzx-val { text-decoration: line-through; }
+        .zzx-row-flash { animation: zzxFlash .9s ease; }
+        @keyframes zzxFlash {
+            0% { background: #e3ece2; }
+            100% { background: transparent; }
+        }
+
+        /* ===== 代码块 ===== */
+        .zzx-code {
+            margin: 0; padding: 13px 15px;
+            background: #faf6ee;
+            border: 1px solid var(--line);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 12px; line-height: 1.8;
+            white-space: pre-wrap; word-break: break-word;
+        }
+        .zzx-code .zzx-cm { color: var(--muted); font-style: italic; }
+
+        .zzx-out {
+            margin: 12px 0 0; padding-left: 11px;
+            border-left: 2px solid var(--green);
+            color: var(--muted); font-size: 12px; line-height: 1.8;
+        }
+        .zzx-out b { color: var(--ink); font-weight: normal; }
+
+        /* ===== 按钮 ===== */
+        .zzx-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+        .zzx-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 13px;
+            background: var(--white);
+            border: 1px solid var(--line);
+            color: var(--ink);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 12px;
+            cursor: pointer;
+            transition: .15s;
+        }
+        .zzx-btn:hover { border-color: var(--green); color: var(--green); }
+        .zzx-btn .iconfont { font-size: 12px; }
+        .zzx-btn-strong { background: var(--green); border-color: var(--green); color: #fffdf8; }
+        .zzx-btn-strong:hover { background: #26473a; color: #fffdf8; }
+
+        /* 操作记录 */
+        .zzx-log {
+            margin: 14px 0 0;
+            padding: 10px 14px;
+            background: var(--white);
+            border: 1px solid var(--line);
+            color: var(--muted);
+            font-family: "Consolas", "Courier New", monospace;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+        .zzx-log b { color: var(--orange); font-weight: normal; }
+
+        /* ===== 方法调用气泡 ===== */
+        .zzx-bubble {
+            position: relative;
+            margin-top: 14px;
+            padding: 12px 16px 12px 18px;
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-left: 3px solid var(--green);
+            color: var(--ink);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        .zzx-bubble span { color: var(--muted); font-size: 12px; display: block; }
+        .zzx-bubble em { font-style: normal; }
+
+        /* ===== 构造出来的实例 ===== */
+        .zzx-instances {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+        .zzx-inst {
+            background: var(--white);
+            border: 1px solid var(--line);
+        }
+        .zzx-inst-head {
+            padding: 10px 14px;
+            background: #faf6ee;
+            border-bottom: 1px solid var(--line);
+            color: var(--green);
+            font-family: "Consolas", monospace;
+            font-size: 12px;
+        }
+        .zzx-inst-body { padding: 4px 14px 8px; }
+        .zzx-inst-body .zzx-row { font-size: 12px; padding: 7px 0; }
+
+        /* ===== 遍历结果 ===== */
+        .zzx-iter { display: grid; gap: 10px; }
+        .zzx-iter-row {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 11px 14px;
+            background: var(--white);
+            border: 1px solid var(--line);
+        }
+        .zzx-iter-label {
+            flex: 0 0 130px;
+            color: var(--green);
+            font-family: "Consolas", monospace;
+            font-size: 12px;
+        }
+        .zzx-iter-val {
+            color: var(--muted);
+            font-family: "Consolas", monospace;
+            font-size: 12px;
+            line-height: 1.7;
+            word-break: break-all;
+        }
+
+        /* ===== 页脚 ===== */
+        .zzx-note {
+            margin-top: 46px; padding: 22px 24px;
+            background: var(--white); border: 1px solid var(--line);
+            color: var(--muted); font-size: 13px; line-height: 1.9;
+        }
+        .zzx-note strong { display: block; margin-bottom: 6px; color: var(--ink); font-weight: normal; }
+
+        footer { margin-top: 40px; padding: 18px 0 28px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+
+        @media (max-width: 760px) {
+            header { padding-top: 46px; }
+            .zzx-split { grid-template-columns: 1fr; }
+            .zzx-instances { grid-template-columns: 1fr; }
+            .zzx-iter-row { flex-direction: column; gap: 6px; }
+            .zzx-iter-label { flex: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="zzx-page">
+        <header>
+            <p class="zzx-eyebrow">JAVASCRIPT / OBJECT</p>
+            <h1>对象：一张带标签的信息卡</h1>
+            <p class="zzx-intro">
+                变量只能装一个值，对象却能装一整组——每一条数据都有自己的名字，
+                叫"属性"；属性里放函数，就叫"方法"。下面这张卡片，就是一个对象。
+            </p>
+        </header>
+
+        <main>
+
+            <!-- 一、对象的结构 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="iconfont icon-my"></i>一、对象的结构</h2>
+                    <span class="zzx-sub">属性名 : 属性值</span>
+                </div>
+                <div class="zzx-split">
+                    <div class="zzx-obj" id="zzxObjCard"></div>
+                    <div>
+                        <pre class="zzx-code" id="zzxObjCode"></pre>
+                        <p class="zzx-out">
+                            左边是人能看懂的样子，右边是代码的样子。
+                            每个属性都是 <b>键 : 值</b> 的组合，值可以是字符串、数字、布尔值，也可以是函数。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 二、读取与修改 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="iconfont icon-bianji"></i>二、读取、修改、新增、删除</h2>
+                    <span class="zzx-sub">点按钮，卡片会跟着变</span>
+                </div>
+                <div class="zzx-split">
+                    <div>
+                        <div class="zzx-obj" id="zzxLiveCard"></div>
+                        <p class="zzx-log" id="zzxLog">等待操作…</p>
+                        <div class="zzx-btns" id="zzxOps">
+                            <button class="zzx-btn" data-op="read">读取 name</button>
+                            <button class="zzx-btn" data-op="bracket">方括号读取</button>
+                            <button class="zzx-btn" data-op="age">年龄 +1</button>
+                            <button class="zzx-btn" data-op="add">新增 hobby</button>
+                            <button class="zzx-btn" data-op="remove">删除 isStudent</button>
+                            <button class="zzx-btn zzx-btn-strong" data-op="reset">
+                                <i class="iconfont icon-fanhui"></i>还原
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <pre class="zzx-code" id="zzxOpCode"></pre>
+                        <p class="zzx-out">
+                            点号和方括号两种写法效果一样：<b>zzxStudent.name</b> 等价于 <b>zzxStudent["name"]</b>。
+                            删掉一个属性用 <b>delete</b>，删掉的属性会变灰并划掉。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 三、对象里的方法 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="iconfont icon-dianzan"></i>三、对象里的方法</h2>
+                    <span class="zzx-sub">属性值是函数 · this 指向对象自己</span>
+                </div>
+                <div class="zzx-split">
+                    <div>
+                        <pre class="zzx-code">var zzxStudent = {
+    name: "张志翔",
+    age: 20,
+    sayHi: function () {
+        // this 就是 zzxStudent 本身
+        return "大家好，我是" + this.name
+             + "，今年 " + this.age + " 岁。";
+    }
+};</pre>
+                        <div class="zzx-btns">
+                            <button class="zzx-btn zzx-btn-strong" id="zzxCallBtn">
+                                <i class="iconfont icon-dianzan1"></i>调用 zzxStudent.sayHi()
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="zzx-bubble" id="zzxBubble">
+                            <span>调用结果会出现在这里</span>
+                            <em>先点左边的按钮试试。</em>
+                        </div>
+                        <p class="zzx-out">
+                            方法也是属性，只不过它的值是一个函数。
+                            里面的 <b>this</b> 指向调用它的那个对象，所以能读到自己的 name 和 age。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 四、构造函数批量造对象 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="iconfont icon-zengjia"></i>四、用构造函数批量造对象</h2>
+                    <span class="zzx-sub">function + new</span>
+                </div>
+                <div class="zzx-split">
+                    <div>
+                        <pre class="zzx-code">// 构造函数：首字母大写，相当于一张空表格
+function zzxStudentCard(name, age, major) {
+    this.name = name;
+    this.age = age;
+    this.major = major;
+}
+
+// new 会新建一个空对象，把 this 指向它
+var zzxA = new zzxStudentCard("小志", 20, "数字媒体技术");
+var zzxB = new zzxStudentCard("小翔", 21, "视觉传达");
+var zzxC = new zzxStudentCard("小张", 19, "计算机科学");</pre>
+                    </div>
+                    <div>
+                        <div class="zzx-instances" id="zzxInstances"></div>
+                        <p class="zzx-out">
+                            同一张"表格"填三次，就得到三个互不干扰的对象。
+                            改其中一个的 age，另外两个不会跟着变。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 五、遍历对象 -->
+            <section class="zzx-section">
+                <div class="zzx-section-title">
+                    <h2><i class="iconfont icon-0201chazhao"></i>五、遍历对象的属性</h2>
+                    <span class="zzx-sub">for...in · Object.keys · Object.values</span>
+                </div>
+                <pre class="zzx-code">// for...in：把所有属性名依次取出来
+for (var zzxKey in zzxStudent) {
+    console.log(zzxKey);
+}
+
+// 只想拿属性名或属性值，可以这样
+Object.keys(zzxStudent);     // ["name", "age", ...]
+Object.values(zzxStudent);   // ["张志翔", 20, ...]</pre>
+                <div class="zzx-iter" id="zzxIter"></div>
+                <p class="zzx-out">
+                    三种写法拿到的东西不同：<b>for...in</b> 边遍历边处理，
+                    <b>Object.keys / values</b> 一次性把属性名或值装进数组，方便继续用数组的方法处理。
+                </p>
+            </section>
+
+            <div class="zzx-note">
+                <strong>本页面提示词</strong>
+                完成 16-2.html，展示 JavaScript 对象，形象一些。
+            </div>
+        </main>
+
+        <footer>© 2026 张志翔 · 高级网页设计课堂实践</footer>
+    </div>
+
+    <script>
+        /* ============================================================
+           基础工具：把一个对象画成一张信息卡
+           ============================================================ */
+
+        // 判断值的类型，用于卡片右侧的小标签
+        function zzxType(zzxValue) {
+            if (Array.isArray(zzxValue)) { return "array"; }
+            if (zzxValue === null) { return "null"; }
+            return typeof zzxValue;
+        }
+
+        // 属性值转成代码里的样子：字符串加引号，函数缩写
+        function zzxShow(zzxValue, zzxType) {
+            if (zzxType === "string") { return '"' + zzxValue + '"'; }
+            if (zzxType === "function") { return "function () { … }"; }
+            if (zzxType === "array") { return "[" + zzxValue.join(", ") + "]"; }
+            return String(zzxValue);
+        }
+
+        /**
+         * 渲染对象卡片
+         * zzxBoxId   容器 id
+         * zzxObj     要显示的对象
+         * zzxFlash   刚变化的属性名（会闪一下绿色）
+         * zzxVoid    被删除的属性名（暂时变灰划掉）
+         */
+        function zzxDrawObject(zzxBoxId, zzxObj, zzxFlash, zzxVoid) {
+            var zzxKeys = Object.keys(zzxObj);
+            var zzxPropCount = 0;
+            var zzxMethodCount = 0;
+
+            var zzxRows = zzxKeys.map(function (zzxKey) {
+                var zzxValue = zzxObj[zzxKey];
+                var zzxKind = zzxType(zzxValue);
+                if (zzxKind === "function") { zzxMethodCount++; } else { zzxPropCount++; }
+
+                var zzxValCls = "zzx-val";
+                if (zzxKind === "string") { zzxValCls += " zzx-val-str"; }
+                if (zzxKind === "function") { zzxValCls += " zzx-val-fn"; }
+
+                var zzxRowCls = "zzx-row";
+                if (zzxKey === zzxFlash) { zzxRowCls += " zzx-row-flash"; }
+
+                return '<div class="' + zzxRowCls + '">' +
+                            '<span class="zzx-key">' + zzxKey + "</span>" +
+                            '<span class="zzx-colon">:</span>' +
+                            '<span class="' + zzxValCls + '">' + zzxShow(zzxValue, zzxKind) + "</span>" +
+                            '<span class="zzx-type">' + zzxKind + "</span>" +
+                        "</div>";
+            }).join("");
+
+            // 刚被删掉的属性：临时显示一行灰色划掉的痕迹
+            var zzxVoidRow = "";
+            if (zzxVoid) {
+                zzxVoidRow = '<div class="zzx-row zzx-row-void">' +
+                                '<span class="zzx-key">' + zzxVoid + "</span>" +
+                                '<span class="zzx-colon">:</span>' +
+                                '<span class="zzx-val">已删除</span>' +
+                                '<span class="zzx-type">gone</span>' +
+                            "</div>";
+            }
+
+            document.getElementById(zzxBoxId).innerHTML =
+                '<div class="zzx-obj-head">' +
+                    '<i class="iconfont icon-my"></i>' +
+                    '<span class="zzx-obj-name">zzxStudent</span>' +
+                    '<span class="zzx-obj-meta">属性 ' + zzxPropCount + " · 方法 " + zzxMethodCount + "</span>" +
+                "</div>" +
+                '<div class="zzx-obj-body">' + zzxRows + zzxVoidRow + "</div>";
+        }
+
+        /* ============================================================
+           一、第一个对象：直接写在页面里
+           ============================================================ */
+
+        var zzxStudentCard = {
+            name: "张志翔",
+            age: 20,
+            major: "数字媒体技术",
+            isStudent: true,
+            sayHi: function () {
+                return "大家好，我是" + this.name + "，今年 " + this.age + " 岁。";
+            }
+        };
+
+        zzxDrawObject("zzxObjCard", zzxStudentCard);
+
+        document.getElementById("zzxObjCode").textContent =
+            "var zzxStudent = {\n" +
+            '    name: "张志翔",\n' +
+            "    age: 20,\n" +
+            '    major: "数字媒体技术",\n' +
+            "    isStudent: true,\n" +
+            "    sayHi: function () { ... }\n" +
+            "};";
+
+        /* ============================================================
+           二、读取 / 修改 / 新增 / 删除：每一步都重新画卡片
+           ============================================================ */
+
+        var zzxLive = {
+            name: "张志翔",
+            age: 20,
+            major: "数字媒体技术",
+            isStudent: true
+        };
+
+        function zzxFreshLive() {
+            zzxLive = { name: "张志翔", age: 20, major: "数字媒体技术", isStudent: true };
+        }
+
+        var zzxLog = document.getElementById("zzxLog");
+        var zzxOpCode = document.getElementById("zzxOpCode");
+
+        function zzxSay(zzxHtml) {
+            zzxLog.innerHTML = zzxHtml;
+        }
+
+        zzxDrawObject("zzxLiveCard", zzxLive);
+        zzxOpCode.textContent =
+            "var zzxStudent = { name: \"张志翔\", age: 20, ... };\n\n" +
+            "zzxStudent.name;          // 点号读取\n" +
+            "zzxStudent[\"name\"];      // 方括号读取\n" +
+            "zzxStudent.age = 21;      // 修改\n" +
+            "zzxStudent.hobby = \"篮球\"; // 新增\n" +
+            "delete zzxStudent.isStudent; // 删除";
+
+        document.getElementById("zzxOps").addEventListener("click", function (zzxEvent) {
+            var zzxBtn = zzxEvent.target.closest("[data-op]");
+            if (!zzxBtn) { return; }
+            var zzxOp = zzxBtn.getAttribute("data-op");
+
+            if (zzxOp === "read") {
+                zzxDrawObject("zzxLiveCard", zzxLive, "name");
+                zzxSay('zzxStudent.name → <b>"' + zzxLive.name + '"</b>');
+
+            } else if (zzxOp === "bracket") {
+                zzxDrawObject("zzxLiveCard", zzxLive, "name");
+                zzxSay('zzxStudent["name"] → <b>"' + zzxLive["name"] + '"</b>　和点号写法结果完全相同');
+
+            } else if (zzxOp === "age") {
+                zzxLive.age++;
+                zzxDrawObject("zzxLiveCard", zzxLive, "age");
+                zzxSay("zzxStudent.age++ → <b>" + zzxLive.age + "</b>");
+
+            } else if (zzxOp === "add") {
+                if (zzxLive.hobby) {
+                    zzxSay('hobby 已经在卡片里了：<b>' + zzxLive.hobby + "</b>");
+                } else {
+                    zzxLive.hobby = "篮球";
+                    zzxDrawObject("zzxLiveCard", zzxLive, "hobby");
+                    zzxSay('zzxStudent.hobby = "篮球" → 新增了一个属性');
+                }
+
+            } else if (zzxOp === "remove") {
+                if (!zzxLive.isStudent) {
+                    zzxSay("isStudent 已经删掉了");
+                } else {
+                    delete zzxLive.isStudent;
+                    zzxDrawObject("zzxLiveCard", zzxLive, "", "isStudent");
+                    zzxSay("delete zzxStudent.isStudent → 属性被删除，卡片上少了一行");
+                }
+
+            } else if (zzxOp === "reset") {
+                zzxFreshLive();
+                zzxDrawObject("zzxLiveCard", zzxLive);
+                zzxSay("已还原成最初的对象");
+            }
+        });
+
+        /* ============================================================
+           三、调用对象的方法
+           ============================================================ */
+
+        document.getElementById("zzxCallBtn").addEventListener("click", function () {
+            //调用时 this 自动指向 zzxStudentCard
+            var zzxText = zzxStudentCard.sayHi();
+            document.getElementById("zzxBubble").innerHTML =
+                "<span>sayHi() 返回</span><em>“" + zzxText + "”</em>";
+        });
+
+        /* ============================================================
+           四、构造函数 + new：一次生成三个对象
+           ============================================================ */
+
+        function zzxStudentCard2(name, age, major) {
+            this.name = name;
+            this.age = age;
+            this.major = major;
+        }
+
+        var zzxClass = [
+            new zzxStudentCard2("小志", 20, "数字媒体技术"),
+            new zzxStudentCard2("小翔", 21, "视觉传达"),
+            new zzxStudentCard2("小张", 19, "计算机科学")
+        ];
+
+        document.getElementById("zzxInstances").innerHTML = zzxClass.map(function (zzxItem, zzxIndex) {
+            return '<div class="zzx-inst">' +
+                        '<div class="zzx-inst-head">new 实例 ' + (zzxIndex + 1) + "</div>" +
+                        '<div class="zzx-inst-body">' +
+                            '<div class="zzx-row"><span class="zzx-key">name</span><span class="zzx-colon">:</span>' +
+                                '<span class="zzx-val zzx-val-str">"' + zzxItem.name + '"</span></div>' +
+                            '<div class="zzx-row"><span class="zzx-key">age</span><span class="zzx-colon">:</span>' +
+                                '<span class="zzx-val">' + zzxItem.age + "</span></div>" +
+                            '<div class="zzx-row"><span class="zzx-key">major</span><span class="zzx-colon">:</span>' +
+                                '<span class="zzx-val zzx-val-str">"' + zzxItem.major + '"</span></div>' +
+                        "</div>" +
+                    "</div>";
+        }).join("");
+
+        /* ============================================================
+           五、遍历对象：三种写法实际跑一遍
+           ============================================================ */
+
+        var zzxKeysByIn = [];
+        for (var zzxKey in zzxLive) {
+            zzxKeysByIn.push(zzxKey);
+        }
+
+        var zzxKeys = Object.keys(zzxLive);
+        var zzxValues = Object.values(zzxLive).map(function (zzxValue) {
+            return typeof zzxValue === "string" ? '"' + zzxValue + '"' : String(zzxValue);
+        });
+
+        document.getElementById("zzxIter").innerHTML =
+            '<div class="zzx-iter-row">' +
+                '<span class="zzx-iter-label">for...in</span>' +
+                '<span class="zzx-iter-val">' + zzxKeysByIn.join("　") + "</span>" +
+            "</div>" +
+            '<div class="zzx-iter-row">' +
+                '<span class="zzx-iter-label">Object.keys()</span>' +
+                '<span class="zzx-iter-val">["' + zzxKeys.join('", "') + '"]　<span style="color:#b9673c">数组，长度 ' + zzxKeys.length + "</span>" +
+            "</div>" +
+            '<div class="zzx-iter-row">' +
+                '<span class="zzx-iter-label">Object.values()</span>' +
+                '<span class="zzx-iter-val">[' + zzxValues.join(", ") + "]</span>" +
+            "</div>";
+    </script>
+</body>
+</html>

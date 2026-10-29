@@ -35,7 +35,7 @@
     <!-- 我的专区 -->
     <div class="zzx-subhead">
         <h2 class="zzx-subhead__title">我的专区</h2>
-        <a class="zzx-subhead__more" href="#">编辑</a>
+        <button type="button" class="zzx-subhead__more">编辑</button>
     </div>
     <div class="zzx-zone-mine">
         <div class="zzx-zone-mine__item">
@@ -63,7 +63,7 @@
     <!-- 全部专区 -->
     <div class="zzx-subhead">
         <h2 class="zzx-subhead__title">全部专区</h2>
-        <a class="zzx-subhead__more" href="#">按热度排序</a>
+        <button type="button" class="zzx-subhead__more">按热度排序</button>
     </div>
     <div class="zzx-zone-grid">
         <div class="zzx-zone-cell">
@@ -118,7 +118,7 @@
 
     <div class="zzx-subhead">
         <h2 class="zzx-subhead__title">推荐关注</h2>
-        <a class="zzx-subhead__more" href="#">换一批</a>
+        <button type="button" class="zzx-subhead__more">换一批</button>
     </div>
     <div class="zzx-zone-list">
         <div class="zzx-zone-row">
@@ -127,7 +127,7 @@
                 <div class="zzx-zone-row__name">装备区</div>
                 <div class="zzx-zone-row__desc">12.4 万成员 · 今日 302 新帖</div>
             </div>
-            <a class="zzx-zone-row__btn" href="#">关注</a>
+            <button type="button" class="zzx-zone-row__btn">关注</button>
         </div>
         <div class="zzx-zone-row">
             <div class="zzx-zone-row__icon" style="background:#8a5a72">影</div>
@@ -135,7 +135,7 @@
                 <div class="zzx-zone-row__name">影视区</div>
                 <div class="zzx-zone-row__desc">8.6 万成员 · 今日 178 新帖</div>
             </div>
-            <a class="zzx-zone-row__btn" href="#">关注</a>
+            <button type="button" class="zzx-zone-row__btn">关注</button>
         </div>
         <div class="zzx-zone-row">
             <div class="zzx-zone-row__icon" style="background:#3f6b8a">游</div>
@@ -143,7 +143,7 @@
                 <div class="zzx-zone-row__name">游戏区</div>
                 <div class="zzx-zone-row__desc">21.7 万成员 · 今日 964 新帖</div>
             </div>
-            <a class="zzx-zone-row__btn" href="#">关注</a>
+            <button type="button" class="zzx-zone-row__btn">关注</button>
         </div>
     </div>
 
@@ -158,7 +158,7 @@
             <span class="zzx-tabbar__text">首页</span>
         </a>
 
-        <a class="zzx-tabbar__item is-active" href="zone.html" aria-current="page">
+        <a class="zzx-tabbar__item zzx-is-active" href="zone.html" aria-current="page">
             <svg class="zzx-tabbar__icon" aria-hidden="true"><use href="#zzx-ico-zone" xlink:href="#zzx-ico-zone"></use></svg>
             <span class="zzx-tabbar__text">专区</span>
         </a>
@@ -181,22 +181,6 @@
     </div>
 </nav>
 
-<script>
-    /* 点击切换当前 tab：先切 class 让选中态立刻可见，再跳转到对应页面 */
-    (function () {
-        var items = document.querySelectorAll('.zzx-tabbar__item');
-        for (var i = 0; i < items.length; i++) {
-            items[i].addEventListener('click', function (e) {
-                for (var j = 0; j < items.length; j++) {
-                    items[j].classList.remove('is-active');
-                    items[j].removeAttribute('aria-current');
-                }
-                this.classList.add('is-active');
-                this.setAttribute('aria-current', 'page');
-            });
-        }
-    })();
-</script>
 
 </body>
 

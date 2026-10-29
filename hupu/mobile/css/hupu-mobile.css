@@ -59,6 +59,23 @@ a {
     text-decoration: none;
 }
 
+/* 纯交互元素改用 button（避免空锚点 href="#" 触发页面回顶、污染历史记录）。
+   display 保持 inline 与原 <a> 默认一致；带更高特异性 class 的
+   （如 .zzx-menu__item 的 flex、.zzx-logout 的 block）会自动覆盖。 */
+button {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 ul {
     margin: 0;
     padding: 0;
@@ -188,12 +205,12 @@ img {
     white-space: nowrap;
 }
 
-.zzx-channels__item.is-active {
+.zzx-channels__item.zzx-is-active {
     color: var(--zzx-text);
     font-weight: 600;
 }
 
-.zzx-channels__item.is-active::after {
+.zzx-channels__item.zzx-is-active::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -538,15 +555,15 @@ img {
 }
 
 /* 选中态：虎扑 App 用黑色高亮，而非品牌红 */
-.zzx-tabbar__item.is-active {
+.zzx-tabbar__item.zzx-is-active {
     color: var(--zzx-text);
 }
 
-.zzx-tabbar__item.is-active .zzx-tabbar__text {
+.zzx-tabbar__item.zzx-is-active .zzx-tabbar__text {
     font-weight: 600;
 }
 
-.zzx-tabbar__item.is-active .zzx-tabbar__icon {
+.zzx-tabbar__item.zzx-is-active .zzx-tabbar__icon {
     transform: translateY(-1px) scale(1.04);
 }
 
@@ -623,7 +640,7 @@ img {
     transition: transform 0.18s ease;
 }
 
-.zzx-tabbar__item.is-active .zzx-tabbar__font.iconfont {
+.zzx-tabbar__item.zzx-is-active .zzx-tabbar__font.iconfont {
     transform: translateY(-1px) scale(1.04);
 }
 
@@ -878,7 +895,7 @@ img {
     white-space: nowrap;
 }
 
-.zzx-filter__item.is-active {
+.zzx-filter__item.zzx-is-active {
     color: var(--zzx-text);
     font-weight: 600;
 }

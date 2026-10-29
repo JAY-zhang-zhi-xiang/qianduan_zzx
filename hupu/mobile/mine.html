@@ -27,7 +27,7 @@
     <!-- 顶部：logo / 设置 -->
     <div class="zzx-topbar">
         <span class="zzx-header__logo">虎扑</span>
-        <a class="zzx-topbar__btn" href="#">设置</a>
+        <button type="button" class="zzx-topbar__btn">设置</button>
     </div>
     <!-- 个人信息 -->
     <section class="zzx-profile">
@@ -60,52 +60,52 @@
     <!-- 我的主队 -->
     <div class="zzx-subhead">
         <h2 class="zzx-subhead__title">我的主队</h2>
-        <a class="zzx-subhead__more" href="#">管理</a>
+        <button type="button" class="zzx-subhead__more">管理</button>
     </div>
     <div class="zzx-teams">
-        <a class="zzx-teams__item" href="#">
+        <button type="button" class="zzx-teams__item">
             <img class="zzx-teams__logo" src="../assets/team0.png" alt="">
             <span class="zzx-teams__name">山东</span>
-        </a>
-        <a class="zzx-teams__item" href="#">
+        </button>
+        <button type="button" class="zzx-teams__item">
             <img class="zzx-teams__logo" src="../assets/team1.png" alt="">
             <span class="zzx-teams__name">广东</span>
-        </a>
-        <a class="zzx-teams__item" href="#">
+        </button>
+        <button type="button" class="zzx-teams__item">
             <img class="zzx-teams__logo" src="../assets/team2.png" alt="">
             <span class="zzx-teams__name">辽宁</span>
-        </a>
-        <a class="zzx-teams__item" href="#">
+        </button>
+        <button type="button" class="zzx-teams__item">
             <img class="zzx-teams__logo" src="../assets/team3.png" alt="">
             <span class="zzx-teams__name">浙江</span>
-        </a>
+        </button>
     </div>
 
     <!-- 菜单 -->
     <nav class="zzx-menu" aria-label="个人中心菜单">
-        <a class="zzx-menu__item" href="#">
+        <button type="button" class="zzx-menu__item">
             <span class="zzx-menu__name">我的帖子</span>
             <span class="zzx-menu__value">128</span><span class="zzx-menu__arrow"></span>
-        </a>
-        <a class="zzx-menu__item" href="#">
+        </button>
+        <button type="button" class="zzx-menu__item">
             <span class="zzx-menu__name">我的收藏</span>
             <span class="zzx-menu__value">43</span><span class="zzx-menu__arrow"></span>
-        </a>
-        <a class="zzx-menu__item" href="#">
+        </button>
+        <button type="button" class="zzx-menu__item">
             <span class="zzx-menu__name">我的消息</span>
             <span class="zzx-menu__value">6</span><span class="zzx-menu__arrow"></span>
-        </a>
-        <a class="zzx-menu__item" href="#">
+        </button>
+        <button type="button" class="zzx-menu__item">
             <span class="zzx-menu__name">草稿箱</span>
             <span class="zzx-menu__value">2</span><span class="zzx-menu__arrow"></span>
-        </a>
-        <a class="zzx-menu__item" href="#">
+        </button>
+        <button type="button" class="zzx-menu__item">
             <span class="zzx-menu__name">设置</span>
             <span class="zzx-menu__arrow"></span>
-        </a>
+        </button>
     </nav>
 
-    <a class="zzx-logout" href="#">退出登录</a>
+    <button type="button" class="zzx-logout">退出登录</button>
     <div class="zzx-version">虎扑移动端 · 高级网页设计I 课程作业</div>
 
 </div>
@@ -134,7 +134,7 @@
             <span class="zzx-tabbar__text">深聊</span>
         </a>
 
-        <a class="zzx-tabbar__item is-active" href="mine.html" aria-current="page">
+        <a class="zzx-tabbar__item zzx-is-active" href="mine.html" aria-current="page">
             <svg class="zzx-tabbar__icon" aria-hidden="true"><use href="#zzx-ico-mine" xlink:href="#zzx-ico-mine"></use></svg>
             <span class="zzx-tabbar__text">我的</span>
         </a>
@@ -142,22 +142,6 @@
     </div>
 </nav>
 
-<script>
-    /* 点击切换当前 tab：先切 class 让选中态立刻可见，再跳转到对应页面 */
-    (function () {
-        var items = document.querySelectorAll('.zzx-tabbar__item');
-        for (var i = 0; i < items.length; i++) {
-            items[i].addEventListener('click', function (e) {
-                for (var j = 0; j < items.length; j++) {
-                    items[j].classList.remove('is-active');
-                    items[j].removeAttribute('aria-current');
-                }
-                this.classList.add('is-active');
-                this.setAttribute('aria-current', 'page');
-            });
-        }
-    })();
-</script>
 
 </body>
 

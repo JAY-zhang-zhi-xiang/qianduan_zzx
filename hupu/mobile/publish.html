@@ -28,7 +28,7 @@
     <div class="zzx-topbar">
         <a class="zzx-topbar__btn" href="index.html">取消</a>
         <span class="zzx-topbar__btn zzx-topbar__btn--title">发布内容</span>
-        <a class="zzx-topbar__btn zzx-topbar__btn--primary" href="#">发布</a>
+        <button type="button" class="zzx-topbar__btn zzx-topbar__btn--primary">发布</button>
     </div>
     <div class="zzx-editor">
         <textarea class="zzx-editor__input" placeholder="说点什么，和 8000 万 JR 一起聊球……"></textarea>
@@ -41,22 +41,22 @@
     </div>
 
     <div class="zzx-option">
-        <a class="zzx-option__item" href="#">
+        <button type="button" class="zzx-option__item">
             <span>选择专区</span>
             <span class="zzx-option__value">步行街</span>
-        </a>
-        <a class="zzx-option__item" href="#">
+        </button>
+        <button type="button" class="zzx-option__item">
             <span>添加话题</span>
             <span class="zzx-option__value">#今日讨论</span>
-        </a>
-        <a class="zzx-option__item" href="#">
+        </button>
+        <button type="button" class="zzx-option__item">
             <span>@ 好友</span>
             <span class="zzx-option__value">未选择</span>
-        </a>
-        <a class="zzx-option__item" href="#">
+        </button>
+        <button type="button" class="zzx-option__item">
             <span>显示位置</span>
             <span class="zzx-option__value">关闭</span>
-        </a>
+        </button>
     </div>
 
     <div class="zzx-version">发布即表示同意《虎扑社区公约》</div>
@@ -65,22 +65,6 @@
 
 
 
-<script>
-    /* 点击切换当前 tab：先切 class 让选中态立刻可见，再跳转到对应页面 */
-    (function () {
-        var items = document.querySelectorAll('.zzx-tabbar__item');
-        for (var i = 0; i < items.length; i++) {
-            items[i].addEventListener('click', function (e) {
-                for (var j = 0; j < items.length; j++) {
-                    items[j].classList.remove('is-active');
-                    items[j].removeAttribute('aria-current');
-                }
-                this.classList.add('is-active');
-                this.setAttribute('aria-current', 'page');
-            });
-        }
-    })();
-</script>
 
 </body>
 
